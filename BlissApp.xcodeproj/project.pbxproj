@@ -1,0 +1,794 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		566F683EAEC3BA46DF96D917 /* Pods_BlissAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBD4E40DAD8B372F759B116D /* Pods_BlissAppUITests.framework */; };
+		68B1D35CD11584F1E4263E89 /* Pods_BlissAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAA9A3814DFE15E678ED028 /* Pods_BlissAppTests.framework */; };
+		83229DB1A3380963AFC89D71 /* Pods_BlissApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B215BA6BE73B88433C9868BC /* Pods_BlissApp.framework */; };
+		CD2CF5ED1DB5D77E006330ED /* brainForTweets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2CF5EC1DB5D77E006330ED /* brainForTweets.swift */; };
+		CD2D79D31DB02ABC0062F468 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2D79CF1DB02ABC0062F468 /* Fabric.framework */; };
+		CD2D79D41DB02ABC0062F468 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2D79D01DB02ABC0062F468 /* TwitterKit.framework */; };
+		CD2D79D51DB02ABC0062F468 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CD2D79D11DB02ABC0062F468 /* TwitterKitResources.bundle */; };
+		CD2D79D61DB02ABC0062F468 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2D79D21DB02ABC0062F468 /* TwitterCore.framework */; };
+		CD2D79D81DB02C540062F468 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2D79D71DB02C540062F468 /* TwitterViewController.swift */; };
+		CD7D24151DB193D400C92D60 /* TwitterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */; };
+		CD9566E61DAFD9FC0011308A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9566E51DAFD9FC0011308A /* AppDelegate.swift */; };
+		CD9566EB1DAFD9FC0011308A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9566E91DAFD9FC0011308A /* Main.storyboard */; };
+		CD9566EE1DAFD9FC0011308A /* BlissApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */; };
+		CD9566F01DAFD9FC0011308A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD9566EF1DAFD9FC0011308A /* Assets.xcassets */; };
+		CD9566F31DAFD9FC0011308A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9566F11DAFD9FC0011308A /* LaunchScreen.storyboard */; };
+		CD9566FE1DAFD9FD0011308A /* BlissAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9566FD1DAFD9FD0011308A /* BlissAppTests.swift */; };
+		CD9567091DAFD9FD0011308A /* BlissAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */; };
+		CDB11F241DB869C800F63B81 /* ListOfItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */; };
+		CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */; };
+		CDE3A8491DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */; };
+		CDE3A84A1DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */; };
+		CDE3A84B1DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8471DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD9566FA1DAFD9FD0011308A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD9566DA1DAFD9FC0011308A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD9566E11DAFD9FC0011308A;
+			remoteInfo = BlissApp;
+		};
+		CD9567051DAFD9FD0011308A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CD9566DA1DAFD9FC0011308A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD9566E11DAFD9FC0011308A;
+			remoteInfo = BlissApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		62A4EA195DD3723A872BA0DA /* Pods-BlissAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlissAppTests/Pods-BlissAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7AAA9A3814DFE15E678ED028 /* Pods_BlissAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlissAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96C10362BC2A4A043703CA82 /* Pods-BlissAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlissAppUITests/Pods-BlissAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9AA1512935BAD22CA705AEC9 /* Pods-BlissApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlissApp/Pods-BlissApp.release.xcconfig"; sourceTree = "<group>"; };
+		A9ABED53DCC7B97721BACC6E /* Pods-BlissAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlissAppUITests/Pods-BlissAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B215BA6BE73B88433C9868BC /* Pods_BlissApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlissApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD2CF5EC1DB5D77E006330ED /* brainForTweets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = brainForTweets.swift; sourceTree = "<group>"; };
+		CD2D79CF1DB02ABC0062F468 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		CD2D79D01DB02ABC0062F468 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterKit.framework; sourceTree = "<group>"; };
+		CD2D79D11DB02ABC0062F468 /* TwitterKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TwitterKitResources.bundle; path = TwitterKit.framework/Versions/A/Resources/TwitterKitResources.bundle; sourceTree = "<group>"; };
+		CD2D79D21DB02ABC0062F468 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
+		CD2D79D71DB02C540062F468 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
+		CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginViewController.swift; sourceTree = "<group>"; };
+		CD9566E21DAFD9FC0011308A /* BlissApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD9566E51DAFD9FC0011308A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD9566EA1DAFD9FC0011308A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD9566ED1DAFD9FC0011308A /* BlissApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BlissApp.xcdatamodel; sourceTree = "<group>"; };
+		CD9566EF1DAFD9FC0011308A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD9566F21DAFD9FC0011308A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD9566F41DAFD9FC0011308A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD9566F91DAFD9FD0011308A /* BlissAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlissAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD9566FD1DAFD9FD0011308A /* BlissAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissAppTests.swift; sourceTree = "<group>"; };
+		CD9566FF1DAFD9FD0011308A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD9567041DAFD9FD0011308A /* BlissAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlissAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissAppUITests.swift; sourceTree = "<group>"; };
+		CD95670A1DAFD9FD0011308A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfItemsTableViewController.swift; sourceTree = "<group>"; };
+		CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDE3A8471DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlissApp/Pods-BlissApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F81F4971CCE5C08CF3FDAFA8 /* Pods-BlissAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlissAppTests/Pods-BlissAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		FBD4E40DAD8B372F759B116D /* Pods_BlissAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlissAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD9566DF1DAFD9FC0011308A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD2D79D31DB02ABC0062F468 /* Fabric.framework in Frameworks */,
+				CD2D79D61DB02ABC0062F468 /* TwitterCore.framework in Frameworks */,
+				CD2D79D41DB02ABC0062F468 /* TwitterKit.framework in Frameworks */,
+				83229DB1A3380963AFC89D71 /* Pods_BlissApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9566F61DAFD9FD0011308A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68B1D35CD11584F1E4263E89 /* Pods_BlissAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9567011DAFD9FD0011308A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				566F683EAEC3BA46DF96D917 /* Pods_BlissAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6337B26593983AA038827852 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B215BA6BE73B88433C9868BC /* Pods_BlissApp.framework */,
+				7AAA9A3814DFE15E678ED028 /* Pods_BlissAppTests.framework */,
+				FBD4E40DAD8B372F759B116D /* Pods_BlissAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE7103F9CD9A8FE7BD122EAE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */,
+				9AA1512935BAD22CA705AEC9 /* Pods-BlissApp.release.xcconfig */,
+				62A4EA195DD3723A872BA0DA /* Pods-BlissAppTests.debug.xcconfig */,
+				F81F4971CCE5C08CF3FDAFA8 /* Pods-BlissAppTests.release.xcconfig */,
+				96C10362BC2A4A043703CA82 /* Pods-BlissAppUITests.debug.xcconfig */,
+				A9ABED53DCC7B97721BACC6E /* Pods-BlissAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CD9566D91DAFD9FC0011308A = {
+			isa = PBXGroup;
+			children = (
+				CD9566E41DAFD9FC0011308A /* BlissApp */,
+				CD9566FC1DAFD9FD0011308A /* BlissAppTests */,
+				CD9567071DAFD9FD0011308A /* BlissAppUITests */,
+				CD9566E31DAFD9FC0011308A /* Products */,
+				CD2D79CF1DB02ABC0062F468 /* Fabric.framework */,
+				CD2D79D01DB02ABC0062F468 /* TwitterKit.framework */,
+				CD2D79D11DB02ABC0062F468 /* TwitterKitResources.bundle */,
+				CD2D79D21DB02ABC0062F468 /* TwitterCore.framework */,
+				AE7103F9CD9A8FE7BD122EAE /* Pods */,
+				6337B26593983AA038827852 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD9566E31DAFD9FC0011308A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD9566E21DAFD9FC0011308A /* BlissApp.app */,
+				CD9566F91DAFD9FD0011308A /* BlissAppTests.xctest */,
+				CD9567041DAFD9FD0011308A /* BlissAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD9566E41DAFD9FC0011308A /* BlissApp */ = {
+			isa = PBXGroup;
+			children = (
+				CD9566E51DAFD9FC0011308A /* AppDelegate.swift */,
+				CD9566E91DAFD9FC0011308A /* Main.storyboard */,
+				CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */,
+				CD2D79D71DB02C540062F468 /* TwitterViewController.swift */,
+				CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */,
+				CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */,
+				CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */,
+				CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */,
+				CDE3A8471DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift */,
+				CD9566F41DAFD9FC0011308A /* Info.plist */,
+				CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */,
+				CD9566EF1DAFD9FC0011308A /* Assets.xcassets */,
+				CD9566F11DAFD9FC0011308A /* LaunchScreen.storyboard */,
+				CD2CF5EC1DB5D77E006330ED /* brainForTweets.swift */,
+			);
+			path = BlissApp;
+			sourceTree = "<group>";
+		};
+		CD9566FC1DAFD9FD0011308A /* BlissAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				CD9566FD1DAFD9FD0011308A /* BlissAppTests.swift */,
+				CD9566FF1DAFD9FD0011308A /* Info.plist */,
+			);
+			path = BlissAppTests;
+			sourceTree = "<group>";
+		};
+		CD9567071DAFD9FD0011308A /* BlissAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */,
+				CD95670A1DAFD9FD0011308A /* Info.plist */,
+			);
+			path = BlissAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD9566E11DAFD9FC0011308A /* BlissApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD95670D1DAFD9FD0011308A /* Build configuration list for PBXNativeTarget "BlissApp" */;
+			buildPhases = (
+				2E55F5E0F5A966771D3A66F3 /* [CP] Check Pods Manifest.lock */,
+				CD9566DE1DAFD9FC0011308A /* Sources */,
+				CD9566DF1DAFD9FC0011308A /* Frameworks */,
+				CD9566E01DAFD9FC0011308A /* Resources */,
+				CD2D79CE1DB02A830062F468 /* ShellScript */,
+				7E716487689C9C36BF50CDF7 /* [CP] Embed Pods Frameworks */,
+				8861B2FAAF7968EA18E35360 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BlissApp;
+			productName = BlissApp;
+			productReference = CD9566E21DAFD9FC0011308A /* BlissApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD9566F81DAFD9FD0011308A /* BlissAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD9567101DAFD9FD0011308A /* Build configuration list for PBXNativeTarget "BlissAppTests" */;
+			buildPhases = (
+				092A4736C714EA476B7FEB0C /* [CP] Check Pods Manifest.lock */,
+				CD9566F51DAFD9FD0011308A /* Sources */,
+				CD9566F61DAFD9FD0011308A /* Frameworks */,
+				CD9566F71DAFD9FD0011308A /* Resources */,
+				B4DB5EC6E8514D96B1BEBE29 /* [CP] Embed Pods Frameworks */,
+				A44538EC137899BECA734418 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD9566FB1DAFD9FD0011308A /* PBXTargetDependency */,
+			);
+			name = BlissAppTests;
+			productName = BlissAppTests;
+			productReference = CD9566F91DAFD9FD0011308A /* BlissAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		CD9567031DAFD9FD0011308A /* BlissAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD9567131DAFD9FD0011308A /* Build configuration list for PBXNativeTarget "BlissAppUITests" */;
+			buildPhases = (
+				B2FCA97725CE068FE12305C5 /* [CP] Check Pods Manifest.lock */,
+				CD9567001DAFD9FD0011308A /* Sources */,
+				CD9567011DAFD9FD0011308A /* Frameworks */,
+				CD9567021DAFD9FD0011308A /* Resources */,
+				FEA8AF65BEE752986FD1A2A5 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD9567061DAFD9FD0011308A /* PBXTargetDependency */,
+			);
+			name = BlissAppUITests;
+			productName = BlissAppUITests;
+			productReference = CD9567041DAFD9FD0011308A /* BlissAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD9566DA1DAFD9FC0011308A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Valentina Henao";
+				TargetAttributes = {
+					CD9566E11DAFD9FC0011308A = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+					CD9566F81DAFD9FD0011308A = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CD9566E11DAFD9FC0011308A;
+					};
+					CD9567031DAFD9FD0011308A = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						TestTargetID = CD9566E11DAFD9FC0011308A;
+					};
+				};
+			};
+			buildConfigurationList = CD9566DD1DAFD9FC0011308A /* Build configuration list for PBXProject "BlissApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD9566D91DAFD9FC0011308A;
+			productRefGroup = CD9566E31DAFD9FC0011308A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD9566E11DAFD9FC0011308A /* BlissApp */,
+				CD9566F81DAFD9FD0011308A /* BlissAppTests */,
+				CD9567031DAFD9FD0011308A /* BlissAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD9566E01DAFD9FC0011308A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD2D79D51DB02ABC0062F468 /* TwitterKitResources.bundle in Resources */,
+				CD9566F31DAFD9FC0011308A /* LaunchScreen.storyboard in Resources */,
+				CD9566F01DAFD9FC0011308A /* Assets.xcassets in Resources */,
+				CD9566EB1DAFD9FC0011308A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9566F71DAFD9FD0011308A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9567021DAFD9FD0011308A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		092A4736C714EA476B7FEB0C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2E55F5E0F5A966771D3A66F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7E716487689C9C36BF50CDF7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlissApp/Pods-BlissApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8861B2FAAF7968EA18E35360 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlissApp/Pods-BlissApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A44538EC137899BECA734418 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlissAppTests/Pods-BlissAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2FCA97725CE068FE12305C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B4DB5EC6E8514D96B1BEBE29 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlissAppTests/Pods-BlissAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD2D79CE1DB02A830062F468 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run e131b12620469460de1b63482f49562dabde0d9f e364c495064f217d9df7590d0f919185a3502663da7b942a6589f3cfc8233f81";
+		};
+		FEA8AF65BEE752986FD1A2A5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlissAppUITests/Pods-BlissAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD9566DE1DAFD9FC0011308A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD2D79D81DB02C540062F468 /* TwitterViewController.swift in Sources */,
+				CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */,
+				CD9566EE1DAFD9FC0011308A /* BlissApp.xcdatamodeld in Sources */,
+				CD9566E61DAFD9FC0011308A /* AppDelegate.swift in Sources */,
+				CDE3A84B1DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift in Sources */,
+				CDB11F241DB869C800F63B81 /* ListOfItemsTableViewController.swift in Sources */,
+				CD7D24151DB193D400C92D60 /* TwitterLoginViewController.swift in Sources */,
+				CDE3A8491DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift in Sources */,
+				CDE3A84A1DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift in Sources */,
+				CD2CF5ED1DB5D77E006330ED /* brainForTweets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9566F51DAFD9FD0011308A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD9566FE1DAFD9FD0011308A /* BlissAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD9567001DAFD9FD0011308A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD9567091DAFD9FD0011308A /* BlissAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD9566FB1DAFD9FD0011308A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD9566E11DAFD9FC0011308A /* BlissApp */;
+			targetProxy = CD9566FA1DAFD9FD0011308A /* PBXContainerItemProxy */;
+		};
+		CD9567061DAFD9FD0011308A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD9566E11DAFD9FC0011308A /* BlissApp */;
+			targetProxy = CD9567051DAFD9FD0011308A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD9566E91DAFD9FC0011308A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD9566EA1DAFD9FC0011308A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD9566F11DAFD9FC0011308A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD9566F21DAFD9FC0011308A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD95670B1DAFD9FD0011308A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD95670C1DAFD9FD0011308A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD95670E1DAFD9FD0011308A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = BlissApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CD95670F1DAFD9FD0011308A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AA1512935BAD22CA705AEC9 /* Pods-BlissApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = BlissApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CD9567111DAFD9FD0011308A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62A4EA195DD3723A872BA0DA /* Pods-BlissAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BlissAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlissApp.app/BlissApp";
+			};
+			name = Debug;
+		};
+		CD9567121DAFD9FD0011308A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F81F4971CCE5C08CF3FDAFA8 /* Pods-BlissAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BlissAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlissApp.app/BlissApp";
+			};
+			name = Release;
+		};
+		CD9567141DAFD9FD0011308A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96C10362BC2A4A043703CA82 /* Pods-BlissAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = BlissAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BlissApp;
+			};
+			name = Debug;
+		};
+		CD9567151DAFD9FD0011308A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9ABED53DCC7B97721BACC6E /* Pods-BlissAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = BlissAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BlissApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD9566DD1DAFD9FC0011308A /* Build configuration list for PBXProject "BlissApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD95670B1DAFD9FD0011308A /* Debug */,
+				CD95670C1DAFD9FD0011308A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD95670D1DAFD9FD0011308A /* Build configuration list for PBXNativeTarget "BlissApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD95670E1DAFD9FD0011308A /* Debug */,
+				CD95670F1DAFD9FD0011308A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD9567101DAFD9FD0011308A /* Build configuration list for PBXNativeTarget "BlissAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD9567111DAFD9FD0011308A /* Debug */,
+				CD9567121DAFD9FD0011308A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD9567131DAFD9FD0011308A /* Build configuration list for PBXNativeTarget "BlissAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD9567141DAFD9FD0011308A /* Debug */,
+				CD9567151DAFD9FD0011308A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD9566ED1DAFD9FC0011308A /* BlissApp.xcdatamodel */,
+			);
+			currentVersion = CD9566ED1DAFD9FC0011308A /* BlissApp.xcdatamodel */;
+			path = BlissApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CD9566DA1DAFD9FC0011308A /* Project object */;
+}
