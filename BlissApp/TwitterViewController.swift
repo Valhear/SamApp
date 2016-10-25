@@ -14,134 +14,83 @@ import CoreData
 class TwitterViewController: UIViewController {
     
   //  var managedObjectContext: NSManagedObjectContext
-    var followerslist = [NSManagedObject]()
-    var retweetedTweets = [NSManagedObject]()
-    var mentionsTweets = [NSManagedObject]()
-    var postsTweets = [NSManagedObject]()
-    
-//        {
-//        didSet {
-//            
-//            self.retweets.text = String(retweetedTweets.count)
-//        }
-//    }
-    
+    //FIX, SOLO DEBO GUARDAR IDS
+    var followerslist = [TwitterUser]()
+    var retweetedTweets = [Tweet]()
+    var mentionsTweets = [Tweet]()
+    var postsTweets = [Tweet]()
     
     @IBOutlet var view1: UIView!
-    
     @IBOutlet var view2: UIView!
-    
     @IBOutlet var view3: UIView!
-    
     @IBOutlet var view4: UIView!
     
     @IBAction func updateButton(_ sender: UIButton) {
+        getfollowers(sender)
+        getRetweets(sender)
+        getMentions(sender)
+        getPosts(sender)
     }
     
     @IBAction func getfollowers(_ sender: UIButton) {
-       
-//        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
-//            let client = TWTRAPIClient(userID: userID)
-//            // make requests with client
-//            let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/list.json"
-//            let params = ["user_id": "\(userID)"]
-//            var clientError : NSError?
-//            
-//            let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
-//            
-//            client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
-//                if connectionError != nil {
-//                    print("Error: \(connectionError)")
-//                }
-//                
-//                do {
-//                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
-//                    print("json: \(json)")
-//                    if let x = json["users"] as? NSArray {
-//                        let follo = x.count
-//                        self.followers.text = String(follo)
-//                        let d = "MAMAMIACOMOSOYDEBOBA"
-//                            self.saveName(name: d)
-//                        
-//                        print("followers === \(follo)")
-//                    }
-//                    
-//                    //                    if let item = json[0] as Array {
-//                    //                        }
-//                    
-//                } catch let jsonError as NSError {
-//                    print("json error: \(jsonError.localizedDescription)")
-//                }
-//                
-//            }
-//        }
-        
         
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             let client = TWTRAPIClient(userID: userID)
-            // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/ids.json"
             let params = ["user_id": "\(userID)"]
             var clientError : NSError?
-            
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
-            
-            
             client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
                 if connectionError != nil {
                     print("Error: \(connectionError)")
                 }
-                
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
-                         print("json: \(json)")
+                    print("json: \(json)")
                     if let x = json["ids"] as? NSArray {
                         let follo = x.count
                         self.followers.text = String(follo)
-//                        self.saveTweet(name: d)
+                        self.saveObject(ids: x as! [Int], entity: "TwitterUser", sender: "getFollowers")
                     }
-                   
-//                    if let item = json[0] as Array {
-//                        }
-                    
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                 }
-                
             }
         }
-        
     }
     @IBAction func getRetweets(_ sender: UIButton) {
         
         var retweets = 0
+        var ids = [Int?]()
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             let client = TWTRAPIClient(userID: userID)
             // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/retweets_of_me.json"
             let params = ["count": "\(100)"]
             var clientError : NSError?
-            
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
-            
-            
             client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
                 if connectionError != nil {
                     print("Error: \(connectionError)")
                 }
-                
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
                     print("json: \(json)")
+                        
                     for tweet in json {
                          let info = tweet as! [String:Any]
                             if let ret = info["retweet_count"] as? Int {
 
                                 retweets += ret
                                 self.retweets.text = String(retweets)
+                                let id = info["id"] as? Int
+                                ids.append(id)
                                 print("retweets === \(retweets)")
+                                print("id === \(id)")
                             }
                     }
+                    self.saveObject(ids: ids as! [Int], entity: "Tweet", sender: "getRetweets")
+                    
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                 }
@@ -151,31 +100,31 @@ class TwitterViewController: UIViewController {
     }
     
     @IBAction func getMentions(_ sender: UIButton) {
-        
+        var ids = [Int?]()
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             let client = TWTRAPIClient(userID: userID)
-            // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/mentions_timeline.json"
             let params = ["count": "\(100)"]
             var clientError : NSError?
-            
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
-            
-            
             client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
                 if connectionError != nil {
                     print("Error: \(connectionError)")
                 }
-                
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
                     print("json: \(json)")
                     self.mentions.text = String(json.count)
-//                    if let x = json["user_mentions"] as? NSArray {
-//                        let mentions = x.count
-//                        self.mentions.text = String(mentions)
+
                         print("mentions === \(json.count)")
-//                    }
+                    for item in json {
+                        let info = item as! [String:Any]
+                            if let id = info["id"] as? Int {
+                                print("IDGONORREHA: \(id)")
+                                ids.append(id)
+                                }
+                        }
+                    self.saveObject(ids: ids as! [Int], entity: "Tweet", sender: "getMentions")
                     
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
@@ -186,15 +135,14 @@ class TwitterViewController: UIViewController {
     }
 
     @IBAction func getPosts(_ sender: UIButton) {
+        var ids = [Int?]()
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             let client = TWTRAPIClient(userID: userID)
             // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
             let params = ["user_id": "\(userID)"]
             var clientError : NSError?
-            
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
-            
             
             client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
                 if connectionError != nil {
@@ -205,11 +153,15 @@ class TwitterViewController: UIViewController {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
                     print("json: \(json)")
                     self.posts.text = String(json.count)
-                    //                    if let x = json["user_mentions"] as? NSArray {
-                    //                        let mentions = x.count
-                    //                        self.mentions.text = String(mentions)
-                    print("posts === \(json.count)")
-                    //                    }
+                    
+                    for item in json {
+                        let info = item as! [String:Any]
+                        if let id = info["id"] as? Int {
+                            ids.append(id)
+                        }
+                    }
+                    self.saveObject(ids: ids as! [Int], entity: "Tweet", sender: "getPosts")
+                    
                     
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
@@ -256,21 +208,28 @@ class TwitterViewController: UIViewController {
         weekButton.backgroundColor = UIColor.white
     }
     
-    @IBAction func segue(_ sender: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "show List", sender: self)
-        print(sender.view?.tag)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "show List" {
             if let nextvc = segue.destination as? ListOfItemsTableViewController {
-                if let gr = sender as? UITapGestureRecognizer {
-                nextvc.rootView = gr.view!
-                print(gr.view?.tag)
-
-                }
+                
+                nextvc.listOfObject = listOfTweetsToPass
             }
         }
+    }
+    
+    var listOfTweetsToPass = [AnyObject]()
+    
+    @IBAction func segue(_ sender: UITapGestureRecognizer) {
+    
+                switch (sender.view?.tag)! as Int {
+                case 1: listOfTweetsToPass = followerslist
+                case 2: listOfTweetsToPass = retweetedTweets
+                case 3: listOfTweetsToPass = mentionsTweets
+                case 4: listOfTweetsToPass = postsTweets
+                default: break
+                }
+        performSegue(withIdentifier: "show List", sender: self)
     }
     
         @IBOutlet var followers: UILabel!
@@ -288,68 +247,52 @@ class TwitterViewController: UIViewController {
         view3.layer.cornerRadius = 10
         view4.layer.cornerRadius = 10
         
-        
-        // Do any additional setup after loading the view.
     }
     
     
-    func saveTweet(created: NSDate?, createdBy: String?, id: String?, text: String?, array: String) {
+    func saveObject(ids: [Int], entity: String, sender: String) {
         
         let appDelegate =
             UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.persistentContainer.viewContext
+    
+        for item in ids {
+        let user = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? TwitterUser
+        let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
         
-        if let tweet = NSEntityDescription.insertNewObject(forEntityName: "Tweet", into: managedContext) as? Tweet {
-            tweet.text = text
-            tweet.created = created
-            tweet.createdBy = createdBy
-            
+            switch sender {
+            case "getFollowers":
+                user?.id = String(item)
+                followerslist.append(user!)
+                case "getRetweets":
+                    tweet?.id = String(item)
+                    retweetedTweets.append(tweet!)
+                case "getMentions":
+                    tweet?.id = String(item)
+                    mentionsTweets.append(tweet!)
+                case "getPosts":
+                    tweet?.id = String(item)
+                    postsTweets.append(tweet!)
+            default: break
+            }
+        }
         do {
             try managedContext.save()
             //5
-            switch array {
-                case "retweetedTweets": retweetedTweets.append(tweet)
-                case "mentionsTweets": mentionsTweets.append(tweet)
-                case "postsTweets": postsTweets.append(tweet)
-//            case "followerslist": followerslist.append(tweet)
-                default: break
-            }
             
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
-               
         }
     }
-    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func fetchFromCoreData() {
-        //////////////////////////
-        //FETCHING FROM CORE DATA
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let x = "dsfd"
-        //2
-        let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
-        //3
-        do {
-            let results =
-                try managedContext.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
-            retweetedTweets = results as! [Tweet]
-            print("SUCESSFULLY FETCHED \(x)")
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-        
-        /////////////////////////
-    }
+    
     /*
     // MARK: - Navigation
 

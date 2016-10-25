@@ -7,28 +7,19 @@
 //
 
 import UIKit
+import TwitterKit
 
 class ListOfItemsTableViewController: UITableViewController {
     
-    var rootView = UIView() {
-        didSet {
-                print("TAGTAGTAG\(rootView.tag)")
-            
-    }
-    }
-    
+    var listOfObject = [AnyObject]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        if rootView.tag == 1 {
-            print("view1")
-        } else if rootView.tag == 2 {
-            print("view2")
-        } else if rootView.tag == 3 {
-            print("view3")
-        } else if rootView.tag == 4 {
-            print("view4")
-        }
+
         
+        
+
+   //     let tweets = TWTRTweet.tweets(withJSONArray: array)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,9 +28,43 @@ class ListOfItemsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    //        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
+    //            let client = TWTRAPIClient(userID: userID)
+    //            // make requests with client
+    //            let statusesShowEndpoint = "https://api.twitter.com/1.1/followers/list.json"
+    //            let params = ["user_id": "\(userID)"]
+    //            var clientError : NSError?
+    //
+    //            let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
+    //
+    //            client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+    //                if connectionError != nil {
+    //                    print("Error: \(connectionError)")
+    //                }
+    //
+    //                do {
+    //                    let json = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+    //                    print("json: \(json)")
+    //                    if let x = json["users"] as? NSArray {
+    //                        let follo = x.count
+    //                        self.followers.text = String(follo)
+    //                        let d = "MAMAMIACOMOSOYDEBOBA"
+    //                            self.saveName(name: d)
+    //
+    //                        print("followers === \(follo)")
+    //                    }
+    //
+    //                    //                    if let item = json[0] as Array {
+    //                    //                        }
+    //
+    //                } catch let jsonError as NSError {
+    //                    print("json error: \(jsonError.localizedDescription)")
+    //                }
+    //                
+    //            }
+    //        }
+    
     override func viewWillAppear(_ animated: Bool) {
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,23 +76,66 @@ class ListOfItemsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        
+        
+        return listOfObject.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
+        let client = TWTRAPIClient()
+        if let ar = listOfObject as? [Tweet] {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "list", for: indexPath) as? TWTRTweetTableViewCell
+            client.loadTweet(withID: "\(ar[indexPath.row].id!)") { tweet, error in
+                if let t = tweet {
+                    print(" \(t)")
+                    cell?.tweetView.configure(with: t)
 
-        return cell
+                } else {
+                    print("Failed to load Tweet: \(error?.localizedDescription)")
+                }
+            }
+            
+            return cell!
+        } else if let ar = listOfObject as? [TwitterUser] {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "users", for: indexPath) as? ListTableViewCell
+            client.loadUser(withID: "\(ar[indexPath.row].id!)") { user, error in
+                if let u = user {
+                    print("UUU \(u)")
+                    let url = NSURL.init(string: u.profileImageURL)
+                    let data = NSData.init(contentsOf: (url as? URL)!)
+                    cell?.cellImage.image = UIImage.init(data: data as! Data)
+                    cell?.nameLabel.text = u.name
+                    cell?.ScreenNameLabel.text = u.screenName
+                    
+                } else {
+                    print("Failed to load User: \(error?.localizedDescription)")
+                }
+                
+        
+            }
+     return cell!
+        }
+    return (tableView.dequeueReusableCell(withIdentifier: "users", for: indexPath) as? ListTableViewCell)!
+        
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 69
+//        return TWTRTweetTableViewCell.height(for: t, style: .compact, width: self.view.bounds.width, showingActions: true)
+        
+    }
+    
+}
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -113,4 +181,27 @@ class ListOfItemsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-}
+    
+//    func fetchFromCoreData(arrayOfIds: [NSManagedObject]) -> [Tweet]? {
+//        //////////////////////////
+//        //FETCHING FROM CORE DATA
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        
+//        let managedContext = appDelegate.persistentContainer.viewContext
+//        //2
+//        let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+//        //        fetchRequest.predicate = NSPredicate(block: <#T##(Any?, [String : Any]?) -> Bool#>)
+//        //3
+//        do {
+//            let results =
+//                try managedContext.fetch(fetchRequest)
+//            retweetedTweets = results
+//            print(results)
+//            
+//            return results as! [Tweet]
+//        } catch let error as NSError {
+//            print("Could not fetch \(error), \(error.userInfo)")
+//        }
+//        return nil
+//        /////////////////////////
+//    }
