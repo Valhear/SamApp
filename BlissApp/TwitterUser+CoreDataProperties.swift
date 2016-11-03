@@ -2,7 +2,7 @@
 //  TwitterUser+CoreDataProperties.swift
 //  BlissApp
 //
-//  Created by Valentina Henao on 10/19/16.
+//  Created by Valentina Henao on 10/31/16.
 //  Copyright © 2016 Valentina Henao. All rights reserved.
 //
 
@@ -19,5 +19,6 @@ extension TwitterUser {
     @NSManaged public var id: String?
     @NSManaged public var name: String?
     @NSManaged public var screenName: String?
+    @NSManaged public var created: NSDate?
 
 }
