@@ -54,6 +54,7 @@ static CGFloat statusBarAdjustment( UIView* view )
     __weak SWRevealViewController *_c;
 }
 
+
 @property (nonatomic, readonly) UIView *rearView;
 @property (nonatomic, readonly) UIView *rightView;
 @property (nonatomic, readonly) UIView *frontView;
@@ -63,6 +64,8 @@ static CGFloat statusBarAdjustment( UIView* view )
 
 
 @interface SWRevealViewController()
+
+
 - (void)_getRevealWidth:(CGFloat*)pRevealWidth revealOverDraw:(CGFloat*)pRevealOverdraw forSymetry:(int)symetry;
 - (void)_getBounceBack:(BOOL*)pBounceBack pStableDrag:(BOOL*)pStableDrag forSymetry:(int)symetry;
 - (void)_getAdjustedFrontViewPosition:(FrontViewPosition*)frontViewPosition forSymetry:(int)symetry;
@@ -80,6 +83,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     if ( result > max2 ) return max2;
     return result;
 }
+
 
 
 - (id)initWithFrame:(CGRect)frame controller:(SWRevealViewController*)controller
@@ -739,7 +743,9 @@ const int FrontViewPositionNone = 0xff;
 
 - (void)viewDidAppear:(BOOL)animated
 {
+
     [super viewDidAppear:animated];
+    
 
     // Uncomment the following code if you want the child controllers
     // to be loaded at this point.

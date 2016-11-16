@@ -10,6 +10,10 @@ import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
 
+    @IBOutlet var imageHeader: UIImageView!
+    
+    @IBOutlet var userHeader: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class TWTRUsr: NSObject {
+    
+    var name: String?
+    var screenName: String?
+    var bio: String?
+    var imageURL: String?
+    
+    
+}

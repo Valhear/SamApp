@@ -205,6 +205,8 @@ typedef NS_ENUM(NSInteger, SWRevealToggleAnimationType)
 // presented frontViewController to the right most possition, replacing it, and moving it back to the left position
 - (void)pushFrontViewController:(UIViewController *)frontViewController animated:(BOOL)animated;
 
+
+
 // Sets the frontViewController position. You can call the animated version several times with different
 // positions to obtain a set of animations that will be performed in order one after the other.
 @property (nonatomic) FrontViewPosition frontViewPosition;

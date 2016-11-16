@@ -16,7 +16,7 @@ extension Tweet {
         return NSFetchRequest<Tweet>(entityName: "Tweet");
     }
 
-    @NSManaged public var created: NSDate?
+    @NSManaged public var created: Date?
     @NSManaged public var createdBy: String?
     @NSManaged public var id: String?
     @NSManaged public var text: String?

@@ -17,6 +17,9 @@
 		CD2D79D61DB02ABC0062F468 /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2D79D21DB02ABC0062F468 /* TwitterCore.framework */; };
 		CD2D79D81DB02C540062F468 /* TwitterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2D79D71DB02C540062F468 /* TwitterViewController.swift */; };
 		CD4FAE771DBAA9EB000E8D2D /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4FAE761DBAA9EB000E8D2D /* ListTableViewCell.swift */; };
+		CD6A76201DD2638D007CEDE3 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD6A761F1DD2638D007CEDE3 /* SWRevealViewController.m */; };
+		CD6A76651DD3BCF3007CEDE3 /* SlideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */; };
+		CD6A76671DD42F6A007CEDE3 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */; };
 		CD7D24151DB193D400C92D60 /* TwitterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */; };
 		CD9566E61DAFD9FC0011308A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9566E51DAFD9FC0011308A /* AppDelegate.swift */; };
 		CD9566EB1DAFD9FC0011308A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9566E91DAFD9FC0011308A /* Main.storyboard */; };
@@ -26,10 +29,11 @@
 		CD9566FE1DAFD9FD0011308A /* BlissAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9566FD1DAFD9FD0011308A /* BlissAppTests.swift */; };
 		CD9567091DAFD9FD0011308A /* BlissAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */; };
 		CDB11F241DB869C800F63B81 /* ListOfItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */; };
+		CDD188891DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */; };
+		CDD1888D1DC7E3BC00B21EDE /* TWTRUsr.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */; };
 		CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */; };
 		CDE3A8491DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */; };
 		CDE3A84A1DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */; };
-		CDE3A84B1DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8471DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,12 @@
 		CD2D79D21DB02ABC0062F468 /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		CD2D79D71DB02C540062F468 /* TwitterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterViewController.swift; sourceTree = "<group>"; };
 		CD4FAE761DBAA9EB000E8D2D /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		CD6A76181DD17329007CEDE3 /* BlissApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BlissApp.entitlements; sourceTree = "<group>"; };
+		CD6A761E1DD2638D007CEDE3 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		CD6A761F1DD2638D007CEDE3 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		CD6A76221DD26BBB007CEDE3 /* BlissApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BlissApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTableViewController.swift; sourceTree = "<group>"; };
+		CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginViewController.swift; sourceTree = "<group>"; };
 		CD9566E21DAFD9FC0011308A /* BlissApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9566E51DAFD9FC0011308A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,10 +88,11 @@
 		CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissAppUITests.swift; sourceTree = "<group>"; };
 		CD95670A1DAFD9FD0011308A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfItemsTableViewController.swift; sourceTree = "<group>"; };
+		CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTRUsr.swift; sourceTree = "<group>"; };
 		CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CDE3A8471DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlissApp/Pods-BlissApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F81F4971CCE5C08CF3FDAFA8 /* Pods-BlissAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlissAppTests/Pods-BlissAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		FBD4E40DAD8B372F759B116D /* Pods_BlissAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlissAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +152,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CD6A76191DD2381A007CEDE3 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				CD6A761E1DD2638D007CEDE3 /* SWRevealViewController.h */,
+				CD6A761F1DD2638D007CEDE3 /* SWRevealViewController.m */,
+				CD6A76221DD26BBB007CEDE3 /* BlissApp-Bridging-Header.h */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
 		CD9566D91DAFD9FC0011308A = {
 			isa = PBXGroup;
 			children = (
@@ -170,21 +191,26 @@
 		CD9566E41DAFD9FC0011308A /* BlissApp */ = {
 			isa = PBXGroup;
 			children = (
+				CD6A76191DD2381A007CEDE3 /* Menu */,
+				CD6A76181DD17329007CEDE3 /* BlissApp.entitlements */,
+				CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */,
+				CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */,
 				CD9566E51DAFD9FC0011308A /* AppDelegate.swift */,
 				CD9566E91DAFD9FC0011308A /* Main.storyboard */,
 				CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */,
 				CD2D79D71DB02C540062F468 /* TwitterViewController.swift */,
 				CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */,
+				CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */,
 				CD4FAE761DBAA9EB000E8D2D /* ListTableViewCell.swift */,
 				CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */,
 				CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */,
 				CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */,
-				CDE3A8471DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift */,
 				CD9566F41DAFD9FC0011308A /* Info.plist */,
 				CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */,
 				CD9566EF1DAFD9FC0011308A /* Assets.xcassets */,
 				CD9566F11DAFD9FC0011308A /* LaunchScreen.storyboard */,
 				CD2CF5EC1DB5D77E006330ED /* brainForTweets.swift */,
+				CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */,
 			);
 			path = BlissApp;
 			sourceTree = "<group>";
@@ -279,13 +305,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Valentina Henao";
 				TargetAttributes = {
 					CD9566E11DAFD9FC0011308A = {
 						CreatedOnToolsVersion = 8.0;
-						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = CN4W3YSZKE;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					CD9566F81DAFD9FD0011308A = {
 						CreatedOnToolsVersion = 8.0;
@@ -490,17 +522,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6A76651DD3BCF3007CEDE3 /* SlideMenuTableViewController.swift in Sources */,
+				CD6A76671DD42F6A007CEDE3 /* HeaderTableViewCell.swift in Sources */,
+				CD6A76201DD2638D007CEDE3 /* SWRevealViewController.m in Sources */,
 				CD4FAE771DBAA9EB000E8D2D /* ListTableViewCell.swift in Sources */,
 				CD2D79D81DB02C540062F468 /* TwitterViewController.swift in Sources */,
 				CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */,
 				CD9566EE1DAFD9FC0011308A /* BlissApp.xcdatamodeld in Sources */,
 				CD9566E61DAFD9FC0011308A /* AppDelegate.swift in Sources */,
-				CDE3A84B1DB7C9B80068CD22 /* TwitterUser+CoreDataProperties.swift in Sources */,
 				CDB11F241DB869C800F63B81 /* ListOfItemsTableViewController.swift in Sources */,
 				CD7D24151DB193D400C92D60 /* TwitterLoginViewController.swift in Sources */,
 				CDE3A8491DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift in Sources */,
 				CDE3A84A1DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift in Sources */,
+				CDD188891DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift in Sources */,
 				CD2CF5ED1DB5D77E006330ED /* brainForTweets.swift in Sources */,
+				CDD1888D1DC7E3BC00B21EDE /* TWTRUsr.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +609,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -623,6 +660,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -653,14 +691,22 @@
 			baseConfigurationReference = E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BlissApp/BlissApp.entitlements;
+				DEVELOPMENT_TEAM = CN4W3YSZKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BlissApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissApp;
+				PRODUCT_BUNDLE_IDENTIFIER = socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "220dfcb3-b245-41f3-b8c7-c8be6bf7b689";
+				PROVISIONING_PROFILE_SPECIFIER = "Social Manager para mi papi rico";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlissApp/BlissApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -670,14 +716,21 @@
 			baseConfigurationReference = 9AA1512935BAD22CA705AEC9 /* Pods-BlissApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BlissApp/BlissApp.entitlements;
+				DEVELOPMENT_TEAM = CN4W3YSZKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BlissApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.BlissApp;
+				PRODUCT_BUNDLE_IDENTIFIER = socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "220dfcb3-b245-41f3-b8c7-c8be6bf7b689";
+				PROVISIONING_PROFILE_SPECIFIER = "Social Manager para mi papi rico";
+				SWIFT_OBJC_BRIDGING_HEADER = "BlissApp/BlissApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

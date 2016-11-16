@@ -10,13 +10,13 @@ import UIKit
 
 class ListTableViewCell: UITableViewCell {
 
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel?
     
-    @IBOutlet var ScreenNameLabel: UILabel!
+    @IBOutlet var ScreenNameLabel: UILabel?
     
-    @IBOutlet var cellImage: UIImageView!
+    @IBOutlet var cellImage: UIImageView?
     
-    @IBOutlet var bioLabel: UILabel!
+    @IBOutlet var bioLabel: UILabel?
     
     override func awakeFromNib() {
         super.awakeFromNib()

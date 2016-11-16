@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Twitter.self])
         Twitter.sharedInstance().start(withConsumerKey: "g5UN79hBNTsQK0k1ip2WBkdzK", consumerSecret: "ZfwJ1Fbld1GISFpBxsU8gvHGQ86EoA2JSHDf0KfT8l2M632oeX")
+        let appearance = UINavigationBar.appearance()
+        appearance.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:0.9)
+        appearance.isTranslucent = true
+        UIApplication.shared.statusBarStyle = .lightContent
+        
 
         // Override point for customization after application launch.
         return true
