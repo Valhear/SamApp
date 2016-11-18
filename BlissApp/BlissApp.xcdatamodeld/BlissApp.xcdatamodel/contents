@@ -5,6 +5,7 @@
         <attribute name="createdBy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TwitterUser" representedClassName=".TwitterUser" syncable="YES">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -13,7 +14,7 @@
         <attribute name="screenName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tweet" positionX="-3377" positionY="-2110" width="128" height="103"/>
-        <element name="TwitterUser" positionX="-3204" positionY="-2025" width="128" height="105"/>
+        <element name="Tweet" positionX="-3350" positionY="-2317" width="128" height="118"/>
+        <element name="TwitterUser" positionX="-3125" positionY="-2322" width="128" height="105"/>
     </elements>
 </model>

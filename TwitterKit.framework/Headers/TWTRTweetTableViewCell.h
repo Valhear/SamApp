@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface TWTRTweetTableViewCell : UITableViewCell
 
-
-
 /**
  *  The Tweet view inside this cell. Holds all relevant text and images.
  */

@@ -88,48 +88,75 @@ class TwitterViewController: UIViewController {
        }
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+        fetchInitialDataFromCoreData()
+        updateButton(updateButton)
         
-        // dateSelector.subviews[0].tintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:1.0)
-        //        You can set a background image for each control state of your segmented control using the backgroundImageForState:barMetrics: method. You should also specify divider images for each combination of left and right segment states to give selected or highlighted segments a different look than segments in a normal state, as shown here:
-        //
-        //        [mySegmentedControl setDividerImage:image1 forLeftSegmentState:UIControlStateNormal                   rightSegmentState:UIControlStateNormal barMetrics:barMetrics];
-        //        [mySegmentedControl setDividerImage:image2 forLeftSegmentState:UIControlStateSelected                   rightSegmentState:UIControlStateNormal barMetrics:barMetrics];
-        //        [mySegmentedControl setDividerImage:image3 forLeftSegmentState:UIControlStateNormal                   rightSegmentState:UIControlStateSelected barMetrics:barMetrics];
-        
-        
-        
-        
-        
-        //dateSelector.frame = CGRect(origin: <#T##CGPoint#>, size: <#T##CGSize#>)
- updateButton(updateButton)
-        
-        //    func fetchFromCoreData(arrayOfIds: [NSManagedObject]) -> [Tweet]? {
-        //        //////////////////////////
-        //        //FETCHING FROM CORE DATA
-        //        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //
-        //        let managedContext = appDelegate.persistentContainer.viewContext
-        //        //2
-        //        let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
-        //        //        fetchRequest.predicate = NSPredicate(block: <#T##(Any?, [String : Any]?) -> Bool#>)
-        //        //3
-        //        do {
-        //            let results =
-        //                try managedContext.fetch(fetchRequest)
-        //            retweetedTweets = results
-        //            print(results)
-        //
-        //            return results as! [Tweet]
-        //        } catch let error as NSError {
-        //            print("Could not fetch \(error), \(error.userInfo)")
-        //        }
-        //        return nil
-        //        /////////////////////////
-        //    }
-        
+       
     }
 
+    func fetchInitialDataFromCoreData() { //(<#T##[NSManagedObject]#>arrayOfIds: )
+        //FETCHING FROM CORE DATA
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        //2
+        let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+        
+        //        fetchRequest.predicate = NSPredicate(block: <#T##(Any?, [String : Any]?) -> Bool#>)
+        //3
+        do {
+            let results =
+                try managedContext.fetch(fetchRequest)
+//            for mo in results {
+//            let mod = mo as NSManagedObject
+//                managedContext.delete(mod)
+//            
+//            }
+            retweetedTweets = results.filter { $0.type == "retweets" }
+            postsTweets = results.filter {$0.type == "posts"}
+            mentionsTweets = results.filter { $0.type == "mentions" }
+            
+            mentions.text = "\(mentionsTweets.count)"
+            retweets.text = "\(retweetedTweets.count)"
+            posts.text = "\(postsTweets.count)"
+            
+            print(retweetedTweets.count)
+            print(postsTweets.count)
+            print(mentionsTweets.count)
+            
+             print("fetchfromcore Data count of followers\(results.count)")
+            
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
+
+    @IBAction func updateButton(_ sender: Any) {
+        
+        dateSelector.selectedSegmentIndex = 3
+        calcTime(sender: 3)
+        getfollowers()
+        getRetweets()
+        getMentions()
+        getPosts()
+        
+        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
+            let twitterClient = TWTRAPIClient(userID: userID)
+            twitterClient.loadUser(withID: userID) { (user, error) -> Void in
+                if user != nil {
+                    let imageUrl = URL.init(string: (user?.profileImageLargeURL)!)
+                    do { let data = try Data.init(contentsOf: (imageUrl)!)
+                        TwitterViewController.userImage = UIImage.init(data: data)!
+                        TwitterViewController.userName = (user?.name)!
+                    } catch let error as NSError {
+                        print("error loading data \(error.localizedDescription)")
+                    }
+                }
+            }
+        }
+        
+    }
     
+   
     
     func getfollowers() {
         let ids = [Int?]()
@@ -167,9 +194,12 @@ class TwitterViewController: UIViewController {
                         print("json error: \(jsonError.localizedDescription)")
                         }
                     }
-                    let follo = ids.count
-                    self.followers.text = String(follo)
-                    self.saveObject(objects: ids, entity: "TwitterUser", sender: "getFollowers")
+                    if ids.count != 0 {
+                        let follo = ids.count
+                        print("idscoutnnotwk\(ids.count)")
+                        self.followers.text = String(follo)
+                        self.saveObject(objects: ids, entity: "TwitterUser", sender: "getFollowers")
+                    }
                 }
             }
     }
@@ -221,8 +251,11 @@ class TwitterViewController: UIViewController {
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                     }      }
-            self.retweets.text = String(retweets)
-            self.saveObject(objects: twts, entity: "Tweet", sender: "getRetweets")
+            
+                if retweets != 0 {
+                    self.saveObject(objects: twts, entity: "Tweet", sender: "getRetweets")
+                    self.retweets.text = String(retweets)
+                }
             }
             } }
  
@@ -333,31 +366,7 @@ class TwitterViewController: UIViewController {
         }
     }
     
-    @IBAction func updateButton(_ sender: Any) {
-   
-        dateSelector.selectedSegmentIndex = 3
-        calcTime(sender: 3)
-        getfollowers()
-        getRetweets()
-        getMentions()
-        getPosts()
-        
-        if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
-        let twitterClient = TWTRAPIClient(userID: userID)
-        twitterClient.loadUser(withID: userID) { (user, error) -> Void in
-            if user != nil {
-                let imageUrl = URL.init(string: (user?.profileImageLargeURL)!)
-                do { let data = try Data.init(contentsOf: (imageUrl)!)
-                    TwitterViewController.userImage = UIImage.init(data: data)!
-                    TwitterViewController.userName = (user?.name)!
-                } catch let error as NSError {
-                    print("error loading data \(error.localizedDescription)")
-                }
-            }
-            }
-        }
-        
-    }
+    
     @IBOutlet var dateSelector: UISegmentedControl!
 
     @IBAction func dateSelection(_ sender: UISegmentedControl) {
@@ -562,7 +571,7 @@ class TwitterViewController: UIViewController {
         
         
             switch sender {
-                
+               
                 case "getFollowers":
                     let existingIds = followerslist.map { Int($0.id!)! }
                     
@@ -574,35 +583,77 @@ class TwitterViewController: UIViewController {
                             followerslist.append(user!)
                         }
                          }
+                
+                
                 case "getRetweets":
+                    let predicate = NSPredicate(format: "type == %@", "retweets" )
+                     let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+                    fetchRequest.predicate = predicate
+                    do {
+                        let fetchedEntities = try managedContext.fetch(fetchRequest) 
+
+                            for entity in fetchedEntities {
+                                managedContext.delete(entity)
+                            }
+                        } catch let error as NSError {
+                            print("Could not delete \(error), \(error.userInfo)")
+                    }
+                    
                     for item in objects {
                         let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
                     tweet?.id = (item as? TWTRTweet)?.tweetID
-                    tweet?.created = (item as? TWTRTweet)?.createdAt
+                    tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
+                        tweet?.type = "retweets"
                     list.append(tweet!)
                 }
-                 //   managedContext.delete(object: NSManagedObject)
                     retweetedTweets = list
                 
                 case "getMentions":
+                    let predicate = NSPredicate(format: "type == %@", "mentions" )
+                    let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+                    fetchRequest.predicate = predicate
+                    do {
+                        let fetchedEntities = try managedContext.fetch(fetchRequest)
+                        
+                        for entity in fetchedEntities {
+                            managedContext.delete(entity)
+                        }
+                    } catch let error as NSError {
+                        print("Could not delete \(error), \(error.userInfo)")
+                    }
+                    
                     for item in objects {
                         let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
 
                         tweet?.id = (item as? TWTRTweet)?.tweetID
-                        tweet?.created = (item as? TWTRTweet)?.createdAt
+                        tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
+                        tweet?.type = "mentions"
                         list.append(tweet!)
                     }
                     mentionsTweets = list
                 case "getPosts":
+                    let predicate = NSPredicate(format: "type == %@", "posts" )
+                    let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+                    fetchRequest.predicate = predicate
+                    do {
+                        let fetchedEntities = try managedContext.fetch(fetchRequest)
+                        
+                        for entity in fetchedEntities {
+                            managedContext.delete(entity)
+                        }
+                    } catch let error as NSError {
+                        print("Could not delete \(error), \(error.userInfo)")
+                    }
                     for item in objects {
                         let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
 
                         tweet?.id = (item as? TWTRTweet)?.tweetID
-                        tweet?.created = (item as? TWTRTweet)?.createdAt
+                        tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
+                        tweet?.type = "posts"
                         list.append(tweet!)
                     }
-                postsTweets = list
-            default: break
+                    postsTweets = list
+                default: break
             }
             do {
             try managedContext.save()
