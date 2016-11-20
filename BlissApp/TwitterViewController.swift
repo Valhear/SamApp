@@ -100,19 +100,15 @@ class TwitterViewController: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         //2
         let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+        let req2: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
         
-        //        fetchRequest.predicate = NSPredicate(block: <#T##(Any?, [String : Any]?) -> Bool#>)
-        //3
+
         do {
             let results =
                 try managedContext.fetch(fetchRequest)
-//            for mo in results {
-//            let mod = mo as NSManagedObject
-//                managedContext.delete(mod)
-//            
-//            }
+
             retweetedTweets = results.filter { $0.type == "retweets" }
-            postsTweets = results.filter {$0.type == "posts"}
+            postsTweets = results.filter { $0.type == "posts" }
             mentionsTweets = results.filter { $0.type == "mentions" }
             
             mentions.text = "\(mentionsTweets.count)"
@@ -123,10 +119,16 @@ class TwitterViewController: UIViewController {
             print(postsTweets.count)
             print(mentionsTweets.count)
             
-             print("fetchfromcore Data count of followers\(results.count)")
+             print("fetchfromcore Data count of tweets\(results.count)")
             
         } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
+            print("Could not fetch tweets\(error), \(error.userInfo)")
+        }
+        do {
+            let results = try managedContext.fetch(req2)
+            print("fetchfromcore Data count of followers\(results.count)")
+        } catch let error as NSError {
+            print("Could not fetch followers \(error)")
         }
     }
 
@@ -583,7 +585,6 @@ class TwitterViewController: UIViewController {
                             followerslist.append(user!)
                         }
                          }
-                
                 
                 case "getRetweets":
                     let predicate = NSPredicate(format: "type == %@", "retweets" )

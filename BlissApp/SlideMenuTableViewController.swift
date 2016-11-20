@@ -53,22 +53,41 @@ class SlideMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        logout()
         
+       
+    }
+    
+    func logout() {
         let alert = UIAlertController(title: "Logout", message: "Are you sure want to logout?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             let store = Twitter.sharedInstance().sessionStore
-            
             if let userID = store.session()?.userID {
-            store.logOutUserID(userID)
+                //    Twitter.sharedInstance().log
+                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                    return
+                }
+
+                let url = URL(string: "prefs:root=WIFI")
+                let url2 = URL(string: UIApplicationOpenSettingsURLString)
+                let url3 = URL(string: "prefs:root=WIFI")
+                let url4 = NSURL(string: UIApplicationOpenSettingsURLString)
+                print(url2)
+                
+//                UIApplication.shared.open(url4! as URL, options: [:], completionHandler: nil)
+                if UIApplication.shared.canOpenURL(settingsUrl) {
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        print("Settings opened: \(success)") // Prints true
+                        store.logOutUserID(userID)
+                    })
+                
                 self.performSegue(withIdentifier: "logout", sender: self)
             }
-            }))
+            }}))
+            
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in }))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "header") as? HeaderTableViewCell

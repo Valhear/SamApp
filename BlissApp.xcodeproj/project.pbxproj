@@ -152,14 +152,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		CD6A76191DD2381A007CEDE3 /* Menu */ = {
+		CD42065F1DDF6B32007A29C2 /* Core Data Files */ = {
+			isa = PBXGroup;
+			children = (
+				CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */,
+				CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */,
+				CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */,
+				CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */,
+			);
+			name = "Core Data Files";
+			sourceTree = "<group>";
+		};
+		CD6A76191DD2381A007CEDE3 /* hamburgerMenu */ = {
 			isa = PBXGroup;
 			children = (
 				CD6A761E1DD2638D007CEDE3 /* SWRevealViewController.h */,
 				CD6A761F1DD2638D007CEDE3 /* SWRevealViewController.m */,
 				CD6A76221DD26BBB007CEDE3 /* BlissApp-Bridging-Header.h */,
 			);
-			name = Menu;
+			name = hamburgerMenu;
 			sourceTree = "<group>";
 		};
 		CD9566D91DAFD9FC0011308A = {
@@ -191,7 +202,6 @@
 		CD9566E41DAFD9FC0011308A /* BlissApp */ = {
 			isa = PBXGroup;
 			children = (
-				CD6A76191DD2381A007CEDE3 /* Menu */,
 				CD6A76181DD17329007CEDE3 /* BlissApp.entitlements */,
 				CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */,
 				CD9566E51DAFD9FC0011308A /* AppDelegate.swift */,
@@ -201,12 +211,10 @@
 				CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */,
 				CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */,
 				CD4FAE761DBAA9EB000E8D2D /* ListTableViewCell.swift */,
-				CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */,
-				CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */,
-				CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */,
-				CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */,
 				CD9566F41DAFD9FC0011308A /* Info.plist */,
 				CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */,
+				CD6A76191DD2381A007CEDE3 /* hamburgerMenu */,
+				CD42065F1DDF6B32007A29C2 /* Core Data Files */,
 				CD9566EF1DAFD9FC0011308A /* Assets.xcassets */,
 				CD9566F11DAFD9FC0011308A /* LaunchScreen.storyboard */,
 				CD2CF5EC1DB5D77E006330ED /* brainForTweets.swift */,
@@ -247,6 +255,7 @@
 				CD2D79CE1DB02A830062F468 /* ShellScript */,
 				7E716487689C9C36BF50CDF7 /* [CP] Embed Pods Frameworks */,
 				8861B2FAAF7968EA18E35360 /* [CP] Copy Pods Resources */,
+				CD4206A61DDF757E007A29C2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -500,6 +509,19 @@
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run e131b12620469460de1b63482f49562dabde0d9f e364c495064f217d9df7590d0f919185a3502663da7b942a6589f3cfc8233f81";
 		};
+		CD4206A61DDF757E007A29C2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run e131b12620469460de1b63482f49562dabde0d9f e364c495064f217d9df7590d0f919185a3502663da7b942a6589f3cfc8233f81";
+		};
 		FEA8AF65BEE752986FD1A2A5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -691,6 +713,7 @@
 			baseConfigurationReference = E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_VARIANTS = armv7;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BlissApp/BlissApp.entitlements;
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
@@ -699,12 +722,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BlissApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = socialapimanager;
+				PRODUCT_BUNDLE_IDENTIFIER = valenh.socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "220dfcb3-b245-41f3-b8c7-c8be6bf7b689";
-				PROVISIONING_PROFILE_SPECIFIER = "Social Manager para mi papi rico";
+				PROVISIONING_PROFILE = "6458b7b3-04cb-4113-b2ba-b53168e89a42";
+				PROVISIONING_PROFILE_SPECIFIER = "SAM Dev Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlissApp/BlissApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -716,6 +739,7 @@
 			baseConfigurationReference = 9AA1512935BAD22CA705AEC9 /* Pods-BlissApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUILD_VARIANTS = armv7;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BlissApp/BlissApp.entitlements;
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
@@ -724,12 +748,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = BlissApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = socialapimanager;
+				PRODUCT_BUNDLE_IDENTIFIER = valenh.socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "220dfcb3-b245-41f3-b8c7-c8be6bf7b689";
-				PROVISIONING_PROFILE_SPECIFIER = "Social Manager para mi papi rico";
+				PROVISIONING_PROFILE = "6458b7b3-04cb-4113-b2ba-b53168e89a42";
+				PROVISIONING_PROFILE_SPECIFIER = "SAM Dev Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlissApp/BlissApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

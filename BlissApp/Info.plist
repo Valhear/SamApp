@@ -23,7 +23,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitterkit-g5UN79hBNTsQK0k1ip2WBkdzK</string>
+				<string>twitterkit-u8kz20JJQvn9XCyYNpwShFOjl</string>
 			</array>
 		</dict>
 	</array>
@@ -39,9 +39,9 @@
 				<key>KitInfo</key>
 				<dict>
 					<key>consumerKey</key>
-					<string>g5UN79hBNTsQK0k1ip2WBkdzK</string>
+					<string>za5ix39s3mFzIB1nxNhzW1KJ4</string>
 					<key>consumerSecret</key>
-					<string>ZfwJ1Fbld1GISFpBxsU8gvHGQ86EoA2JSHDf0KfT8l2M632oeX</string>
+					<string>0eqSuxicFc0FsnAnPl9UZ9rWzYLiMWRVgI5HCAOiocAjeyKyVV</string>
 				</dict>
 				<key>KitName</key>
 				<string>Twitter</string>

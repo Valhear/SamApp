@@ -19,25 +19,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Twitter.self])
-        Twitter.sharedInstance().start(withConsumerKey: "g5UN79hBNTsQK0k1ip2WBkdzK", consumerSecret: "ZfwJ1Fbld1GISFpBxsU8gvHGQ86EoA2JSHDf0KfT8l2M632oeX")
+       // Twitter.sharedInstance().start(withConsumerKey: "u8kz20JJQvn9XCyYNpwShFOjl", consumerSecret: "HU2mDZEdlvX5HlR4nXzk4bDUOxsv3ZH1U0Oc2beVRugVLoO87D")
+        
         let appearance = UINavigationBar.appearance()
         appearance.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:0.9)
         appearance.isTranslucent = true
         UIApplication.shared.statusBarStyle = .lightContent
         
+        
+//        Twitter.sharedInstance().logIn {(session, error) in
+//            if session != nil {
+//                print("logged in user with id \(session?.userID)")
+//            } else {
+//                print("ErrorErrorErrorErrorError \(error)")
+//            }
+//        }
 
         // Override point for customization after application launch.
         return true
     }
     
-    private func application(app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
-        if Twitter.sharedInstance().application(app, open:url, options: options) {
-            return true
-        }
-    
-//         If you handle other (non Twitter Kit) URLs elsewhere in your app, return true. Otherwise
-        return false
-    }
+//    private func application(app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
+//        if Twitter.sharedInstance().application(app, open:url, options: options) {
+//            return true
+//        }
+//    
+////         If you handle other (non Twitter Kit) URLs elsewhere in your app, return true. Otherwise
+//        return false
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
