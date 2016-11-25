@@ -2,7 +2,7 @@
 //  Tweet+CoreDataProperties.swift
 //  BlissApp
 //
-//  Created by Valentina Henao on 11/17/16.
+//  Created by Valentina Henao on 11/23/16.
 //  Copyright © 2016 Valentina Henao. All rights reserved.
 //
 
@@ -21,5 +21,6 @@ extension Tweet {
     @NSManaged public var id: String?
     @NSManaged public var text: String?
     @NSManaged public var type: String?
+    @NSManaged public var retweeted: Int64
 
 }

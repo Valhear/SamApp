@@ -20,6 +20,22 @@ class TwitterViewController: UIViewController {
     static var userImage = UIImage()
     static var userName = String()
     
+    @IBAction func composeTweet(_ sender: UIBarButtonItem) {
+        
+        let composer = TWTRComposer()
+        
+        composer.setText("SAM is so cool!")
+            
+        // Called from a UIViewController
+        composer.show(from: self) { result in
+            if (result == TWTRComposerResult.cancelled) {
+                print("Tweet composition cancelled")
+            }
+            else {
+                print("Sending tweet!")
+            }
+        }
+    }
     
     @IBOutlet var infoButton: UIButton!
     
@@ -51,6 +67,10 @@ class TwitterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         view1.layer.cornerRadius = 5
         view1under.layer.cornerRadius = 5
         view2.backgroundColor = UIColor(red:0.99, green:0.62, blue:0.49, alpha:1.0)
@@ -99,13 +119,13 @@ class TwitterViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         //2
-        let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
-        let req2: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
+        let fetchTweets: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+        let fetchUsers: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
         
 
         do {
             let results =
-                try managedContext.fetch(fetchRequest)
+                try managedContext.fetch(fetchTweets)
 
             retweetedTweets = results.filter { $0.type == "retweets" }
             postsTweets = results.filter { $0.type == "posts" }
@@ -115,9 +135,9 @@ class TwitterViewController: UIViewController {
             retweets.text = "\(retweetedTweets.count)"
             posts.text = "\(postsTweets.count)"
             
-            print(retweetedTweets.count)
-            print(postsTweets.count)
-            print(mentionsTweets.count)
+            print("retweetedTweets.count==\(retweetedTweets.count)")
+            print("postsTweets.count== \(postsTweets.count)")
+            print("mentionsTweets.count== \(mentionsTweets.count)")
             
              print("fetchfromcore Data count of tweets\(results.count)")
             
@@ -125,7 +145,9 @@ class TwitterViewController: UIViewController {
             print("Could not fetch tweets\(error), \(error.userInfo)")
         }
         do {
-            let results = try managedContext.fetch(req2)
+            let results = try managedContext.fetch(fetchUsers)
+            followerslist = results
+            followers.text = "\(followerslist.count)"
             print("fetchfromcore Data count of followers\(results.count)")
         } catch let error as NSError {
             print("Could not fetch followers \(error)")
@@ -158,7 +180,77 @@ class TwitterViewController: UIViewController {
         
     }
     
-   
+    func calcTime(sender: Int) {
+        
+        view1.alpha = 0.5
+        view1.isOpaque = false
+        view1.isUserInteractionEnabled = false
+        let date = Date()
+        let calendar = NSCalendar.current
+        var component = Calendar.Component.year
+        var value = -1
+        
+        switch sender {
+        case 2: component = Calendar.Component.year
+            
+        case 1: component = Calendar.Component.month
+        case 0: component = Calendar.Component.day
+        value = -7
+        case 3: mentions.text = "\(mentionsTweets.count)"
+        posts.text = "\(postsTweets.count)"
+        print("postsTweets.count\(postsTweets.count)")
+        let sumOfRetweets = retweetedTweets.map { $0.retweeted }.reduce(0, +)
+        retweets.text = "\(sumOfRetweets)"
+        print("retweetedTweets.count \(retweetedTweets.count)")
+        view1.alpha = 1
+        view1.isUserInteractionEnabled = true
+        let allTimesString1 = NSMutableAttributedString(string: "100% from")
+        allTimesString1.append(NSMutableAttributedString(string: " all times", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)]))
+        footLabel1.attributedText = allTimesString1
+        footLabel2.attributedText = allTimesString1
+        footLabel3.attributedText = allTimesString1
+        footLabel4.attributedText = allTimesString1
+        default: break
+        }
+        
+        if sender != 3 {
+            
+            let calculated = calendar.date(byAdding: component, value: value, to: date)!
+            let calculatedSecond = calendar.date(byAdding: component, value: value*2, to: date)!
+            let attributedString = NSMutableAttributedString(string: "\(component)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)])
+            
+            let mt = calcArrayWithTime(array: mentionsTweets, date: calculated)
+            mentions.text = "\(Int(mt))"
+            var mt2 =  calcArrayWithTime(array: mentionsTweets, date: calculatedSecond)
+            mt2 = mt2 - mt
+            //print("\(calcPercentage(int1: Double(mt), int2: Double(mt2)))")
+            let pctmt = calcPercentage(int1: Double(mt), int2: Double(mt2))
+            let xmt = evaluatePct(pct: pctmt)
+            xmt.append(attributedString)
+            footLabel3.attributedText = xmt
+            // print("mt---\(mt)  mt2--- \(mt2)")
+            
+            let pt = calcArrayWithTime(array: postsTweets, date: calculated)
+            posts.text = "\(Int(pt))"
+            var pt2 = calcArrayWithTime(array: postsTweets, date: calculatedSecond)
+            pt2 = pt2-pt
+            let pctpt = calcPercentage(int1: Double(pt), int2: Double(pt2))
+            let xpt = evaluatePct(pct: pctpt)
+            xpt.append(attributedString)
+            footLabel4.attributedText = xpt
+            //print("pt---\(pt)  pt2--- \(pt2)")
+            
+            let rt = calcArrayWithTime(array: retweetedTweets, date: calculated)
+            retweets.text = "\(Int(rt))"
+            var rt2 = calcArrayWithTime(array: retweetedTweets, date: calculatedSecond)
+            rt2 = rt2-rt
+            let pctrt = calcPercentage(int1: Double(rt), int2: Double(rt2))
+            let xrt = evaluatePct(pct: pctrt)
+            xrt.append(attributedString)
+            footLabel2.attributedText = xrt
+            // print("rt---\(rt)  rt2--- \(rt2)")
+        }
+    }
     
     func getfollowers() {
         let ids = [Int?]()
@@ -217,10 +309,12 @@ class TwitterViewController: UIViewController {
         var twts = twts
         var retweets = retweets
         let parCount = Int(params["count"]!)
+        var batchCount = parCount
         var batch = [TWTRTweet?]() {
             didSet {
-                if batch.count == parCount {
-                    let maxID = batch[parCount!-1]?.tweetID
+                if batch.count == batchCount {
+                    let maxID = batch[batchCount!-1]?.tweetID //let maxID = batch.last!?.tweetID
+                    twts.removeLast()
                     let params = ["count": "\(parCount)", "max_id": maxID!]
                     self.reqRetweets(params: params, twts: twts, retweets: retweets)
                 }
@@ -230,7 +324,7 @@ class TwitterViewController: UIViewController {
             let client = TWTRAPIClient(userID: userID)
             // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/retweets_of_me.json"
-           // let params = ["count": "\(100)", "include_entities": "false", "include_user_entities": "false"]
+            // let params = ["count": "\(100)", "include_entities": "false", "include_user_entities": "false"]
             var clientError : NSError?
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
             client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
@@ -239,29 +333,34 @@ class TwitterViewController: UIViewController {
                 }
                 if data != nil { do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
-                  //  print("json: \(json)")
+                    
+                    if json.count > 1 {
+                        batchCount = json.count
+                    }
+                    
                     for tweet in json {
                         let info = tweet as! [String: Any]
                         if let twt = TWTRTweet(jsonDictionary: info) {
                             
-                        if let ret = Int(exactly: (twt.retweetCount)) {
-                            retweets += ret
-                        }
-                        twts.append(twt)
-                        batch.append(twt) }
+                            if let ret = Int(exactly: (twt.retweetCount)) {
+                                retweets += ret
+                            }
+                            twts.append(twt)
+                            batch.append(twt) }
                     }
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                     }      }
-            
+                
                 if retweets != 0 {
                     self.saveObject(objects: twts, entity: "Tweet", sender: "getRetweets")
                     self.retweets.text = String(retweets)
                 }
             }
-            } }
- 
+        } }
     
+    
+ 
     func getMentions() {
         
         let params = ["count": "\(200)"]
@@ -271,16 +370,26 @@ class TwitterViewController: UIViewController {
     
     func reqMentions(params: [String:String], twts: [TWTRTweet?]) {
         var twts = twts
+        var params = params
         let parCount = Int(params["count"]!)
-        var batch = [TWTRTweet?]() {
+        var batchCount = parCount
+        var batch = [TWTRTweet?]()
+            {
             didSet {
-                if batch.count == parCount {
-                    let maxID = batch[parCount!-1]?.tweetID
-                    let params = ["count": "\(parCount)", "max_id": maxID!]
-                    self.reqMentions(params: params, twts: twts)
+                if batch.count == batchCount {
+
+                    
+                    if let last = batch.last! {
+                        let maxID = last.tweetID
+                   
+                        let params = ["count": "\(parCount!)", "max_id": maxID]
+                        self.reqMentions(params: params, twts: twts)
+                        
+                    }
                 }
             }
         }
+
         
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
             
@@ -294,26 +403,33 @@ class TwitterViewController: UIViewController {
                 }
                 if data != nil { do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
-                    //print("json: \(json)")
+
+                    if json.count > 1 {
+                        batchCount = json.count
+                    }
                     
                     for item in json {
                         let info = item as! [String:Any]
-                         let twt = TWTRTweet(jsonDictionary: info)
-                            batch.append(twt)
-                            twts.append(twt)
-                        }
+                        let twt = TWTRTweet(jsonDictionary: info)
+                        batch.append(twt)
+                        twts.append(twt)
+                    }
+
                     
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
+                    }
+                    
+                    
+                    
                 }
-                
-            }
-            self.mentions.text = String(twts.count)
-            self.saveObject(objects: twts, entity: "Tweet", sender: "getMentions")
+                 if twts.count != 0 {
+                self.mentions.text = String(twts.count)
+                self.saveObject(objects: twts, entity: "Tweet", sender: "getMentions")
+                 }
             }
         }
     }
-
 
     func getPosts() {
         let params = ["count": "\(200)"]
@@ -325,12 +441,19 @@ class TwitterViewController: UIViewController {
         var twts = twts
         var params = params
         let count = Int(params["count"]!)
-        var batch = [TWTRTweet?]() {
+        var batchCount = count
+        var batch = [TWTRTweet?]()
+            {
             didSet {
-                if batch.count == count {
-                    let maxID = batch[count!-1]?.tweetID
-                    let params = ["count": "\(count)", "max_id": maxID!]
-                    self.reqPosts(params: params, twts: twts)
+                if batch.count == batchCount {
+                    if let last = batch.last! {
+                        let maxID = last.tweetID
+                        twts.removeLast()
+
+                        let params = ["count": "\(count!)", "max_id": maxID]
+                        self.reqPosts(params: params, twts: twts)
+                    }
+                    
                 }
             }
         }
@@ -338,7 +461,7 @@ class TwitterViewController: UIViewController {
             let client = TWTRAPIClient(userID: userID)
             // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
-            params["user_id"] = "\(userID)"
+        //    params["user_id"] = "\(userID)"
             var clientError : NSError?
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
             
@@ -349,7 +472,10 @@ class TwitterViewController: UIViewController {
                 
                 if data != nil { do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
-                   // print("json: \(json)")
+                    
+                    if json.count > 1 {
+                    batchCount = json.count
+                    }
                     
                     for item in json {
                         let info = item as! [String:Any]
@@ -361,12 +487,135 @@ class TwitterViewController: UIViewController {
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")
                 }
+                    
                 }
+                if twts.count != 0 {
                 self.posts.text = String(twts.count)
                 self.saveObject(objects: twts, entity: "Tweet", sender: "getPosts")
+                }
             }
         }
     }
+    
+    func saveObject(objects: [Any], entity: String, sender: String) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        var list = [Tweet]()
+        
+        
+        switch sender {
+            
+        case "getFollowers":
+            
+            let fetchRequest: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
+            do {
+                let fetchedUsers = try managedContext.fetch(fetchRequest)
+                let existingIds = fetchedUsers.map { Int($0.id!)! }
+                
+                for id in objects {
+                    if existingIds.contains(id as! Int) == false {
+                        let user = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? TwitterUser
+                        user?.id = "\(id as! Int)"
+                        user?.created = NSDate()
+                        followerslist.append(user!)
+                    }
+                }
+//                let fetchRequest: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
+//                do {
+//                    let fetchedUsers = try managedContext.fetch(fetchRequest)
+//                for user in fetchedUsers {
+//                    managedContext.delete(user)
+//                }
+            } catch let error as NSError {
+                print("Could not delete \(error), \(error.userInfo)")
+            }
+            
+            
+            
+            
+            
+            
+        case "getRetweets":
+            let predicate = NSPredicate(format: "type == %@", "retweets" )
+            let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+            fetchRequest.predicate = predicate
+            do {
+                let fetchedEntities = try managedContext.fetch(fetchRequest)
+                
+                for entity in fetchedEntities {
+                    managedContext.delete(entity)
+                }
+            } catch let error as NSError {
+                print("Could not delete \(error), \(error.userInfo)")
+            }
+            
+            for item in objects {
+                let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
+                tweet?.id = (item as? TWTRTweet)?.tweetID
+                tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
+                tweet?.type = "retweets"
+                tweet?.retweeted = ((item as? TWTRTweet)?.retweetCount)!
+                list.append(tweet!)
+            }
+            retweetedTweets = list
+            
+        case "getMentions":
+            let predicate = NSPredicate(format: "type == %@", "mentions" )
+            let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+            fetchRequest.predicate = predicate
+            do {
+                let fetchedEntities = try managedContext.fetch(fetchRequest)
+                
+                for entity in fetchedEntities {
+                    managedContext.delete(entity)
+                }
+            } catch let error as NSError {
+                print("Could not delete \(error), \(error.userInfo)")
+            }
+            
+            for item in objects {
+                let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
+                
+                tweet?.id = (item as? TWTRTweet)?.tweetID
+                tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
+                tweet?.type = "mentions"
+                list.append(tweet!)
+            }
+            mentionsTweets = list
+        case "getPosts":
+            let predicate = NSPredicate(format: "type == %@", "posts" )
+            let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
+            fetchRequest.predicate = predicate
+            do {
+                let fetchedEntities = try managedContext.fetch(fetchRequest)
+                
+                for entity in fetchedEntities {
+                    managedContext.delete(entity)
+                }
+            } catch let error as NSError {
+                print("Could not delete \(error), \(error.userInfo)")
+            }
+            for item in objects {
+                let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
+                
+                tweet?.id = (item as? TWTRTweet)?.tweetID
+                tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
+                tweet?.type = "posts"
+                list.append(tweet!)
+            }
+            postsTweets = list
+        default: break
+        }
+        do {
+            try managedContext.save()
+            //5
+            
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+
     
     
     @IBOutlet var dateSelector: UISegmentedControl!
@@ -376,74 +625,7 @@ class TwitterViewController: UIViewController {
         calcTime(sender: sender.selectedSegmentIndex)
     }
 
-    func calcTime(sender: Int) {
-        
-        view1.alpha = 0.5
-        view1.isOpaque = false
-        view1.isUserInteractionEnabled = false
-        let date = Date()
-        let calendar = NSCalendar.current
-        var component = Calendar.Component.year
-        var value = -1
-        
-        switch sender {
-            case 2: component = Calendar.Component.year
-            
-            case 1: component = Calendar.Component.month
-            case 0: component = Calendar.Component.day
-            value = -7
-            case 3: mentions.text = "\(mentionsTweets.count)"
-            posts.text = "\(postsTweets.count)"
-            retweets.text = "\(retweetedTweets.count)"
-            view1.alpha = 1
-            view1.isUserInteractionEnabled = true
-            let allTimesString1 = NSMutableAttributedString(string: "100% from")
-            allTimesString1.append(NSMutableAttributedString(string: " all times", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)]))
-            footLabel1.attributedText = allTimesString1
-            footLabel2.attributedText = allTimesString1
-            footLabel3.attributedText = allTimesString1
-            footLabel4.attributedText = allTimesString1
-        default: break
-        }
-        
-        if sender != 3 {
-            
-            let calculated = calendar.date(byAdding: component, value: value, to: date)!
-            let calculatedSecond = calendar.date(byAdding: component, value: value*2, to: date)!
-            let attributedString = NSMutableAttributedString(string: "\(component)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)])
-           
-            let mt = calcArrayWithTime(array: mentionsTweets, date: calculated)
-            mentions.text = "\(Int(mt))"
-            var mt2 =  calcArrayWithTime(array: mentionsTweets, date: calculatedSecond)
-            mt2 = mt2 - mt
-            //print("\(calcPercentage(int1: Double(mt), int2: Double(mt2)))")
-            let pctmt = calcPercentage(int1: Double(mt), int2: Double(mt2))
-            let xmt = evaluatePct(pct: pctmt)
-            xmt.append(attributedString)
-            footLabel3.attributedText = xmt
-           // print("mt---\(mt)  mt2--- \(mt2)")
-            
-            let pt = calcArrayWithTime(array: postsTweets, date: calculated)
-            posts.text = "\(Int(pt))"
-            var pt2 = calcArrayWithTime(array: postsTweets, date: calculatedSecond)
-            pt2 = pt2-pt
-            let pctpt = calcPercentage(int1: Double(pt), int2: Double(pt2))
-            let xpt = evaluatePct(pct: pctpt)
-            xpt.append(attributedString)
-            footLabel4.attributedText = xpt
-            //print("pt---\(pt)  pt2--- \(pt2)")
-            
-            let rt = calcArrayWithTime(array: retweetedTweets, date: calculated)
-            retweets.text = "\(Int(rt))"
-            var rt2 = calcArrayWithTime(array: retweetedTweets, date: calculatedSecond)
-            rt2 = rt2-rt
-            let pctrt = calcPercentage(int1: Double(rt), int2: Double(rt2))
-            let xrt = evaluatePct(pct: pctrt)
-            xrt.append(attributedString)
-            footLabel2.attributedText = xrt
-           // print("rt---\(rt)  rt2--- \(rt2)")
-                    }
-    }
+    
     
     func evaluatePct(pct: Int) -> NSMutableAttributedString {
         let totString = NSMutableAttributedString()
@@ -565,105 +747,6 @@ class TwitterViewController: UIViewController {
     
     
     
-    func saveObject(objects: [Any?], entity: String, sender: String) {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
-        var list = [Tweet]()
-        
-        
-            switch sender {
-               
-                case "getFollowers":
-                    let existingIds = followerslist.map { Int($0.id!)! }
-                    
-                    for item in objects {
-                        if existingIds.contains(item as! Int) == false {
-                            let user = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? TwitterUser
-                            user?.id = "\(item as! Int)"
-                            user?.created = NSDate()
-                            followerslist.append(user!)
-                        }
-                         }
-                
-                case "getRetweets":
-                    let predicate = NSPredicate(format: "type == %@", "retweets" )
-                     let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
-                    fetchRequest.predicate = predicate
-                    do {
-                        let fetchedEntities = try managedContext.fetch(fetchRequest) 
-
-                            for entity in fetchedEntities {
-                                managedContext.delete(entity)
-                            }
-                        } catch let error as NSError {
-                            print("Could not delete \(error), \(error.userInfo)")
-                    }
-                    
-                    for item in objects {
-                        let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
-                    tweet?.id = (item as? TWTRTweet)?.tweetID
-                    tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
-                        tweet?.type = "retweets"
-                    list.append(tweet!)
-                }
-                    retweetedTweets = list
-                
-                case "getMentions":
-                    let predicate = NSPredicate(format: "type == %@", "mentions" )
-                    let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
-                    fetchRequest.predicate = predicate
-                    do {
-                        let fetchedEntities = try managedContext.fetch(fetchRequest)
-                        
-                        for entity in fetchedEntities {
-                            managedContext.delete(entity)
-                        }
-                    } catch let error as NSError {
-                        print("Could not delete \(error), \(error.userInfo)")
-                    }
-                    
-                    for item in objects {
-                        let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
-
-                        tweet?.id = (item as? TWTRTweet)?.tweetID
-                        tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
-                        tweet?.type = "mentions"
-                        list.append(tweet!)
-                    }
-                    mentionsTweets = list
-                case "getPosts":
-                    let predicate = NSPredicate(format: "type == %@", "posts" )
-                    let fetchRequest: NSFetchRequest<Tweet> = Tweet.fetchRequest()
-                    fetchRequest.predicate = predicate
-                    do {
-                        let fetchedEntities = try managedContext.fetch(fetchRequest)
-                        
-                        for entity in fetchedEntities {
-                            managedContext.delete(entity)
-                        }
-                    } catch let error as NSError {
-                        print("Could not delete \(error), \(error.userInfo)")
-                    }
-                    for item in objects {
-                        let tweet = NSEntityDescription.insertNewObject(forEntityName: entity, into: managedContext) as? Tweet
-
-                        tweet?.id = (item as? TWTRTweet)?.tweetID
-                        tweet?.created = (item as? TWTRTweet)?.createdAt as NSDate?
-                        tweet?.type = "posts"
-                        list.append(tweet!)
-                    }
-                    postsTweets = list
-                default: break
-            }
-            do {
-            try managedContext.save()
-            //5
-            
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
-        }
-    }
     
 
     override func didReceiveMemoryWarning() {

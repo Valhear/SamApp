@@ -26,27 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.isTranslucent = true
         UIApplication.shared.statusBarStyle = .lightContent
         
-        
-//        Twitter.sharedInstance().logIn {(session, error) in
-//            if session != nil {
-//                print("logged in user with id \(session?.userID)")
-//            } else {
-//                print("ErrorErrorErrorErrorError \(error)")
-//            }
-//        }
 
-        // Override point for customization after application launch.
         return true
     }
     
-//    private func application(app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
-//        if Twitter.sharedInstance().application(app, open:url, options: options) {
-//            return true
-//        }
-//    
-////         If you handle other (non Twitter Kit) URLs elsewhere in your app, return true. Otherwise
-//        return false
-//    }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

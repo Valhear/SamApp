@@ -29,9 +29,13 @@ class TwitterLoginViewController: UIViewController {
             let logInButton = TWTRLogInButton(logInCompletion: { session, error in
                 if ((session) != nil) {
                     print("signed in as \(session?.userName)");
+                    
                     self.segue()
-                } else {
-                    print("error session == nil: \(error?.localizedDescription)");
+                } else {                    
+                    let alert = UIAlertController(title: "Error", message: "\(error?.localizedDescription ?? "error loading session")", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    
                 }
             })
             self.view.addSubview(logInButton)
@@ -46,25 +50,9 @@ class TwitterLoginViewController: UIViewController {
         super.viewDidLoad()
         
         
-//        let logInButton = TWTRLogInButton { (session, error) in
-//            if let unwrappedSession = session {
-//                let alert = UIAlertController(title: "Logged In",
-//                                              message: "User \(unwrappedSession.userName) has logged in",
-//                    preferredStyle: UIAlertControllerStyle.alert
-//                )
-//                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
-//            } else {
-//                NSLog("Login error: %@", error!.localizedDescription);
-//            }
-//        }
-        
-            
-            
-            // Do any additional setup after loading the view.
 
         
-        
+
     }
 
     override func didReceiveMemoryWarning() {

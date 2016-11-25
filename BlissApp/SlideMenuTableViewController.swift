@@ -12,6 +12,10 @@ import Fabric
 
 class SlideMenuTableViewController: UITableViewController {
     
+    let exampleTransitionDelegate = TransitioningDelegate()
+    
+
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,34 +63,14 @@ class SlideMenuTableViewController: UITableViewController {
     }
     
     func logout() {
-        let alert = UIAlertController(title: "Logout", message: "Are you sure want to logout?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            let store = Twitter.sharedInstance().sessionStore
-            if let userID = store.session()?.userID {
-                //    Twitter.sharedInstance().log
-                guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                    return
-                }
+        
+        let controller = storyboard?.instantiateViewController(withIdentifier: "floatingViewController")
+        controller?.transitioningDelegate = exampleTransitionDelegate
+        controller?.modalPresentationStyle = .custom
+        present(controller!, animated: true, completion: nil)
+        
+        
 
-                let url = URL(string: "prefs:root=WIFI")
-                let url2 = URL(string: UIApplicationOpenSettingsURLString)
-                let url3 = URL(string: "prefs:root=WIFI")
-                let url4 = NSURL(string: UIApplicationOpenSettingsURLString)
-                print(url2)
-                
-//                UIApplication.shared.open(url4! as URL, options: [:], completionHandler: nil)
-                if UIApplication.shared.canOpenURL(settingsUrl) {
-                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        print("Settings opened: \(success)") // Prints true
-                        store.logOutUserID(userID)
-                    })
-                
-                self.performSegue(withIdentifier: "logout", sender: self)
-            }
-            }}))
-            
-        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in }))
-        self.present(alert, animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

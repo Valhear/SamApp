@@ -21,6 +21,8 @@
 		CD6A76651DD3BCF3007CEDE3 /* SlideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */; };
 		CD6A76671DD42F6A007CEDE3 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */; };
 		CD7D24151DB193D400C92D60 /* TwitterLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */; };
+		CD8FC5211DE4A0870096D47C /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8FC5201DE4A0870096D47C /* PresentationController.swift */; };
+		CD8FC5231DE5FFBF0096D47C /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8FC5221DE5FFBF0096D47C /* Tweet+CoreDataProperties.swift */; };
 		CD9566E61DAFD9FC0011308A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9566E51DAFD9FC0011308A /* AppDelegate.swift */; };
 		CD9566EB1DAFD9FC0011308A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD9566E91DAFD9FC0011308A /* Main.storyboard */; };
 		CD9566EE1DAFD9FC0011308A /* BlissApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */; };
@@ -32,8 +34,10 @@
 		CDD188891DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */; };
 		CDD1888D1DC7E3BC00B21EDE /* TWTRUsr.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */; };
 		CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */; };
-		CDE3A8491DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */; };
 		CDE3A84A1DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */; };
+		CDF1229D1DE3906800002C26 /* AnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF1229C1DE3906800002C26 /* AnimatedTransitioning.swift */; };
+		CDF1229F1DE3912D00002C26 /* TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF1229E1DE3912D00002C26 /* TransitioningDelegate.swift */; };
+		CDF122A11DE394FA00002C26 /* floatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF122A01DE394FA00002C26 /* floatingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,8 @@
 		CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTableViewController.swift; sourceTree = "<group>"; };
 		CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterLoginViewController.swift; sourceTree = "<group>"; };
+		CD8FC5201DE4A0870096D47C /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		CD8FC5221DE5FFBF0096D47C /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CD9566E21DAFD9FC0011308A /* BlissApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9566E51DAFD9FC0011308A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD9566EA1DAFD9FC0011308A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,8 +97,10 @@
 		CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTRUsr.swift; sourceTree = "<group>"; };
 		CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataClass.swift"; sourceTree = "<group>"; };
-		CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CDF1229C1DE3906800002C26 /* AnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTransitioning.swift; sourceTree = "<group>"; };
+		CDF1229E1DE3912D00002C26 /* TransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitioningDelegate.swift; sourceTree = "<group>"; };
+		CDF122A01DE394FA00002C26 /* floatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = floatingViewController.swift; path = ../floatingViewController.swift; sourceTree = "<group>"; };
 		E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlissApp/Pods-BlissApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F81F4971CCE5C08CF3FDAFA8 /* Pods-BlissAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlissAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlissAppTests/Pods-BlissAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		FBD4E40DAD8B372F759B116D /* Pods_BlissAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlissAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,8 +163,8 @@
 		CD42065F1DDF6B32007A29C2 /* Core Data Files */ = {
 			isa = PBXGroup;
 			children = (
+				CD8FC5221DE5FFBF0096D47C /* Tweet+CoreDataProperties.swift */,
 				CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */,
-				CDE3A8451DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift */,
 				CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */,
 				CDE3A8461DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift */,
 			);
@@ -211,6 +219,7 @@
 				CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */,
 				CD6A76661DD42F6A007CEDE3 /* HeaderTableViewCell.swift */,
 				CD4FAE761DBAA9EB000E8D2D /* ListTableViewCell.swift */,
+				CDF122A01DE394FA00002C26 /* floatingViewController.swift */,
 				CD9566F41DAFD9FC0011308A /* Info.plist */,
 				CD9566EC1DAFD9FC0011308A /* BlissApp.xcdatamodeld */,
 				CD6A76191DD2381A007CEDE3 /* hamburgerMenu */,
@@ -219,6 +228,9 @@
 				CD9566F11DAFD9FC0011308A /* LaunchScreen.storyboard */,
 				CD2CF5EC1DB5D77E006330ED /* brainForTweets.swift */,
 				CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */,
+				CDF1229C1DE3906800002C26 /* AnimatedTransitioning.swift */,
+				CDF1229E1DE3912D00002C26 /* TransitioningDelegate.swift */,
+				CD8FC5201DE4A0870096D47C /* PresentationController.swift */,
 			);
 			path = BlissApp;
 			sourceTree = "<group>";
@@ -546,19 +558,23 @@
 			files = (
 				CD6A76651DD3BCF3007CEDE3 /* SlideMenuTableViewController.swift in Sources */,
 				CD6A76671DD42F6A007CEDE3 /* HeaderTableViewCell.swift in Sources */,
+				CDF1229F1DE3912D00002C26 /* TransitioningDelegate.swift in Sources */,
 				CD6A76201DD2638D007CEDE3 /* SWRevealViewController.m in Sources */,
 				CD4FAE771DBAA9EB000E8D2D /* ListTableViewCell.swift in Sources */,
 				CD2D79D81DB02C540062F468 /* TwitterViewController.swift in Sources */,
 				CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */,
+				CDF1229D1DE3906800002C26 /* AnimatedTransitioning.swift in Sources */,
 				CD9566EE1DAFD9FC0011308A /* BlissApp.xcdatamodeld in Sources */,
+				CD8FC5231DE5FFBF0096D47C /* Tweet+CoreDataProperties.swift in Sources */,
+				CDF122A11DE394FA00002C26 /* floatingViewController.swift in Sources */,
 				CD9566E61DAFD9FC0011308A /* AppDelegate.swift in Sources */,
 				CDB11F241DB869C800F63B81 /* ListOfItemsTableViewController.swift in Sources */,
 				CD7D24151DB193D400C92D60 /* TwitterLoginViewController.swift in Sources */,
-				CDE3A8491DB7C9B80068CD22 /* Tweet+CoreDataProperties.swift in Sources */,
 				CDE3A84A1DB7C9B80068CD22 /* TwitterUser+CoreDataClass.swift in Sources */,
 				CDD188891DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift in Sources */,
 				CD2CF5ED1DB5D77E006330ED /* brainForTweets.swift in Sources */,
 				CDD1888D1DC7E3BC00B21EDE /* TWTRUsr.swift in Sources */,
+				CD8FC5211DE4A0870096D47C /* PresentationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,7 +729,6 @@
 			baseConfigurationReference = E3A725434AFF41DF51C9732F /* Pods-BlissApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_VARIANTS = armv7;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BlissApp/BlissApp.entitlements;
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
@@ -739,7 +754,6 @@
 			baseConfigurationReference = 9AA1512935BAD22CA705AEC9 /* Pods-BlissApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUILD_VARIANTS = armv7;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = BlissApp/BlissApp.entitlements;
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
@@ -752,7 +766,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = valenh.socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6458b7b3-04cb-4113-b2ba-b53168e89a42";
+				PROVISIONING_PROFILE = "d1629db7-405f-488e-8946-1a47a077aea3";
 				PROVISIONING_PROFILE_SPECIFIER = "SAM Dev Profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "BlissApp/BlissApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

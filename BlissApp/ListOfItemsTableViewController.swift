@@ -11,7 +11,7 @@ import TwitterKit
 
 class ListOfItemsTableViewController: UITableViewController {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+     let activityIN : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 100, y: 200, width: 50, height: 50)) as UIActivityIndicatorView
     
     var listOfIds = [String]()
     var objectType = String()
@@ -20,28 +20,38 @@ class ListOfItemsTableViewController: UITableViewController {
     var tweetsList = [TWTRTweet]()
         {
         didSet {
-        tableView.reloadData()
+            self.tableView.reloadData()
+        finishedDownloading()
         }
     }
     var twitterUsersList = [TWTRUsr]()
         {
         didSet {
-        tableView.reloadData()
+            self.tableView.reloadData()
+            finishedDownloading()
+//
+//        tableView.reloadData()
+//            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.isHidden = true
         }
     }
-
+    
+    func finishedDownloading() {
+        DispatchQueue.main.async { Void in
+                self.activityIN.stopAnimating()
+                self.activityIN.isHidden = true
+        } }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let activityIN : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 100, y: 200, width: 50, height: 50)) as UIActivityIndicatorView
+       
         activityIN.center = self.view.center
         activityIN.hidesWhenStopped = true
         activityIN.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         activityIN.startAnimating()
         self.view.addSubview(activityIN)
         
-       // self.view.addSubview(activityIndicator)
-      //  activityIndicator.startAnimating()
        
         loadTweetsAndUsers()
         navigationItem.title = titleForList
@@ -71,7 +81,7 @@ class ListOfItemsTableViewController: UITableViewController {
             }
             
         } else if objectType == "Users" {
-            let limit = min(100, listOfIds.count)
+            let limit = min(50, listOfIds.count)
             let slice = Array(listOfIds[0..<limit])
 
             let statusesShowEndpoint = "https://api.twitter.com/1.1/users/lookup.json"
@@ -86,7 +96,7 @@ class ListOfItemsTableViewController: UITableViewController {
                 do {
                     if data != nil {
                         if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [Any] {
-                 //   print("JSONjson\(json)")
+                    print("JSONjson\(json)")
                             var list = [TWTRUsr]()
                         for j in json {
                             let tw = j as? [String: Any]
@@ -94,7 +104,18 @@ class ListOfItemsTableViewController: UITableViewController {
                             usr.name = (tw?["name"] as? String)
                             usr.screenName = (tw?["screen_name"] as? String)
                             usr.bio = tw?["description"] as? String
-                            usr.imageURL = (tw?["profile_image_url_https"] as? String)
+                            
+                            let urlString = (tw?["profile_image_url_https"] as? String)
+                            let imageURL = URL.init(string: urlString!)
+                            do { let data = try Data.init(contentsOf: imageURL!)
+                                usr.profileImage = UIImage.init(data: data)
+                            } catch let error as NSError {
+                                print("error loading image data \(error.localizedDescription)")
+
+                            }
+
+                            
+                            
                                 list.append(usr)
                         }
                             self.twitterUsersList.append(contentsOf: list)
@@ -168,12 +189,13 @@ class ListOfItemsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "users", for: indexPath) as? ListTableViewCell
             let user = twitterUsersList[indexPath.row]
             
-            let url = URL.init(string: user.imageURL!)
-            do { let data = try Data.init(contentsOf: (url)!)
-                 cell?.cellImage?.image = UIImage.init(data: data)
-            } catch let error as NSError {
-                print("error loading data \(error.localizedDescription)")
-            }
+           // let image = user.profileImage
+//            do { let data = try Data.init(contentsOf: (url)!)
+//                 cell?.cellImage?.image = UIImage.init(data: data)
+//            } catch let error as NSError {
+//                print("error loading data \(error.localizedDescription)")
+//            }
+            cell?.cellImage?.image = user.profileImage
             cell?.bioLabel?.text = user.bio
             cell?.nameLabel?.text = user.name
             cell?.ScreenNameLabel?.text = "@\(user.screenName!)"
@@ -190,7 +212,7 @@ class ListOfItemsTableViewController: UITableViewController {
         return TWTRTweetTableViewCell.height(for: tweet, style: .compact, width: self.view.bounds.width, showingActions: false)
         }
         
-        return 70
+        return 90
     }
     
 }
