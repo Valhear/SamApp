@@ -33,14 +33,14 @@ class PresentationController: UIPresentationController, UIAdaptivePresentationCo
         var presentedViewFrame = CGRect.zero
         let containerBounds = containerView?.bounds
         presentedViewFrame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: (containerBounds?.size)!)
-        presentedViewFrame.origin.x = ((containerBounds?.size.width)! - presentedViewFrame.size.width)/2.0
-        presentedViewFrame.origin.y = ((containerBounds?.size.height)! - presentedViewFrame.size.height)/2.0
+        presentedViewFrame.origin.x = ((containerBounds?.size.width)! - (presentedViewFrame.size.width))/2
+        presentedViewFrame.origin.y = ((containerBounds?.size.height)! - presentedViewFrame.size.height)/2
         
         return presentedViewFrame
     }
     
     override func size(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize) -> CGSize {
-        return CGSize(width: (parentSize.width / 2.0), height: parentSize.height / 2.0)
+        return CGSize(width: (parentSize.width*3/4.0), height: parentSize.height*3/4)
     }
     
     override func presentationTransitionWillBegin() {

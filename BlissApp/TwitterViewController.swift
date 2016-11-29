@@ -14,18 +14,30 @@ import CoreData
 
 class TwitterViewController: UIViewController {
     
+    @IBOutlet var lastUpdatedLabel: UILabel!
+    
     @IBOutlet var menuSlideOut: UIBarButtonItem!
     
      var titleForList = String()
     static var userImage = UIImage()
     static var userName = String()
     
+    @IBOutlet var newButton: UIButton!
+    
+    
+    @IBAction func actionTap(_ sender: UITapGestureRecognizer) {
+        composeTwt(sender: sender)
+    }
     @IBAction func composeTweet(_ sender: UIBarButtonItem) {
+        composeTwt(sender: sender)
         
+    }
+    
+    func composeTwt(sender: AnyObject) {
         let composer = TWTRComposer()
         
         composer.setText("SAM is so cool!")
-            
+        
         // Called from a UIViewController
         composer.show(from: self) { result in
             if (result == TWTRComposerResult.cancelled) {
@@ -40,6 +52,8 @@ class TwitterViewController: UIViewController {
     @IBOutlet var infoButton: UIButton!
     
     @IBAction func infoButtonAction(_ sender: UIButton) {
+        
+      
     }
   
     @IBOutlet var dashboardButton: UIButton!
@@ -48,6 +62,8 @@ class TwitterViewController: UIViewController {
     var retweetedTweets = [Tweet]()
     var mentionsTweets = [Tweet]()
     var postsTweets = [Tweet]()
+    
+    var postsTweetsTotal = Int()
     
     
     @IBOutlet var updateButton: UIBarButtonItem!
@@ -68,7 +84,10 @@ class TwitterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
         
+
+        newButton.addTarget(self, action: #selector(self.composeTweet(_:)), for: UIControlEvents.touchUpInside)
         
         
         view1.layer.cornerRadius = 5
@@ -197,8 +216,7 @@ class TwitterViewController: UIViewController {
         case 0: component = Calendar.Component.day
         value = -7
         case 3: mentions.text = "\(mentionsTweets.count)"
-        posts.text = "\(postsTweets.count)"
-        print("postsTweets.count\(postsTweets.count)")
+        posts.text = "\(postsTweetsTotal)"
         let sumOfRetweets = retweetedTweets.map { $0.retweeted }.reduce(0, +)
         retweets.text = "\(sumOfRetweets)"
         print("retweetedTweets.count \(retweetedTweets.count)")
@@ -434,7 +452,41 @@ class TwitterViewController: UIViewController {
     func getPosts() {
         let params = ["count": "\(200)"]
         let twts = [TWTRTweet?]()
+        reqPostsValues()
         reqPosts(params: params, twts: twts)
+    }
+    
+    func reqPostsValues() {
+        
+    if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
+        let client = TWTRAPIClient(userID: userID)
+        let url = "https://api.twitter.com/1.1/users/lookup.json"
+        let params = ["user_id": "\(userID)", "include_entities": "false"]
+        var clientError : NSError?
+        let request = client.urlRequest(withMethod: "GET", url: url, parameters: params, error: &clientError)
+        client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
+            if connectionError != nil {
+                print("Error: \(connectionError)")
+            }
+            do {
+                if data != nil {
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [Any] {
+                        print("JSONjson\(json)")
+                        if let userInfo = json[0] as? [String:Any] {
+                            
+                            if let postsCount = userInfo["statuses_count"] as? Int {
+                                self.postsTweetsTotal = postsCount
+                            self.posts.text = "\(postsCount)"
+                            }
+                        }
+                    }
+                }
+            }
+            catch let jsonError as NSError {
+            print("json error: \(jsonError.localizedDescription)")
+            }
+        }
+        }
     }
     
     func reqPosts(params: [String:String], twts: [TWTRTweet?]) {
@@ -458,6 +510,7 @@ class TwitterViewController: UIViewController {
             }
         }
         if let userID = Twitter.sharedInstance().sessionStore.session()?.userID {
+            
             let client = TWTRAPIClient(userID: userID)
             // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/user_timeline.json"
@@ -490,7 +543,6 @@ class TwitterViewController: UIViewController {
                     
                 }
                 if twts.count != 0 {
-                self.posts.text = String(twts.count)
                 self.saveObject(objects: twts, entity: "Tweet", sender: "getPosts")
                 }
             }
@@ -609,7 +661,13 @@ class TwitterViewController: UIViewController {
         }
         do {
             try managedContext.save()
-            //5
+            let date = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeStyle = .short
+                dateFormatter.dateStyle = .medium
+            
+            
+            lastUpdatedLabel.text = "Last Updated: \(dateFormatter.string(from: date))"
             
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")

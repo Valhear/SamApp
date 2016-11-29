@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        // Twitter.sharedInstance().start(withConsumerKey: "u8kz20JJQvn9XCyYNpwShFOjl", consumerSecret: "HU2mDZEdlvX5HlR4nXzk4bDUOxsv3ZH1U0Oc2beVRugVLoO87D")
         
         let appearance = UINavigationBar.appearance()
-        appearance.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:0.9)
+        appearance.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:1)
         appearance.isTranslucent = true
         UIApplication.shared.statusBarStyle = .lightContent
         

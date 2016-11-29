@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:BlissApp.xcodeproj">
+      location = "group:/Users/valentinahenao/Desktop/Projects/My Projects/BlissApp/SamApp.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

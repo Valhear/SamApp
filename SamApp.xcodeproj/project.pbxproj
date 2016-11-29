@@ -31,6 +31,7 @@
 		CD9566FE1DAFD9FD0011308A /* BlissAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9566FD1DAFD9FD0011308A /* BlissAppTests.swift */; };
 		CD9567091DAFD9FD0011308A /* BlissAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */; };
 		CDB11F241DB869C800F63B81 /* ListOfItemsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */; };
+		CDCC3E231DE8CED40072623B /* settingsTableVIewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC3E221DE8CED40072623B /* settingsTableVIewTableViewCell.swift */; };
 		CDD188891DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */; };
 		CDD1888D1DC7E3BC00B21EDE /* TWTRUsr.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */; };
 		CDE3A8481DB7C9B80068CD22 /* Tweet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */; };
@@ -94,6 +95,7 @@
 		CD9567081DAFD9FD0011308A /* BlissAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissAppUITests.swift; sourceTree = "<group>"; };
 		CD95670A1DAFD9FD0011308A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDB11F231DB869C800F63B81 /* ListOfItemsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfItemsTableViewController.swift; sourceTree = "<group>"; };
+		CDCC3E221DE8CED40072623B /* settingsTableVIewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = settingsTableVIewTableViewCell.swift; sourceTree = "<group>"; };
 		CDD188881DC7A4EB00B21EDE /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CDD1888C1DC7E3BC00B21EDE /* TWTRUsr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTRUsr.swift; sourceTree = "<group>"; };
 		CDE3A8441DB7C9B80068CD22 /* Tweet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				CD6A76181DD17329007CEDE3 /* BlissApp.entitlements */,
 				CD6A76641DD3BCF2007CEDE3 /* SlideMenuTableViewController.swift */,
+				CDCC3E221DE8CED40072623B /* settingsTableVIewTableViewCell.swift */,
 				CD9566E51DAFD9FC0011308A /* AppDelegate.swift */,
 				CD9566E91DAFD9FC0011308A /* Main.storyboard */,
 				CD7D24141DB193D400C92D60 /* TwitterLoginViewController.swift */,
@@ -354,7 +357,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CD9566DD1DAFD9FC0011308A /* Build configuration list for PBXProject "BlissApp" */;
+			buildConfigurationList = CD9566DD1DAFD9FC0011308A /* Build configuration list for PBXProject "SamApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -558,6 +561,7 @@
 			files = (
 				CD6A76651DD3BCF3007CEDE3 /* SlideMenuTableViewController.swift in Sources */,
 				CD6A76671DD42F6A007CEDE3 /* HeaderTableViewCell.swift in Sources */,
+				CDCC3E231DE8CED40072623B /* settingsTableVIewTableViewCell.swift in Sources */,
 				CDF1229F1DE3912D00002C26 /* TransitioningDelegate.swift in Sources */,
 				CD6A76201DD2638D007CEDE3 /* SWRevealViewController.m in Sources */,
 				CD4FAE771DBAA9EB000E8D2D /* ListTableViewCell.swift in Sources */,
@@ -834,7 +838,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD9566DD1DAFD9FC0011308A /* Build configuration list for PBXProject "BlissApp" */ = {
+		CD9566DD1DAFD9FC0011308A /* Build configuration list for PBXProject "SamApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CD95670B1DAFD9FD0011308A /* Debug */,
