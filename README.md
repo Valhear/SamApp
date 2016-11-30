@@ -1,4 +1,0 @@
-# SamApp
-
-fasmdkflasd
-
