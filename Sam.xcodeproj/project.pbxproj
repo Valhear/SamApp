@@ -124,6 +124,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD966E261DEF8068005B7504 /* hamburgerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CDEDE8311DED583D000B2ADF /* SWRevealViewController.m */,
+				CDEDE8321DED583D000B2ADF /* SWRevealViewController.h */,
+				CDEDE8301DED583C000B2ADF /* Sam-Bridging-Header.h */,
+			);
+			name = hamburgerMenu;
+			sourceTree = "<group>";
+		};
+		CD966E271DEF8094005B7504 /* Core Data  */ = {
+			isa = PBXGroup;
+			children = (
+				CDEDE8581DED58FA000B2ADF /* Tweet+CoreDataClass.swift */,
+				CDEDE8591DED58FA000B2ADF /* Tweet+CoreDataProperties.swift */,
+				CDEDE85A1DED58FA000B2ADF /* TwitterUser+CoreDataClass.swift */,
+				CDEDE85B1DED58FA000B2ADF /* TwitterUser+CoreDataProperties.swift */,
+			);
+			name = "Core Data ";
+			sourceTree = "<group>";
+		};
 		CDEDE7EA1DED5705000B2ADF = {
 			isa = PBXGroup;
 			children = (
@@ -152,10 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				CDBA360F1DEDF57800EE752C /* Sam.entitlements */,
-				CDEDE8581DED58FA000B2ADF /* Tweet+CoreDataClass.swift */,
-				CDEDE8591DED58FA000B2ADF /* Tweet+CoreDataProperties.swift */,
-				CDEDE85A1DED58FA000B2ADF /* TwitterUser+CoreDataClass.swift */,
-				CDEDE85B1DED58FA000B2ADF /* TwitterUser+CoreDataProperties.swift */,
 				CDEDE8341DED58BB000B2ADF /* SlideMenuTableViewController.swift */,
 				CDEDE8351DED58BB000B2ADF /* settingsTableVIewTableViewCell.swift */,
 				CDEDE8361DED58BB000B2ADF /* AppDelegate.swift */,
@@ -168,9 +185,8 @@
 				CDEDE83D1DED58BB000B2ADF /* floatingViewController.swift */,
 				CDEDE83E1DED58BB000B2ADF /* SamApp.xcdatamodel */,
 				CDEDE8051DED5706000B2ADF /* Info.plist */,
-				CDEDE8311DED583D000B2ADF /* SWRevealViewController.m */,
-				CDEDE8321DED583D000B2ADF /* SWRevealViewController.h */,
-				CDEDE8301DED583C000B2ADF /* Sam-Bridging-Header.h */,
+				CD966E261DEF8068005B7504 /* hamburgerMenu */,
+				CD966E271DEF8094005B7504 /* Core Data  */,
 				CDEDE84A1DED58E2000B2ADF /* Assets.xcassets */,
 				CDEDE84B1DED58E2000B2ADF /* LaunchScreen.storyboard */,
 				CDEDE84C1DED58E2000B2ADF /* brainForTweets.swift */,
