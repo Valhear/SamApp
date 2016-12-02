@@ -27,6 +27,18 @@ class TwitterLoginViewController: UIViewController {
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
                     print("Settings opened: \(success)") // Prints true
+                    let fetchRequest: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
+                    do {
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        let managedContext = appDelegate.persistentContainer.viewContext
+                        let fetchedUsers = try managedContext.fetch(fetchRequest)
+                        for user in fetchedUsers {
+                            
+                            managedContext.delete(user)
+                        }
+                    } catch let error as NSError {
+                        print("Could not delete \(error), \(error.userInfo)")
+                    }
                     
                     
                 })
@@ -39,7 +51,6 @@ class TwitterLoginViewController: UIViewController {
         
         if lastSession != nil{
             segue()
-            // performSegue(withIdentifier: "twitterLoginToMain", sender: self)
             
         } else {
             

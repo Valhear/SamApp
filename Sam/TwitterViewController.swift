@@ -331,7 +331,7 @@ class TwitterViewController: UIViewController {
         var batch = [TWTRTweet?]() {
             didSet {
                 if batch.count == batchCount {
-                    let maxID = batch[batchCount!-1]?.tweetID //let maxID = batch.last!?.tweetID
+                    let maxID = batch[batchCount!-1]?.tweetID 
                     twts.removeLast()
                     let params = ["count": "\(parCount)", "max_id": maxID!]
                     self.reqRetweets(params: params, twts: twts, retweets: retweets)
@@ -342,7 +342,6 @@ class TwitterViewController: UIViewController {
             let client = TWTRAPIClient(userID: userID)
             // make requests with client
             let statusesShowEndpoint = "https://api.twitter.com/1.1/statuses/retweets_of_me.json"
-            // let params = ["count": "\(100)", "include_entities": "false", "include_user_entities": "false"]
             var clientError : NSError?
             let request = client.urlRequest(withMethod: "GET", url: statusesShowEndpoint, parameters: params, error: &clientError)
             client.sendTwitterRequest(request) { (response, data, connectionError) -> Void in
@@ -573,12 +572,7 @@ class TwitterViewController: UIViewController {
                         followerslist.append(user!)
                     }
                 }
-//                let fetchRequest: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
-//                do {
-//                    let fetchedUsers = try managedContext.fetch(fetchRequest)
-//                for user in fetchedUsers {
-//                    managedContext.delete(user)
-//                }
+
             } catch let error as NSError {
                 print("Could not delete \(error), \(error.userInfo)")
             }
@@ -695,22 +689,7 @@ class TwitterViewController: UIViewController {
         totString.append(NSMutableAttributedString(string: " from previous "))
             return totString
     }
-   
-//    func getString() {
-//    
-//    let str = NSMutableAttributedString(string: "\(calcPercentage(int1: Double(pt), int2: Double(pt2)))", attributes: [NSForegroundColorAttributeName: UIColor.blue])
-//    let str2 = NSMutableAttributedString(string: "% from previous")
-//    let str3 = NSMutableAttributedString(string: "\(component)", attributes: [NSForegroundColorAttributeName: UIColor.blue])
-//    
-//    let tot = NSMutableAttributedString()
-//    tot.append(str)
-//    tot.append(str2)
-//    tot.append(str3)
-//    
-//    footLabel4.attributedText = tot
-//    //  footLabel4.attributedText = "\(str)% from previous \(component)"  ///calcPercentage(int1: Double(pt), int2: Double(pt2))
-//    
-//    }
+
     
     func calcArrayWithTime(array: [Tweet], date: Date) -> Double {
         var newIDs: [Tweet] = []

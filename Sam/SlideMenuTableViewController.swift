@@ -22,7 +22,7 @@ class SlideMenuTableViewController: UITableViewController {
     func share() {
         let composer = TWTRComposer()
         
-        composer.setText("SAM is so cool!")
+        composer.setText("I'm using SAM! Check it out... https://itunes.apple.com/us/app/sam-social-api-manager/id1181685988?ls=1&mt=8")
         
         // Called from a UIViewController
         composer.show(from: self) { result in

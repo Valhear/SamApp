@@ -108,6 +108,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lEU-Fl-Qpm">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7Rp-lh-T75">
                                 <rect key="frame" x="16" y="119" width="343" height="51"/>
                                 <constraints>
@@ -550,7 +554,7 @@
                             <constraint firstItem="5Vd-zd-ZKl" firstAttribute="trailing" secondItem="MH9-sf-uMR" secondAttribute="trailing" id="vKp-Me-Rhe"/>
                             <constraint firstAttribute="leadingMargin" secondItem="knR-Kb-Fb5" secondAttribute="leading" id="xhT-Kv-yBH"/>
                             <constraint firstItem="5Tt-vC-hQB" firstAttribute="width" secondItem="nZI-Jp-BM7" secondAttribute="width" id="yka-T4-4Qo"/>
-                            <constraint firstItem="Nhh-jG-4y1" firstAttribute="top" secondItem="kTu-ld-d79" secondAttribute="bottom" constant="8" id="yzw-nf-3Jk"/>
+                            <constraint firstItem="Nhh-jG-4y1" firstAttribute="top" secondItem="kTu-ld-d79" secondAttribute="bottom" constant="8" placeholder="YES" id="yzw-nf-3Jk"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Twitter" id="ibi-oK-rm4"/>
@@ -895,19 +899,19 @@ bio</string>
                             <constraint firstAttribute="trailingMargin" secondItem="B17-bA-WZ5" secondAttribute="trailing" constant="90" id="06c-ax-yoh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DWW-og-Azv" secondAttribute="trailing" constant="20" id="5JP-IP-e0B"/>
                             <constraint firstItem="B17-bA-WZ5" firstAttribute="leading" secondItem="54L-Q8-uXQ" secondAttribute="leadingMargin" constant="90" id="669-ke-RCb"/>
+                            <constraint firstItem="4Qy-N5-2wB" firstAttribute="centerY" secondItem="54L-Q8-uXQ" secondAttribute="centerY" id="8Fg-IH-EeT"/>
                             <constraint firstItem="DWW-og-Azv" firstAttribute="leading" secondItem="54L-Q8-uXQ" secondAttribute="leadingMargin" constant="20" id="Bu3-fG-cug"/>
                             <constraint firstItem="DWW-og-Azv" firstAttribute="top" secondItem="B17-bA-WZ5" secondAttribute="bottom" constant="50" id="Fii-8Y-z5Y"/>
                             <constraint firstItem="TVN-mf-54j" firstAttribute="top" secondItem="3dY-pO-Bk4" secondAttribute="bottom" constant="70" id="KRc-Do-AHO"/>
-                            <constraint firstItem="4Qy-N5-2wB" firstAttribute="top" secondItem="lhF-Lm-TvV" secondAttribute="bottom" constant="-20" id="MRo-bT-6Mb"/>
-                            <constraint firstItem="4Qy-N5-2wB" firstAttribute="leading" secondItem="54L-Q8-uXQ" secondAttribute="leadingMargin" constant="-16" id="QeW-B7-gLi"/>
+                            <constraint firstItem="4Qy-N5-2wB" firstAttribute="centerX" secondItem="54L-Q8-uXQ" secondAttribute="centerX" id="Mk5-9Q-8Ji"/>
                             <constraint firstItem="3dY-pO-Bk4" firstAttribute="top" secondItem="lhF-Lm-TvV" secondAttribute="bottom" constant="72" id="TYb-Vc-cqM"/>
+                            <constraint firstItem="4Qy-N5-2wB" firstAttribute="width" secondItem="54L-Q8-uXQ" secondAttribute="width" id="YfJ-ny-YfO"/>
                             <constraint firstItem="mL5-kE-bsP" firstAttribute="top" secondItem="TVN-mf-54j" secondAttribute="bottom" constant="8" id="Z3E-LH-rqq"/>
                             <constraint firstItem="B17-bA-WZ5" firstAttribute="top" secondItem="mL5-kE-bsP" secondAttribute="bottom" constant="50" id="lSM-eQ-MUY"/>
-                            <constraint firstItem="9wf-bN-rJx" firstAttribute="top" secondItem="4Qy-N5-2wB" secondAttribute="bottom" id="mdL-8C-daU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4Qy-N5-2wB" secondAttribute="trailing" constant="-16" id="n5G-NE-AJP"/>
                             <constraint firstItem="3dY-pO-Bk4" firstAttribute="centerX" secondItem="54L-Q8-uXQ" secondAttribute="centerX" id="vKA-bj-jDk"/>
                             <constraint firstItem="TVN-mf-54j" firstAttribute="centerX" secondItem="mL5-kE-bsP" secondAttribute="centerX" id="vmp-EE-AdL"/>
                             <constraint firstItem="B17-bA-WZ5" firstAttribute="centerX" secondItem="mL5-kE-bsP" secondAttribute="centerX" id="xO8-PA-fLV"/>
+                            <constraint firstItem="4Qy-N5-2wB" firstAttribute="height" secondItem="54L-Q8-uXQ" secondAttribute="height" id="zPU-qD-Pg8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Twitter" id="yuh-BN-vcX"/>

@@ -56,7 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CDBA360F1DEDF57800EE752C /* Sam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sam.entitlements; sourceTree = "<group>"; };
+		CD966E281DEFDCB9005B7504 /* Sam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sam.entitlements; sourceTree = "<group>"; };
 		CDEDE7F31DED5705000B2ADF /* Sam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEDE8051DED5706000B2ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDEDE80A1DED5706000B2ADF /* SamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +172,7 @@
 		CDEDE7F51DED5705000B2ADF /* Sam */ = {
 			isa = PBXGroup;
 			children = (
-				CDBA360F1DEDF57800EE752C /* Sam.entitlements */,
+				CD966E281DEFDCB9005B7504 /* Sam.entitlements */,
 				CDEDE8341DED58BB000B2ADF /* SlideMenuTableViewController.swift */,
 				CDEDE8351DED58BB000B2ADF /* settingsTableVIewTableViewCell.swift */,
 				CDEDE8361DED58BB000B2ADF /* AppDelegate.swift */,
@@ -531,6 +531,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Sam/Sam.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -539,8 +541,10 @@
 				INFOPLIST_FILE = Sam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.Sam;
+				PRODUCT_BUNDLE_IDENTIFIER = valenh.socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sam/Sam-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -553,6 +557,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Sam/Sam.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -561,8 +567,10 @@
 				INFOPLIST_FILE = Sam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = valentina.henaoar.Sam;
+				PRODUCT_BUNDLE_IDENTIFIER = valenh.socialapimanager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Sam/Sam-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

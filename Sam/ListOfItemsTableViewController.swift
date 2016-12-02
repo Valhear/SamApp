@@ -29,10 +29,7 @@ class ListOfItemsTableViewController: UITableViewController {
         didSet {
             self.tableView.reloadData()
             finishedDownloading()
-//
-//        tableView.reloadData()
-//            self.activityIndicator.stopAnimating()
-//            self.activityIndicator.isHidden = true
+
         }
     }
     

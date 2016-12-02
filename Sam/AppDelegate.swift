@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Fabric.with([Twitter.self])
-       // Twitter.sharedInstance().start(withConsumerKey: "u8kz20JJQvn9XCyYNpwShFOjl", consumerSecret: "HU2mDZEdlvX5HlR4nXzk4bDUOxsv3ZH1U0Oc2beVRugVLoO87D")
+       
         
         let appearance = UINavigationBar.appearance()
         appearance.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:1)
@@ -50,14 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
-    private func application(app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
-        if Twitter.sharedInstance().application(app, open:url as URL, options: options) {
-            return true
-        }
-        
+//    private func application(app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
+//        if Twitter.sharedInstance().application(app, open:url as URL, options: options) {
+//            return true
+//        }
+    
         // If you handle other (non Twitter Kit) URLs elsewhere in your app, return true. Otherwise
-        return false
-    }
+//        return false
+//    }
     
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

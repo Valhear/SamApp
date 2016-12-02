@@ -60,22 +60,11 @@ class floatingViewController: UIViewController {
     let store = Twitter.sharedInstance().sessionStore
     if let userID = store.session()?.userID {
         store.logOutUserID(userID)
-        let fetchRequest: NSFetchRequest<TwitterUser> = TwitterUser.fetchRequest()
-        do {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let managedContext = appDelegate.persistentContainer.viewContext
-            let fetchedUsers = try managedContext.fetch(fetchRequest)
-            for user in fetchedUsers {
-                
-                managedContext.delete(user)
-            }
-        } catch let error as NSError {
-            print("Could not delete \(error), \(error.userInfo)")
-        }
         
         
-        }
+        
         self.performSegue(withIdentifier: "logout", sender: self)
+    }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
