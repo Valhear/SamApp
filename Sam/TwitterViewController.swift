@@ -11,18 +11,47 @@ import Fabric
 import TwitterKit
 import CoreData
 
-
 class TwitterViewController: UIViewController {
     
-    @IBOutlet var lastUpdatedLabel: UILabel!
     
-    @IBOutlet var menuSlideOut: UIBarButtonItem!
-    
-     var titleForList = String()
+    var titleForList = String()
     static var userImage = UIImage()
     static var userName = String()
     
+    //MARK: - UI Outlets
+    
+    @IBOutlet var menuSlideOut: UIBarButtonItem!
+    @IBOutlet var lastUpdatedLabel: UILabel!
     @IBOutlet var newButton: UIButton!
+    @IBOutlet var updateButton: UIBarButtonItem!
+    @IBOutlet var view1: UIView!
+    @IBOutlet var view1under: UIView!
+    @IBOutlet var view2: UIView!
+    @IBOutlet var view3: UIView!
+    @IBOutlet var view4: UIView!
+    @IBOutlet var subView1: UIView!
+    @IBOutlet var subView2: UIView!
+    @IBOutlet var subView3: UIView!
+    @IBOutlet var subView4: UIView!
+    @IBOutlet var dateSelector: UISegmentedControl!
+    @IBOutlet var followers: UILabel!
+    @IBOutlet var retweets: UILabel!
+    @IBOutlet var mentions: UILabel!
+    @IBOutlet var posts: UILabel!
+    @IBOutlet var footLabel1: UILabel!
+    @IBOutlet var footLabel2: UILabel!
+    @IBOutlet var footLabel3: UILabel!
+    @IBOutlet var footLabel4: UILabel!
+    @IBOutlet var dashboardButton: UIButton!
+    
+
+    
+    //Hidden UI
+    @IBOutlet var infoButton: UIButton!
+    @IBAction func infoButtonAction(_ sender: UIButton) {
+        
+    } //
+    
     
     
     @IBAction func actionTap(_ sender: UITapGestureRecognizer) {
@@ -31,6 +60,11 @@ class TwitterViewController: UIViewController {
     @IBAction func composeTweet(_ sender: UIBarButtonItem) {
         composeTwt(sender: sender)
         
+    }
+    
+    @IBAction func dateSelection(_ sender: UISegmentedControl) {
+        
+        calcTime(sender: sender.selectedSegmentIndex)
     }
     
     func composeTwt(sender: AnyObject) {
@@ -49,14 +83,7 @@ class TwitterViewController: UIViewController {
         }
     }
     
-    @IBOutlet var infoButton: UIButton!
-    
-    @IBAction func infoButtonAction(_ sender: UIButton) {
-        
-      
-    }
-  
-    @IBOutlet var dashboardButton: UIButton!
+
     
     var followerslist = [TwitterUser]()
     var retweetedTweets = [Tweet]()
@@ -65,31 +92,14 @@ class TwitterViewController: UIViewController {
     
     var postsTweetsTotal = Int()
     
-    
-    @IBOutlet var updateButton: UIBarButtonItem!
-    
-    @IBOutlet var view1: UIView!
-    @IBOutlet var view1under: UIView!
-    @IBOutlet var view2: UIView!
-    @IBOutlet var view3: UIView!
-    @IBOutlet var view4: UIView!
-    
-    @IBOutlet var subView1: UIView!
-    @IBOutlet var subView2: UIView!
-    @IBOutlet var subView3: UIView!
-    @IBOutlet var subView4: UIView!
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
         
-
         newButton.addTarget(self, action: #selector(self.composeTweet(_:)), for: UIControlEvents.touchUpInside)
         
-        
+        // - UI Configuration INIT
         view1.layer.cornerRadius = 5
         view1under.layer.cornerRadius = 5
         view2.backgroundColor = UIColor(red:0.99, green:0.62, blue:0.49, alpha:1.0)
@@ -100,11 +110,8 @@ class TwitterViewController: UIViewController {
         view3.layer.cornerRadius = 5
         view4.layer.cornerRadius = 5
         dateSelector.tintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:1.0)
-        //  dateSelector.layer.borderColor = UIColor.lightGray.cgColor
-        // dateSelector.layer.borderWidth = 1
         dateSelector.layer.cornerRadius = 0
         dateSelector.setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for: UIControlState.selected)
-        // dashboardButton.setTitleColor(UIColor.lightGray, for: .normal)
         dashboardButton.setTitleColor(UIColor.darkGray, for: .selected)
         
         
@@ -120,12 +127,14 @@ class TwitterViewController: UIViewController {
             subView.alpha = 0.9
             view?.addSubview(subView)
         }
+        //UI Configuration END
+
         
         if revealViewController() != nil {
         menuSlideOut.target = self.revealViewController()
             menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
        }
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    //    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         fetchInitialDataFromCoreData()
         updateButton(updateButton)
@@ -269,6 +278,9 @@ class TwitterViewController: UIViewController {
             // print("rt---\(rt)  rt2--- \(rt2)")
         }
     }
+    
+    
+      //MARK: - API Requests
     
     func getfollowers() {
         let ids = [Int?]()
@@ -670,15 +682,6 @@ class TwitterViewController: UIViewController {
 
     
     
-    @IBOutlet var dateSelector: UISegmentedControl!
-
-    @IBAction func dateSelection(_ sender: UISegmentedControl) {
-        
-        calcTime(sender: sender.selectedSegmentIndex)
-    }
-
-    
-    
     func evaluatePct(pct: Int) -> NSMutableAttributedString {
         let totString = NSMutableAttributedString()
         if pct <= 0 {
@@ -772,19 +775,7 @@ class TwitterViewController: UIViewController {
     }
 
     
-        @IBOutlet var followers: UILabel!
-        @IBOutlet var retweets: UILabel!
-        @IBOutlet var mentions: UILabel!
-        @IBOutlet var posts: UILabel!
-    
-    @IBOutlet var footLabel1: UILabel!
-    @IBOutlet var footLabel2: UILabel!
-    @IBOutlet var footLabel3: UILabel!
-    @IBOutlet var footLabel4: UILabel!
-    
-    
-    
-    
+ 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

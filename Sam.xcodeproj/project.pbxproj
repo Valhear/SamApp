@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD06FF261DF780F500CD110A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF221DF780F500CD110A /* Bolts.framework */; };
+		CD06FF271DF780F500CD110A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF231DF780F500CD110A /* FBSDKCoreKit.framework */; };
+		CD06FF281DF780F500CD110A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF241DF780F500CD110A /* FBSDKLoginKit.framework */; };
+		CD06FF291DF780F500CD110A /* FBSDKMessengerShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF251DF780F500CD110A /* FBSDKMessengerShareKit.framework */; };
 		CDEDE80F1DED5706000B2ADF /* SamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEDE80E1DED5706000B2ADF /* SamTests.swift */; };
 		CDEDE81A1DED5706000B2ADF /* SamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEDE8191DED5706000B2ADF /* SamUITests.swift */; };
 		CDEDE82C1DED574F000B2ADF /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEDE8281DED574F000B2ADF /* Fabric.framework */; };
@@ -36,6 +40,9 @@
 		CDEDE85D1DED58FA000B2ADF /* Tweet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEDE8591DED58FA000B2ADF /* Tweet+CoreDataProperties.swift */; };
 		CDEDE85E1DED58FA000B2ADF /* TwitterUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEDE85A1DED58FA000B2ADF /* TwitterUser+CoreDataClass.swift */; };
 		CDEDE85F1DED58FA000B2ADF /* TwitterUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEDE85B1DED58FA000B2ADF /* TwitterUser+CoreDataProperties.swift */; };
+		CDF04B731DFB0D8100BA4D46 /* FacebookLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF04B721DFB0D8100BA4D46 /* FacebookLoginViewController.swift */; };
+		CDF04B751DFB3FB800BA4D46 /* FacebookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF04B741DFB3FB800BA4D46 /* FacebookViewController.swift */; };
+		CDF1BD4D1E02F0BC005B3B18 /* FbkPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF1BD4C1E02F0BC005B3B18 /* FbkPost.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD06FF221DF780F500CD110A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		CD06FF231DF780F500CD110A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CD06FF241DF780F500CD110A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		CD06FF251DF780F500CD110A /* FBSDKMessengerShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKMessengerShareKit.framework; sourceTree = "<group>"; };
 		CD966E281DEFDCB9005B7504 /* Sam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sam.entitlements; sourceTree = "<group>"; };
 		CDEDE7F31DED5705000B2ADF /* Sam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEDE8051DED5706000B2ADF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +105,9 @@
 		CDEDE8591DED58FA000B2ADF /* Tweet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tweet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CDEDE85A1DED58FA000B2ADF /* TwitterUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CDEDE85B1DED58FA000B2ADF /* TwitterUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitterUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CDF04B721DFB0D8100BA4D46 /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
+		CDF04B741DFB3FB800BA4D46 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
+		CDF1BD4C1E02F0BC005B3B18 /* FbkPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FbkPost.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +115,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD06FF271DF780F500CD110A /* FBSDKCoreKit.framework in Frameworks */,
 				CDEDE82C1DED574F000B2ADF /* Fabric.framework in Frameworks */,
+				CD06FF281DF780F500CD110A /* FBSDKLoginKit.framework in Frameworks */,
 				CDEDE82F1DED574F000B2ADF /* TwitterCore.framework in Frameworks */,
 				CDEDE82D1DED574F000B2ADF /* TwitterKit.framework in Frameworks */,
+				CD06FF261DF780F500CD110A /* Bolts.framework in Frameworks */,
+				CD06FF291DF780F500CD110A /* FBSDKMessengerShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +170,10 @@
 				CDEDE80D1DED5706000B2ADF /* SamTests */,
 				CDEDE8181DED5706000B2ADF /* SamUITests */,
 				CDEDE7F41DED5705000B2ADF /* Products */,
+				CD06FF221DF780F500CD110A /* Bolts.framework */,
+				CD06FF231DF780F500CD110A /* FBSDKCoreKit.framework */,
+				CD06FF241DF780F500CD110A /* FBSDKLoginKit.framework */,
+				CD06FF251DF780F500CD110A /* FBSDKMessengerShareKit.framework */,
 				CDEDE8281DED574F000B2ADF /* Fabric.framework */,
 				CDEDE8291DED574F000B2ADF /* TwitterKit.framework */,
 				CDEDE82A1DED574F000B2ADF /* TwitterKitResources.bundle */,
@@ -178,11 +200,14 @@
 				CDEDE8361DED58BB000B2ADF /* AppDelegate.swift */,
 				CDEDE8371DED58BB000B2ADF /* Main.storyboard */,
 				CDEDE8381DED58BB000B2ADF /* TwitterLoginViewController.swift */,
+				CDF04B721DFB0D8100BA4D46 /* FacebookLoginViewController.swift */,
 				CDEDE8391DED58BB000B2ADF /* TwitterViewController.swift */,
+				CDF04B741DFB3FB800BA4D46 /* FacebookViewController.swift */,
 				CDEDE83A1DED58BB000B2ADF /* ListOfItemsTableViewController.swift */,
 				CDEDE83B1DED58BB000B2ADF /* HeaderTableViewCell.swift */,
 				CDEDE83C1DED58BB000B2ADF /* ListTableViewCell.swift */,
 				CDEDE83D1DED58BB000B2ADF /* floatingViewController.swift */,
+				CDF1BD4C1E02F0BC005B3B18 /* FbkPost.swift */,
 				CDEDE83E1DED58BB000B2ADF /* SamApp.xcdatamodel */,
 				CDEDE8051DED5706000B2ADF /* Info.plist */,
 				CD966E261DEF8068005B7504 /* hamburgerMenu */,
@@ -378,7 +403,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEDE8461DED58BB000B2ADF /* HeaderTableViewCell.swift in Sources */,
+				CDF1BD4D1E02F0BC005B3B18 /* FbkPost.swift in Sources */,
 				CDEDE8441DED58BB000B2ADF /* TwitterViewController.swift in Sources */,
+				CDF04B731DFB0D8100BA4D46 /* FacebookLoginViewController.swift in Sources */,
 				CDEDE8411DED58BB000B2ADF /* AppDelegate.swift in Sources */,
 				CDEDE8401DED58BB000B2ADF /* settingsTableVIewTableViewCell.swift in Sources */,
 				CDEDE85F1DED58FA000B2ADF /* TwitterUser+CoreDataProperties.swift in Sources */,
@@ -390,6 +417,7 @@
 				CDEDE8571DED58E2000B2ADF /* PresentationController.swift in Sources */,
 				CDEDE8551DED58E2000B2ADF /* AnimatedTransitioning.swift in Sources */,
 				CDEDE8471DED58BB000B2ADF /* ListTableViewCell.swift in Sources */,
+				CDF04B751DFB3FB800BA4D46 /* FacebookViewController.swift in Sources */,
 				CDEDE8481DED58BB000B2ADF /* floatingViewController.swift in Sources */,
 				CDEDE8541DED58E2000B2ADF /* TWTRUsr.swift in Sources */,
 				CDEDE8451DED58BB000B2ADF /* ListOfItemsTableViewController.swift in Sources */,

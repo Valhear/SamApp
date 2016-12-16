@@ -9,6 +9,7 @@
 import UIKit
 import TwitterKit
 import Fabric
+import FBSDKLoginKit
 
 class TwitterLoginViewController: UIViewController {
 
@@ -17,7 +18,6 @@ class TwitterLoginViewController: UIViewController {
     var causedByLogout: Bool = false
     
     override func viewDidAppear(_ animated: Bool) {
-        
         if causedByLogout == true {
             causedByLogout = false
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {

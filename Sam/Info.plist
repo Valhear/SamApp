@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>twitterkit-hxE4ipidMkCWHapzh1FFthjmr</string>
+				<string>fb1275261219205391</string>
 			</array>
 		</dict>
 	</array>
@@ -48,6 +48,17 @@
 			</dict>
 		</array>
 	</dict>
+	<key>FacebookAppID</key>
+	<string>1275261219205391</string>
+	<key>FacebookDisplayName</key>
+	<string>SamApp</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
