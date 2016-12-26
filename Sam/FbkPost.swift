@@ -13,9 +13,8 @@ class FbkPost: NSObject {
     
     var created: Date?
     var from: String?
-    var id: String?
     var message: String?
-    var reactions: Int?
+    var reactions: Int64?
     var descriptn: String?
     var link: String?
     var status_type: String?

@@ -217,10 +217,8 @@ class TwitterViewController: UIViewController {
         let calendar = NSCalendar.current
         var component = Calendar.Component.year
         var value = -1
-        
         switch sender {
         case 2: component = Calendar.Component.year
-            
         case 1: component = Calendar.Component.month
         case 0: component = Calendar.Component.day
         value = -7
@@ -239,13 +237,10 @@ class TwitterViewController: UIViewController {
         footLabel4.attributedText = allTimesString1
         default: break
         }
-        
         if sender != 3 {
-            
             let calculated = calendar.date(byAdding: component, value: value, to: date)!
             let calculatedSecond = calendar.date(byAdding: component, value: value*2, to: date)!
             let attributedString = NSMutableAttributedString(string: "\(component)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)])
-            
             let mt = calcArrayWithTime(array: mentionsTweets, date: calculated)
             mentions.text = "\(Int(mt))"
             var mt2 =  calcArrayWithTime(array: mentionsTweets, date: calculatedSecond)
@@ -402,6 +397,7 @@ class TwitterViewController: UIViewController {
         var params = params
         let parCount = Int(params["count"]!)
         var batchCount = parCount
+    
         var batch = [TWTRTweet?]()
             {
             didSet {

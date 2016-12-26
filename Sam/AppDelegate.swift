@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.isTranslucent = true
         UIApplication.shared.statusBarStyle = .lightContent
         
-
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        return true //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    
     }
     func application(_ application: UIApplication, open url:URL, sourceApplication:String?, annotation:Any) -> Bool {
         

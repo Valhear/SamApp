@@ -2,7 +2,7 @@
 //  TwitterUser+CoreDataProperties.swift
 //  Sam
 //
-//  Created by Valentina Henao on 11/29/16.
+//  Created by Valentina Henao on 12/16/16.
 //  Copyright © 2016 Valentina Henao. All rights reserved.
 //
 
