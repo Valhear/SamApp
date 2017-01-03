@@ -12,7 +12,7 @@ class FbkUser: NSObject {
     
     var created: Date?
     var name: String?
-    var image: String?
+    var image: UIImage?
     
     
 }

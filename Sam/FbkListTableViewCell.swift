@@ -18,10 +18,11 @@ class FbkListTableViewCell: UITableViewCell {
     
     @IBOutlet var message: UILabel?
 
-    @IBOutlet var link: UILabel?
+    @IBOutlet var link: UIImageView?
     
-    @IBOutlet var reactions: UILabel?
+    @IBOutlet var reactionsCount: UILabel?
 
+    @IBOutlet var reactionsLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

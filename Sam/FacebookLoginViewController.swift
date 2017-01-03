@@ -14,7 +14,7 @@ import FBSDKCoreKit
 class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
    // @IBOutlet var msgLabel: UILabel!
-
+    let myDefaults = UserDefaults.standard
     @IBOutlet var loginButton: FBSDKLoginButton!
     override func viewDidAppear(_ animated: Bool) {
         
@@ -48,6 +48,8 @@ class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         self.loginButton.delegate = self
         
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "4")!)

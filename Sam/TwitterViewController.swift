@@ -163,11 +163,11 @@ class TwitterViewController: UIViewController {
             retweets.text = "\(retweetedTweets.count)"
             posts.text = "\(postsTweets.count)"
             
-            print("retweetedTweets.count==\(retweetedTweets.count)")
-            print("postsTweets.count== \(postsTweets.count)")
-            print("mentionsTweets.count== \(mentionsTweets.count)")
+//            print("retweetedTweets.count==\(retweetedTweets.count)")
+//            print("postsTweets.count== \(postsTweets.count)")
+//            print("mentionsTweets.count== \(mentionsTweets.count)")
             
-             print("fetchfromcore Data count of tweets\(results.count)")
+  //           print("fetchfromcore Data count of tweets\(results.count)")
             
         } catch let error as NSError {
             print("Could not fetch tweets\(error), \(error.userInfo)")
@@ -176,7 +176,7 @@ class TwitterViewController: UIViewController {
             let results = try managedContext.fetch(fetchUsers)
             followerslist = results
             followers.text = "\(followerslist.count)"
-            print("fetchfromcore Data count of followers\(results.count)")
+      //      print("fetchfromcore Data count of followers\(results.count)")
         } catch let error as NSError {
             print("Could not fetch followers \(error)")
         }
@@ -226,7 +226,7 @@ class TwitterViewController: UIViewController {
         posts.text = "\(postsTweetsTotal)"
         let sumOfRetweets = retweetedTweets.map { $0.retweeted }.reduce(0, +)
         retweets.text = "\(sumOfRetweets)"
-        print("retweetedTweets.count \(retweetedTweets.count)")
+     //   print("retweetedTweets.count \(retweetedTweets.count)")
         view1.alpha = 1
         view1.isUserInteractionEnabled = true
         let allTimesString1 = NSMutableAttributedString(string: "100% from")
@@ -315,7 +315,7 @@ class TwitterViewController: UIViewController {
                     }
                     if ids.count != 0 {
                         let follo = ids.count
-                        print("idscoutnnotwk\(ids.count)")
+                       // print("idscoutnnotwk\(ids.count)")
                         self.followers.text = String(follo)
                         self.saveObject(objects: ids, entity: "TwitterUser", sender: "getFollowers")
                     }
@@ -478,7 +478,7 @@ class TwitterViewController: UIViewController {
             do {
                 if data != nil {
                     if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [Any] {
-                        print("JSONjson\(json)")
+                       // print("JSONjson\(json)")
                         if let userInfo = json[0] as? [String:Any] {
                             
                             if let postsCount = userInfo["statuses_count"] as? Int {

@@ -108,15 +108,11 @@ class ListOfItemsTableViewController: UITableViewController {
                                 usr.profileImage = UIImage.init(data: data)
                             } catch let error as NSError {
                                 print("error loading image data \(error.localizedDescription)")
-
                             }
-
-                            
-                            
                                 list.append(usr)
                         }
                             self.twitterUsersList.append(contentsOf: list)
-                    }
+                        }
                     }
                 } catch let jsonError as NSError {
                     print("json error: \(jsonError.localizedDescription)")

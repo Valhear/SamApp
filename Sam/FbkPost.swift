@@ -18,6 +18,8 @@ class FbkPost: NSObject {
     var descriptn: String?
     var link: String?
     var status_type: String?
+    var imageLink: String?
+    var image: UIImage?
     
     
 }

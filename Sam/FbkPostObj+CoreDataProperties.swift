@@ -2,7 +2,7 @@
 //  FbkPostObj+CoreDataProperties.swift
 //  Sam
 //
-//  Created by Valentina Henao on 12/16/16.
+//  Created by Valentina Henao on 12/26/16.
 //  Copyright © 2016 Valentina Henao. All rights reserved.
 //
 
@@ -23,5 +23,6 @@ extension FbkPostObj {
     @NSManaged public var message: String?
     @NSManaged public var reactions: Int64
     @NSManaged public var type: String?
+    @NSManaged public var imageLink: String?
 
 }

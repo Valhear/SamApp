@@ -14,7 +14,19 @@ class ListOfFbkPostsTableViewController: UITableViewController {
 
      let activityIN : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 100, y: 200, width: 50, height: 50)) as UIActivityIndicatorView
     
-    var listOfPosts = [FbkPostObj]()
+    var listOfPosts = [FbkPostObj]() {
+        didSet {
+            print("listOfPosts.count == \(listOfPosts.count)")
+            print("listOfPostsToList.count == \(listOfPostsToList.count)")
+        }
+    }
+
+    var listOfPostsToList = [FbkPost]() {
+        didSet {
+            self.tableView.reloadData()
+            finishedDownloading()
+        }
+    }
     var titleForList = String()
     
     var fbkFriendsList = [FbkUser]() {
@@ -42,32 +54,30 @@ class ListOfFbkPostsTableViewController: UITableViewController {
         activityIN.startAnimating()
         self.view.addSubview(activityIN)
         
-//        if titleForList == "Friends" {
-//            print("I need to load friends")
+        if titleForList == "Friends" {
             loadFriends()
-       // }
+        } else {
+           // loadPostsWithImages()
+            
+        }
         tableView.tableFooterView = UIView()
 
         
         print("listOfPosts.count \(listOfPosts.count)")
         print("titleForList \(titleForList)")
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if titleForList == "Friends" {
-            return 58
-        }
         
-        return 90
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 150
+
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if titleForList != "Friends" {
+            loadPostsWithImages()
+        }
+    }
+    
+
     
     func loadFriends() {
         let params = ["fields": "uid, picture, name", "limit": "50"]
@@ -76,13 +86,9 @@ class ListOfFbkPostsTableViewController: UITableViewController {
     }
     
     func reqFriends(path: String, params: [String:String]?){
-        //var friendsArray = friendsArray
+
         
-        //        if nextCursor != nil {
-        //        params1["after"] = nextCursor
-        //        }
-        
-        let request = FBSDKGraphRequest(graphPath: path, parameters: params) //taggable_friends
+        let request = FBSDKGraphRequest(graphPath: path, parameters: params)
         let connection = FBSDKGraphRequestConnection()
         connection.add(request, completionHandler: { (connection, result, error) -> Void in
             if ((error) != nil)
@@ -103,7 +109,17 @@ class ListOfFbkPostsTableViewController: UITableViewController {
                                     if let name = item["name"] as? String {
                                         friend.name = name
                                         if let picture = item["picture"] as? NSDictionary {
-                                        let l = picture["data"]
+                                            if let l = picture["data"] as? NSDictionary {
+                                                let url = l["url"] as! String
+                                                let imageURL = URL.init(string: url)
+                                                do { let data = try Data.init(contentsOf: imageURL!)
+                                                    friend.image = UIImage.init(data: data)
+                                                } catch let error as NSError {
+                                                    print("error loading image data \(error.localizedDescription)")
+                                                    
+                                                }
+                                                
+                                            }
                                         }
                                         self.fbkFriendsList.append(friend)
                                     }
@@ -136,11 +152,11 @@ class ListOfFbkPostsTableViewController: UITableViewController {
                 self.reqFriends(path: pathNextString, params: nil)
             }
         }
-//            else {
-//            if indexPath.row == twitterUsersList.count-1 {
-//                loadTweetsAndUsers()
-//            }
-//        }
+            else {
+            if indexPath.row == listOfPostsToList.count-1 {
+                loadPostsWithImages()
+            }
+        }
     }
 
 
@@ -158,54 +174,114 @@ class ListOfFbkPostsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if titleForList == "Friends" {
         return fbkFriendsList.count
+        } else {
+            return listOfPostsToList.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         if titleForList == "Friends" {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friends", for: indexPath) as? FbkFriendsTableViewCell
         let friend = fbkFriendsList[indexPath.row]
         cell?.friendName.text = friend.name
+        cell?.friendImage.image = friend.image
         // Configure the cell...
 
         return cell!
+         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "posts", for: indexPath) as? FbkListTableViewCell
+            let post = listOfPostsToList[indexPath.row]
+            cell?.nameLabel?.text = post.from
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .short
+            dateFormatter.dateStyle = .medium
+            
+            cell?.createdLabel?.text = "\(dateFormatter.string(from: (post.created as Date?) ?? Date() ))"
+            cell?.message?.text = post.message
+            if (post.image == nil) {
+                cell?.link?.removeFromSuperview()
+//                let constTop:NSLayoutConstraint = NSLayoutConstraint(item: cell?.reactionsLabel!, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: cell?.message, attribute: NSLayoutAttribute.bottom, multiplier: 2, constant: 0);
+//                self.view.addConstraint(constTop);
+                let rLabel = cell?.reactionsLabel
+                let mLabel = cell?.message
+                let views = ["rLabel": rLabel, "mLabel": mLabel]
+                cell?.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[mLabel]-[rLabel]", options: [], metrics: nil, views: views))
+            } else {
+                cell?.link?.image = post.image
+            }
+            
+            
+            
+            
+          //  cell?.link?.image = UIImage(named: "twitter-512")
+//            if let img = post.imageLink {
+//                if let imageURL = URL.init(string: img) {
+//                    print("link URL Imaage\(imageURL)")
+//                do { let data = try Data.init(contentsOf: imageURL)
+//                    print("JUST IMAGE LINK\(imageURL)")
+//                    if let image = UIImage.init(data: data) {
+//                        
+//                    cell?.link?.image = image
+//                        
+//                    }
+//                } catch let error as NSError {
+//                    print("error loading image data \(error.localizedDescription)")
+//                    
+//                }
+//            }
+//            }
+
+            cell?.reactionsCount?.text = "\(post.reactions ?? 0)"
+            
+            return cell!
+        }
+        
     }
  
+    func loadPostsWithImages() {
+        let limit = min(10, listOfPosts.count)
+        let slice = Array(listOfPosts[0..<limit])
+        var list = [FbkPost]()
+        for item in slice {
+            let post = FbkPost()
+            post.created = ((item.created as Date?) ?? Date())
+            post.descriptn = item.descriptn
+            post.from = item.from
+            post.link = item.link
+            post.reactions = item.reactions
+            post.message = item.message
+            if let img = item.imageLink {
+                if let imageURL = URL.init(string: img) {
+                    print("link URL Imaage\(imageURL)")
+                    do { let data = try Data.init(contentsOf: imageURL)
+                        if let image = UIImage.init(data: data) {
+                          post.image = image
+                            
+                        }
+                    } catch let error as NSError {
+                        print("error loading image data \(error.localizedDescription)")
+                    }
+                }
+            }
+            list.append(post)
+        }
+        print("listOfPostsToList.countappend \(listOfPostsToList.count)")
+        self.listOfPostsToList.append(contentsOf: list)
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        if listOfPosts.count > limit {
+            let remainingPosts = Array(listOfPosts[limit..<listOfPosts.count])
+            listOfPosts = remainingPosts
+        } else if limit == listOfPosts.count {
+                listOfPosts = []
+            }
+        
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+  
 
     /*
     // MARK: - Navigation
