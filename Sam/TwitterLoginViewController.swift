@@ -78,9 +78,26 @@ class TwitterLoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //background bar color
+        self.tabBarController?.tabBar.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:1.0)
+        
+        //selected item color
+        self.tabBarController?.tabBar.tintColor = UIColor(red:0.00, green:0.63, blue:0.95, alpha:1.0)
+            
+            //UIColor(white: 1, alpha: 0.5)
+            
+        //UIColor(red:0.00, green:0.63, blue:0.95, alpha:1.0)
+        
+        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor(red:0.72, green:0.72, blue:0.72, alpha:0.8)
         
 
-
+        
+        let numberOfItems = CGFloat((self.tabBarController?.tabBar.items!.count)!)
+        
+        let tabBarItemSize = CGSize(width: (self.tabBarController?.tabBar.frame.width)! / numberOfItems, height: (self.tabBarController?.tabBar.frame.height)!)
+        
+        self.tabBarController?.tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor(white: 1, alpha: 0.5), size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
+        UIColor(red:0.50, green:0.88, blue:1.00, alpha:0.6)
         
 
     }
@@ -104,3 +121,21 @@ class TwitterLoginViewController: UIViewController {
     */
 
 }
+
+extension UIImage {
+    
+    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        
+        color.setFill()
+        UIRectFill(rect)
+
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
+}
+

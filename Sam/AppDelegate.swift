@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.isTranslucent = true
         UIApplication.shared.statusBarStyle = .lightContent
         
+        
+        
         return true //FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     
     }

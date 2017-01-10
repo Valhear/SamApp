@@ -19,7 +19,7 @@
                     <tabBar key="tabBar" opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" id="kKn-9I-IKQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.1529411765" green="0.88235294119999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50196078431372548" green="0.88235294117647056" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -1512,7 +1512,7 @@ bio</string>
                                         </connections>
                                     </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACS-8K-12V">
-                                        <rect key="frame" x="155.5" y="561" width="64" height="12"/>
+                                        <rect key="frame" x="155.5" y="551" width="64" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -1521,11 +1521,12 @@ bio</string>
                                 <constraints>
                                     <constraint firstItem="yBR-KD-k3c" firstAttribute="width" secondItem="TiY-Ab-vXw" secondAttribute="width" id="0hL-LM-tnK"/>
                                     <constraint firstItem="yBR-KD-k3c" firstAttribute="height" secondItem="Gu7-gZ-ZHH" secondAttribute="height" id="2I0-op-N9x"/>
+                                    <constraint firstItem="ACS-8K-12V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0pQ-MT-p17" secondAttribute="bottom" constant="30" id="5fz-rQ-pcb"/>
                                     <constraint firstItem="0pQ-MT-p17" firstAttribute="top" secondItem="8lV-Ez-7S8" secondAttribute="bottom" constant="20" id="61y-ln-ewD"/>
                                     <constraint firstItem="2B0-ke-CZq" firstAttribute="top" secondItem="XDG-CI-ebJ" secondAttribute="bottom" constant="20" id="6IE-4u-qIu"/>
                                     <constraint firstItem="yBR-KD-k3c" firstAttribute="top" secondItem="P0K-PN-HzD" secondAttribute="bottom" constant="8" id="8ZQ-Qc-i2S"/>
                                     <constraint firstItem="gcF-xw-oF4" firstAttribute="width" secondItem="yBR-KD-k3c" secondAttribute="width" id="B3E-e8-CrX"/>
-                                    <constraint firstAttribute="bottom" secondItem="ACS-8K-12V" secondAttribute="bottom" constant="-30" id="Daf-p2-XxM"/>
+                                    <constraint firstAttribute="bottom" secondItem="ACS-8K-12V" secondAttribute="bottom" constant="20" symbolic="YES" id="Daf-p2-XxM"/>
                                     <constraint firstItem="TiY-Ab-vXw" firstAttribute="height" secondItem="OEg-up-08w" secondAttribute="height" id="FWT-TY-NVs"/>
                                     <constraint firstItem="2fn-kc-ivB" firstAttribute="width" secondItem="OEg-up-08w" secondAttribute="width" id="IbY-LH-8eB"/>
                                     <constraint firstItem="gcF-xw-oF4" firstAttribute="leading" secondItem="yBR-KD-k3c" secondAttribute="leading" id="Mrb-Os-MOD"/>
@@ -1541,7 +1542,6 @@ bio</string>
                                     <constraint firstItem="P0K-PN-HzD" firstAttribute="top" secondItem="TiY-Ab-vXw" secondAttribute="bottom" constant="-19" id="Ulp-Jk-HUB"/>
                                     <constraint firstItem="Z8k-Pq-xfK" firstAttribute="width" secondItem="Gu7-gZ-ZHH" secondAttribute="width" id="V0m-bg-Gnk"/>
                                     <constraint firstItem="Rof-7Q-217" firstAttribute="top" secondItem="Gu7-gZ-ZHH" secondAttribute="bottom" constant="8" id="V3C-x1-UT6"/>
-                                    <constraint firstItem="ACS-8K-12V" firstAttribute="top" secondItem="0pQ-MT-p17" secondAttribute="bottom" constant="54" id="Xjm-0h-8Vp"/>
                                     <constraint firstItem="2fn-kc-ivB" firstAttribute="top" secondItem="OEg-up-08w" secondAttribute="bottom" constant="-19" id="YmY-p8-9EL"/>
                                     <constraint firstItem="o8M-HC-aWr" firstAttribute="leading" secondItem="OEg-up-08w" secondAttribute="leading" id="ZE5-OC-JiG"/>
                                     <constraint firstItem="TiY-Ab-vXw" firstAttribute="trailing" secondItem="yBR-KD-k3c" secondAttribute="trailing" id="cbV-28-NVn"/>
@@ -1558,6 +1558,7 @@ bio</string>
                                     <constraint firstItem="o8M-HC-aWr" firstAttribute="width" secondItem="OEg-up-08w" secondAttribute="width" id="see-ed-ofi"/>
                                     <constraint firstItem="o8M-HC-aWr" firstAttribute="height" secondItem="OEg-up-08w" secondAttribute="height" id="seo-xl-BPz"/>
                                     <constraint firstItem="OEg-up-08w" firstAttribute="top" secondItem="2B0-ke-CZq" secondAttribute="bottom" constant="20" id="tue-gi-59r"/>
+                                    <constraint firstAttribute="bottom" secondItem="0pQ-MT-p17" secondAttribute="bottom" constant="76" id="wEG-85-vH6"/>
                                     <constraint firstItem="TiY-Ab-vXw" firstAttribute="width" secondItem="OEg-up-08w" secondAttribute="width" id="x3W-EO-bsm"/>
                                     <constraint firstItem="2B0-ke-CZq" firstAttribute="leading" secondItem="OEg-up-08w" secondAttribute="leading" id="zFs-OB-l0t"/>
                                 </constraints>

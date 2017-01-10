@@ -195,7 +195,6 @@ class FacebookViewController: UIViewController {
     var listOfPosts = [FbkPostObj]() {
         didSet {
             if let name = myDefaults.string(forKey: "Profilename") {
-           // print(name)
             postsByMeList = listOfPosts.filter { $0.from == "\(name)" }
             postsByOthersList = listOfPosts.filter { $0.from != "\(name)" }
             
@@ -204,12 +203,7 @@ class FacebookViewController: UIViewController {
             reactionsList.sort(by: { $0.created?.compare($1.created as! Date) == .orderedDescending })
             postsByMe.text = "\(postsByMeList.count)"
             postsByOthers.text = "\(postsByOthersList.count)"
-            
-//            print("postsByMe.count==\(postsByMeList.count)")
-//            print("postsByOthers.count== \(postsByOthersList.count)")
-            //  print("reactions.count== \(mentionsTweets.count)")
-            
-            
+           
         }
     }
     var reactionsList = [FbkPostObj]() {
@@ -228,17 +222,20 @@ class FacebookViewController: UIViewController {
         
         FBSDKProfile.enableUpdates(onAccessTokenChange: true)
         newButton.isHidden = true
-
-        scrollView.contentSize.height = 700
-        scrollView.contentSize.width = 300
-        self.tabBarController?.tabBar.isHidden = false
-        self.tabBarController?.tabBar.tintColor = UIColor.white
-        self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.lightGray
-        self.tabBarController?.tabBar.barTintColor = UIColor(red:0.36, green:0.85, blue:0.98, alpha:1.0)
         
-        let numberOfItems = CGFloat((self.tabBarController?.tabBar.items!.count)!)
-        let tabBarItemSize = CGSize(width: (self.tabBarController?.tabBar.frame.width)! / numberOfItems, height: (self.tabBarController?.tabBar.frame.height)!)
-        self.tabBarController?.tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.red, size: tabBarItemSize).resizableImage(withCapInsets: UIEdgeInsets.zero)
+        let minHeight: CGFloat = 700
+
+        if UIScreen.main.bounds.size.height > minHeight  {
+            scrollView.contentSize.height = UIScreen.main.bounds.size.height
+        } else {
+            scrollView.contentSize.height = minHeight
+        }
+        
+        
+        scrollView.contentSize.width = 300
+        
+        self.tabBarController?.tabBar.isHidden = false
+
 
         
         menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -294,11 +291,10 @@ class FacebookViewController: UIViewController {
    
         dateSelector.selectedSegmentIndex = 3
         calcTime(sender: 3)
+        getProfile()
         reqFriends()
         getFeed()
-
         
-        getProfile()
        
         
         
@@ -321,14 +317,15 @@ class FacebookViewController: UIViewController {
                     print("Error: \(error)")
                 }
                 else if result != nil {
-                   // print("result friends: \(result)")
                     do {
                         if JSONSerialization.isValidJSONObject(result!) {
                             if let y = result as? NSDictionary {
                                 let summary = y.object(forKey: "summary") as! NSDictionary
                                 if let totalFriends = summary.object(forKey: "total_count") as? Int {
                                     if totalFriends > 0 {
+                                        self.friends.text = String(totalFriends)
                                 self.myDefaults.set(totalFriends, forKey: "totalFriends")
+                                        
                                     }
                                 }
                             }
@@ -342,7 +339,7 @@ class FacebookViewController: UIViewController {
     }
     
     func getFeed() { // NEED TO FILTER BY PUBLISHER
-        let params = ["fields": "reactions.limit(0).fields(total_count).summary(true), from, created_time, status_type, description, message, link, picture",  "limit": "5000"]
+        let params = ["fields": "reactions.limit(0).fields(total_count).summary(true), from.fields(picture,name), created_time, status_type, description, message, link, full_picture",  "limit": "5000"]
         let path = "me/feed"
         reqFeed(path: path, params: params, postsArray: [])
     }
@@ -355,7 +352,7 @@ class FacebookViewController: UIViewController {
                 if ((error) != nil)
                 { print("Error: \(error)") }
                 else if result != nil {
-                   // print("results tagged TAGS: \(result)")
+                    print("results tagged TAGS: \(result)")
                     do {
                         if JSONSerialization.isValidJSONObject(result!) {
                             if let y = result as? NSDictionary {
@@ -365,8 +362,18 @@ class FacebookViewController: UIViewController {
                                         let post = FbkPost()
                                         let item = data[i] as! NSDictionary
                                         if let from = item["from"] as? NSDictionary {
-                                            let name = from["name"] as! String
+                                            let name = from["name"] as? String
                                                 post.from = name
+                                            if self.myDefaults.string(forKey: "Profilename") != name {
+                                            let picture = from["picture"] as? NSDictionary
+                                            
+                                            if let data = picture?.object(forKey: "data") as? NSDictionary {
+                                                
+                                            let picURL = data["url"] as? String
+                                                post.usrImageLink = picURL
+                                                print("picURL \(picURL)")
+                                                }
+                                            }
                                         }
                                         if let reactions = item["reactions"] as? NSDictionary {
                                             let summary = reactions.object(forKey: "summary") as? NSDictionary
@@ -380,11 +387,9 @@ class FacebookViewController: UIViewController {
                                         post.created = date
                                         }
                                         let message = item["message"] as? String
-                                        print("message \(message)")
                                         post.message = message
-                                        let picture = item["picture"] as? String
+                                        let picture = item["full_picture"] as? String
                                         post.imageLink = picture
-                                        print("picture \(picture)")
                                         let link = item["link"] as? String
                                         post.link = link
                                         let descriptn = item["description"] as? String
@@ -393,7 +398,6 @@ class FacebookViewController: UIViewController {
                                         post.status_type = defaultType
                                         postsArray.append(post)
                                     }
-                                    print("postsArray.count \(postsArray.count)")
                                 }
                                 if let paging = y.object(forKey: "paging") as? [String:Any] {
                                     if let next = paging["next"] as? String {
@@ -511,19 +515,3 @@ class FacebookViewController: UIViewController {
 
 }
 
-extension UIImage {
-    
-    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        
-        color.withAlphaComponent(0.5)
-        color.setFill()
-        UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
-    }
-    
-}
