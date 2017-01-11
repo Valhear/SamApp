@@ -371,7 +371,7 @@ class FacebookViewController: UIViewController {
                                                 
                                             let picURL = data["url"] as? String
                                                 post.usrImageLink = picURL
-                                                print("picURL \(picURL)")
+                                
                                                 }
                                             }
                                         }
