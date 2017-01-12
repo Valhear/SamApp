@@ -55,7 +55,6 @@ class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "4")!)
         
         
-        self.view.addSubview(loginButton)
      //   loginButt.addTarget(self, action: #selector(self.selectorfbk), for: UIControlEvents.touchUpInside)
         
         loginButton.center.x = self.view.center.x
@@ -64,7 +63,8 @@ class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         let center = self.view.center.y
         loginButton.center.y = center+(center*2/3)
         loginButton.readPermissions = ["public_profile", "user_friends", "read_custom_friendlists", "user_posts"]
-        
+        self.view.addSubview(loginButton)
+
 
         // Do any additional setup after loading the view.
     }
