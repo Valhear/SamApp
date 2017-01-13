@@ -14,13 +14,9 @@ class ListOfFbkPostsTableViewController: UITableViewController {
 
      let activityIN : UIActivityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 100, y: 200, width: 50, height: 50)) as UIActivityIndicatorView
     
-    var listOfPosts = [FbkPostObj]() {
-        didSet {
-            print("listOfPosts.count == \(listOfPosts.count)")
-            print("listOfPostsToList.count == \(listOfPostsToList.count)")
-        }
-    }
-
+    var listOfPosts = [FbkPostObj]()
+    
+    //initial batch of items, from listOfPosts
     var listOfPostsToList = [FbkPost]() {
         didSet {
             self.tableView.reloadData()
@@ -31,7 +27,6 @@ class ListOfFbkPostsTableViewController: UITableViewController {
     
     var fbkFriendsList = [FbkUser]() {
         didSet {
-            print("fbkFriendsList.count \(fbkFriendsList.count)")
             self.tableView.reloadData()
             finishedDownloading()
         }
@@ -45,6 +40,13 @@ class ListOfFbkPostsTableViewController: UITableViewController {
     
     var pathNextString = String()
     
+    
+    let myDefaults = UserDefaults.standard
+    
+    var myUserImage: UIImage?
+    var myName: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,30 +56,33 @@ class ListOfFbkPostsTableViewController: UITableViewController {
         activityIN.startAnimating()
         self.view.addSubview(activityIN)
         
-        if titleForList == "Friends" {
-            loadFriends()
-        } else {
-           // loadPostsWithImages()
-            
-        }
+      
         tableView.tableFooterView = UIView()
-
-        
-        print("listOfPosts.count \(listOfPosts.count)")
-        print("titleForList \(titleForList)")
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if titleForList != "Friends" {
-            loadPostsWithImages()
+        if titleForList == "Friends" {
+            loadFriends()
+        } else {
+             loadPostsWithImages()
+            
+            //Load user information, name and image
+            let imageURL = myDefaults.url(forKey: "imageUrl")
+            do { let data = try Data.init(contentsOf: imageURL!)
+                if let image = UIImage.init(data: data) {
+                    myUserImage = image
+                }
+            } catch let error as NSError {
+                print("error loading image data \(error.localizedDescription)")
+                
+            }
+         myName = myDefaults.string(forKey: "Profilename")
         }
     }
     
-
     
     func loadFriends() {
         let params = ["fields": "uid, picture, name", "limit": "50"]
@@ -193,9 +198,19 @@ class ListOfFbkPostsTableViewController: UITableViewController {
         return cell!
          } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "posts", for: indexPath) as? FbkListTableViewCell
-            let post = listOfPostsToList[indexPath.row]
-            cell?.nameLabel?.text = post.from
             
+            let post = listOfPostsToList[indexPath.row]
+            
+            cell?.nameLabel?.text = post.from
+
+            if post.from == myName {
+                cell?.profileImage?.image = myUserImage
+            } else {
+                
+                cell?.profileImage?.image = post.usrImage
+            
+            }
+       
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .short
             dateFormatter.dateStyle = .medium
@@ -204,8 +219,7 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             cell?.message?.text = post.message
             if (post.image == nil) {
                 cell?.link?.removeFromSuperview()
-//                let constTop:NSLayoutConstraint = NSLayoutConstraint(item: cell?.reactionsLabel!, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: cell?.message, attribute: NSLayoutAttribute.bottom, multiplier: 2, constant: 0);
-//                self.view.addConstraint(constTop);
+
                 let rLabel = cell?.reactionsLabel
                 let mLabel = cell?.message
                 let views = ["rLabel": rLabel, "mLabel": mLabel]
@@ -215,25 +229,6 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             }
             
             
-            
-            
-          //  cell?.link?.image = UIImage(named: "twitter-512")
-//            if let img = post.imageLink {
-//                if let imageURL = URL.init(string: img) {
-//                    print("link URL Imaage\(imageURL)")
-//                do { let data = try Data.init(contentsOf: imageURL)
-//                    print("JUST IMAGE LINK\(imageURL)")
-//                    if let image = UIImage.init(data: data) {
-//                        
-//                    cell?.link?.image = image
-//                        
-//                    }
-//                } catch let error as NSError {
-//                    print("error loading image data \(error.localizedDescription)")
-//                    
-//                }
-//            }
-//            }
 
             cell?.reactionsCount?.text = "\(post.reactions ?? 0)"
             
@@ -254,6 +249,24 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             post.link = item.link
             post.reactions = item.reactions
             post.message = item.message
+            post.usrImageLink = item.profileImage
+            
+            if let img = post.usrImageLink {
+                if let imageURL = URL.init(string: img) {
+                    
+                    do { let data = try Data.init(contentsOf: imageURL)
+                        if let image = UIImage.init(data: data) {
+                            post.usrImage = image
+                        }
+                    } catch let error as NSError {
+                        print("error loading image data \(error.localizedDescription)")
+                        
+                    }
+                }
+                
+            }
+            
+            
             if let img = item.imageLink {
                 if let imageURL = URL.init(string: img) {
                     print("link URL Imaage\(imageURL)")
@@ -283,14 +296,5 @@ class ListOfFbkPostsTableViewController: UITableViewController {
     }
   
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

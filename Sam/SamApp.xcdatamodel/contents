@@ -7,6 +7,7 @@
         <attribute name="imageLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reactions" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -25,7 +26,7 @@
         <attribute name="screenName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FbkPostObj" positionX="-3240" positionY="-2277" width="128" height="165"/>
+        <element name="FbkPostObj" positionX="-3240" positionY="-2277" width="128" height="180"/>
         <element name="Tweet" positionX="-3350" positionY="-2317" width="128" height="135"/>
         <element name="TwitterUser" positionX="-3125" positionY="-2322" width="128" height="105"/>
     </elements>

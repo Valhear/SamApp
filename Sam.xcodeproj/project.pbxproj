@@ -154,9 +154,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD7D3C981E285BFE00DF0FB4 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				CDF04B721DFB0D8100BA4D46 /* FacebookLoginViewController.swift */,
+				CDF04B741DFB3FB800BA4D46 /* FacebookViewController.swift */,
+				CD775B331E09D08D00004D13 /* ListOfFbkPostsTableViewController.swift */,
+				CD775B351E09ECA700004D13 /* FbkListTableViewCell.swift */,
+				CD856BBD1E0D7DBC001A2DA5 /* FbkFriendsTableViewCell.swift */,
+				CDF1BD4C1E02F0BC005B3B18 /* FbkPost.swift */,
+				CD775B371E0A2D2D00004D13 /* FbkUser.swift */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
+		CD7D3C991E285C2300DF0FB4 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				CDEDE8381DED58BB000B2ADF /* TwitterLoginViewController.swift */,
+				CDEDE8391DED58BB000B2ADF /* TwitterViewController.swift */,
+				CDEDE83A1DED58BB000B2ADF /* ListOfItemsTableViewController.swift */,
+				CDEDE83B1DED58BB000B2ADF /* HeaderTableViewCell.swift */,
+				CDEDE83C1DED58BB000B2ADF /* ListTableViewCell.swift */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
 		CD966E261DEF8068005B7504 /* hamburgerMenu */ = {
 			isa = PBXGroup;
 			children = (
+				CDEDE8341DED58BB000B2ADF /* SlideMenuTableViewController.swift */,
+				CDEDE8351DED58BB000B2ADF /* settingsTableVIewTableViewCell.swift */,
 				CDEDE8311DED583D000B2ADF /* SWRevealViewController.m */,
 				CDEDE8321DED583D000B2ADF /* SWRevealViewController.h */,
 				CDEDE8301DED583C000B2ADF /* Sam-Bridging-Header.h */,
@@ -209,25 +237,13 @@
 			isa = PBXGroup;
 			children = (
 				CD966E281DEFDCB9005B7504 /* Sam.entitlements */,
-				CDEDE8341DED58BB000B2ADF /* SlideMenuTableViewController.swift */,
-				CDEDE8351DED58BB000B2ADF /* settingsTableVIewTableViewCell.swift */,
 				CDEDE8361DED58BB000B2ADF /* AppDelegate.swift */,
 				CDEDE8371DED58BB000B2ADF /* Main.storyboard */,
-				CDEDE8381DED58BB000B2ADF /* TwitterLoginViewController.swift */,
-				CDF04B721DFB0D8100BA4D46 /* FacebookLoginViewController.swift */,
-				CDEDE8391DED58BB000B2ADF /* TwitterViewController.swift */,
-				CDF04B741DFB3FB800BA4D46 /* FacebookViewController.swift */,
-				CDEDE83A1DED58BB000B2ADF /* ListOfItemsTableViewController.swift */,
-				CD775B331E09D08D00004D13 /* ListOfFbkPostsTableViewController.swift */,
-				CDEDE83B1DED58BB000B2ADF /* HeaderTableViewCell.swift */,
-				CDEDE83C1DED58BB000B2ADF /* ListTableViewCell.swift */,
-				CD775B351E09ECA700004D13 /* FbkListTableViewCell.swift */,
-				CD856BBD1E0D7DBC001A2DA5 /* FbkFriendsTableViewCell.swift */,
 				CDEDE83D1DED58BB000B2ADF /* floatingViewController.swift */,
-				CDF1BD4C1E02F0BC005B3B18 /* FbkPost.swift */,
-				CD775B371E0A2D2D00004D13 /* FbkUser.swift */,
 				CDEDE83E1DED58BB000B2ADF /* SamApp.xcdatamodel */,
 				CDEDE8051DED5706000B2ADF /* Info.plist */,
+				CD7D3C981E285BFE00DF0FB4 /* Facebook */,
+				CD7D3C991E285C2300DF0FB4 /* Twitter */,
 				CD966E261DEF8068005B7504 /* hamburgerMenu */,
 				CD966E271DEF8094005B7504 /* Core Data  */,
 				CDEDE84A1DED58E2000B2ADF /* Assets.xcassets */,

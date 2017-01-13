@@ -89,38 +89,38 @@ class FacebookViewController: UIViewController {
         var component = Calendar.Component.year
         var value = -1
         switch sender {
-        case 2: component = Calendar.Component.year
-        case 1: component = Calendar.Component.month
-        case 0: component = Calendar.Component.day
-        value = -7
-        case 3: reactions.text = "\(reactionsList.map{ $0.reactions }.reduce(0,+))"
-        postsByMe.text = "\(postsByMeList.count)"
-        postsByOthers.text = "\(postsByOthersList.count)"
-        view1.alpha = 1
-        view1.isUserInteractionEnabled = true
-        let allTimesString1 = NSMutableAttributedString(string: "100% from")
-        allTimesString1.append(NSMutableAttributedString(string: " all times", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)]))
-        footLabel1.attributedText = allTimesString1
-        footLabel2.attributedText = allTimesString1
-        footLabel3.attributedText = allTimesString1
-        footLabel4.attributedText = allTimesString1
+            case 2: component = Calendar.Component.year
+            case 1: component = Calendar.Component.month
+            case 0: component = Calendar.Component.day
+            value = -7
+            case 3: reactions.text = "\(reactionsList.map{ $0.reactions }.reduce(0,+))"
+            postsByMe.text = "\(postsByMeList.count)"
+            postsByOthers.text = "\(postsByOthersList.count)"
+            view1.alpha = 1
+            view1.isUserInteractionEnabled = true
+            let allTimesString1 = NSMutableAttributedString(string: "100% from")
+            allTimesString1.append(NSMutableAttributedString(string: " all times", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)]))
+            footLabel1.attributedText = allTimesString1
+            footLabel2.attributedText = allTimesString1
+            footLabel3.attributedText = allTimesString1
+            footLabel4.attributedText = allTimesString1
         default: break
         }
+        
         if sender != 3 {
             let calculated = calendar.date(byAdding: component, value: value, to: date)!
             let calculatedSecond = calendar.date(byAdding: component, value: value*2, to: date)!
             let attributedString = NSMutableAttributedString(string: "\(component)", attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 10)])
+            // Posts By Me calculations
             let pm = calcArrayWithTime(array: postsByMeList, date: calculated).count
             postsByMe.text = "\(Int(pm))"
             var pm2 =  calcArrayWithTime(array: postsByMeList, date: calculatedSecond).count
             pm2 = pm2 - pm
-            //print("\(calcPercentage(int1: Double(mt), int2: Double(mt2)))")
             let pctpm = calcPercentage(int1: Double(pm), int2: Double(pm2))
             let xpm = evaluatePct(pct: pctpm)
             xpm.append(attributedString)
             footLabel3.attributedText = xpm
-            // print("mt---\(mt)  mt2--- \(mt2)")
-            
+            // Posts By Others calculations
             let po = calcArrayWithTime(array: postsByOthersList, date: calculated).count
             postsByOthers.text = "\(Int(po))"
             var po2 = calcArrayWithTime(array: postsByOthersList, date: calculatedSecond).count
@@ -129,8 +129,7 @@ class FacebookViewController: UIViewController {
             let xpo = evaluatePct(pct: pctpo)
             xpo.append(attributedString)
             footLabel4.attributedText = xpo
-            //print("pt---\(pt)  pt2--- \(pt2)")
-            
+            // Reactions calculations
             let rp = calcArrayWithTime(array: reactionsList, date: calculated)
             let sumOfReactions = rp.map{ $0.reactions }.reduce(0,+)
             reactions.text = "\(sumOfReactions)"
@@ -141,7 +140,6 @@ class FacebookViewController: UIViewController {
             let xrp = evaluatePct(pct: pctrp)
             xrp.append(attributedString)
             footLabel2.attributedText = xrp
-            // print("rt---\(rt)  rt2--- \(rt2)")
         }
     }
     
@@ -165,7 +163,6 @@ class FacebookViewController: UIViewController {
         var newIDs: [FbkPostObj] = []
         for post in array {
             let res = post.created?.compare(date)
-            //print("post.created \(post.created)")
             if res == ComparisonResult.orderedDescending {
                 newIDs.append(post)
             }
@@ -178,25 +175,18 @@ class FacebookViewController: UIViewController {
     }
     
     func composePost(sender: AnyObject) {
-        //let composer = TWTRComposer()
-        
-       // composer.setText("SAM is so cool!")
-        
-        // Called from a UIViewController
-       // composer.show(from: self) { result in
-        //    if (result == TWTRComposerResult.cancelled) {
-                print("This is to compose a facebook post")
-          //  }
-           // else {
-             //   print("Sending tweet!")
-           // }
-        //}
+        print("Pending feature: add new facebook post")
+ 
     }
+    
+    //List of posts to send to next VC
     var listOfPosts = [FbkPostObj]() {
         didSet {
             if let name = myDefaults.string(forKey: "Profilename") {
             postsByMeList = listOfPosts.filter { $0.from == "\(name)" }
+            postsByMeList.sort(by: { $0.created?.compare($1.created as! Date) == .orderedDescending })
             postsByOthersList = listOfPosts.filter { $0.from != "\(name)" }
+            postsByOthersList.sort(by: { $0.created?.compare($1.created as! Date) == .orderedDescending })
             
             }
             reactionsList = listOfPosts.filter { $0.reactions != 0 }
@@ -235,9 +225,6 @@ class FacebookViewController: UIViewController {
         scrollView.contentSize.width = 300
         
         self.tabBarController?.tabBar.isHidden = false
-
-
-        
         menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
         
         if revealViewController() != nil {
@@ -247,7 +234,7 @@ class FacebookViewController: UIViewController {
         
         newButton.addTarget(self, action: #selector(self.composePost(_:)), for: UIControlEvents.touchUpInside)
         
-        //UI Configuration INIT
+        //UI Configuration
         view1.layer.cornerRadius = 5
         view1under.layer.cornerRadius = 5
         view2.backgroundColor = UIColor(red:0.99, green:0.62, blue:0.49, alpha:1.0)
@@ -275,7 +262,6 @@ class FacebookViewController: UIViewController {
             subView.alpha = 0.9
             view?.addSubview(subView)
         }
-        //UI Configuration END
         
         reqFriends()
         getFeed()
@@ -294,21 +280,13 @@ class FacebookViewController: UIViewController {
         getProfile()
         reqFriends()
         getFeed()
-        
-       
-        
-        
+     
     }
-    
- 
     
     func reqFriends(){
         
-        //        if nextCursor != nil {
-        //        params1["after"] = nextCursor
-        //        }
             let params = ["fields": "uid, first_name, last_name, middle_name"]
-            let request = FBSDKGraphRequest(graphPath: "me/friends", parameters: params) //taggable_friends
+            let request = FBSDKGraphRequest(graphPath: "me/friends", parameters: params)
             let connection = FBSDKGraphRequestConnection()
             connection.add(request, completionHandler: { (connection, result, error) -> Void in
                 if ((error) != nil)
@@ -352,7 +330,6 @@ class FacebookViewController: UIViewController {
                 if ((error) != nil)
                 { print("Error: \(error)") }
                 else if result != nil {
-                    print("results tagged TAGS: \(result)")
                     do {
                         if JSONSerialization.isValidJSONObject(result!) {
                             if let y = result as? NSDictionary {
@@ -420,7 +397,7 @@ class FacebookViewController: UIViewController {
     func getProfile() {
         FBSDKProfile.loadCurrentProfile(completion: { (profile, error) -> Void in
             self.myDefaults.set(profile?.name, forKey: "Profilename")
-            self.myDefaults.set(profile?.imageURL(for: .normal, size: CGSize(width: 5.0, height: 5.0)), forKey: "imageUrl")
+            self.myDefaults.set(profile?.imageURL(for: .normal, size: CGSize(width: 60.0, height: 60.0)), forKey: "imageUrl")
         } )
     }
     
@@ -449,6 +426,8 @@ class FacebookViewController: UIViewController {
             post?.link = item?.link
             post?.descriptn = item?.descriptn
             post?.imageLink = item?.imageLink
+            post?.profileImage = item?.usrImageLink
+            
             list.append(post!)
         }
         listOfPosts = list

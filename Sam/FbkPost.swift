@@ -20,6 +20,7 @@ class FbkPost: NSObject {
     var status_type: String?
     var imageLink: String?
     var image: UIImage?
+    var usrImage: UIImage?
     var usrImageLink: String?
     
     
