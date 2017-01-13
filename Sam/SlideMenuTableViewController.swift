@@ -9,14 +9,18 @@
 import UIKit
 import TwitterKit
 import Fabric
+import FBSDKLoginKit
 
-class SlideMenuTableViewController: UITableViewController {
+class SlideMenuTableViewController: UITableViewController, UITabBarDelegate {
     
+
     let exampleTransitionDelegate = TransitioningDelegate()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
+
     @IBAction func shareButton(_ sender: UIButton) {
        share()
-        
+
     }
     
     func share() {
@@ -32,6 +36,7 @@ class SlideMenuTableViewController: UITableViewController {
             else {
                 print("Sending tweet!")
             }
+            
         }
     }
 
@@ -39,22 +44,8 @@ class SlideMenuTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        print("userName UserName \(TwitterViewController.userName)")
-       
+        tableView.tableFooterView = UIView()      
         
-        
-//        let parser = XMLParser(contentsOf: url)!
-//        parser.delegate
-//        parser.parse()
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,7 +68,6 @@ class SlideMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menu", for: indexPath) as! settingsTableVIewTableViewCell
-        //tableView.dequeueReusableCell(withIdentifier: "share", for: indexPath)
         
         switch indexPath.row {
             
@@ -100,11 +90,24 @@ class SlideMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        let index = appDelegate.selectedTab
+
         switch indexPath.row {
         case 0: share()
-        case 2: logout()
-        case 1:   let alert = UIAlertController(title: "Important", message: "This values are limited by the infomation twitter API allows us to collect and it might differ a little from the ones you see on their website", preferredStyle: UIAlertControllerStyle.alert)
+        case 2: if index == 0 {
+            twLogout()
+         } else {
+            let mgr = FBSDKLoginManager()
+            mgr.logOut()
+            performSegue(withIdentifier: "logoutFb", sender: self)
+            }
+        case 1:
+            
+            var nameOfSocialNetwork: String {
+                if index == 0 { return "Twitter" } else { return "Facebook" }
+            }
+        
+        let alert = UIAlertController(title: "Important", message: "This values are limited by the infomation \(nameOfSocialNetwork) API allows us to collect and it might differ a little from the ones you see on their website", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
             
@@ -115,7 +118,7 @@ class SlideMenuTableViewController: UITableViewController {
        
     }
     
-    func logout() {
+    func twLogout() {
         
         let controller = storyboard?.instantiateViewController(withIdentifier: "floatingViewController")
         controller?.transitioningDelegate = exampleTransitionDelegate
@@ -128,13 +131,18 @@ class SlideMenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableCell(withIdentifier: "header") as? HeaderTableViewCell
+        if appDelegate.selectedTab == 0 {
+
         
         header?.imageHeader.image = TwitterViewController.userImage
         header?.userHeader.text = TwitterViewController.userName
-        
-                return header
+        return header
+        } else {
+            header?.imageHeader.image = FacebookViewController.userImage
+            header?.userHeader.text = FacebookViewController.userName
+            return header
 
-        
+        }
     }
    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

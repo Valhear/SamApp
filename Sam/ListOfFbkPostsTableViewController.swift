@@ -206,9 +206,7 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             if post.from == myName {
                 cell?.profileImage?.image = myUserImage
             } else {
-                
                 cell?.profileImage?.image = post.usrImage
-            
             }
        
             let dateFormatter = DateFormatter()
@@ -227,10 +225,7 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             } else {
                 cell?.link?.image = post.image
             }
-            
-            
-
-            cell?.reactionsCount?.text = "\(post.reactions ?? 0)"
+             cell?.reactionsCount?.text = "\(post.reactions ?? 0)"
             
             return cell!
         }
@@ -282,7 +277,6 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             }
             list.append(post)
         }
-        print("listOfPostsToList.countappend \(listOfPostsToList.count)")
         self.listOfPostsToList.append(contentsOf: list)
 
         if listOfPosts.count > limit {

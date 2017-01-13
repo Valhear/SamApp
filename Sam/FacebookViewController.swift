@@ -13,9 +13,12 @@ import CoreData
 
 class FacebookViewController: UIViewController {
 
-   
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     let myDefaults = UserDefaults.standard
+    
+    static var userImage = UIImage()
+    static var userName = String()
 
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet var menuSlideOut: UIBarButtonItem!
@@ -206,6 +209,9 @@ class FacebookViewController: UIViewController {
     var postsByMeList = [FbkPostObj]()
     var postsByOthersList = [FbkPostObj]()
     
+    override func viewDidAppear(_ animated: Bool) {
+        appDelegate.selectedTab = tabBarController?.selectedIndex
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -228,9 +234,12 @@ class FacebookViewController: UIViewController {
         menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
         
         if revealViewController() != nil {
+            print("index \(tabBarController?.selectedIndex)")
             menuSlideOut.target = self.revealViewController()
             menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
         }
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
         
         newButton.addTarget(self, action: #selector(self.composePost(_:)), for: UIControlEvents.touchUpInside)
         
@@ -398,6 +407,18 @@ class FacebookViewController: UIViewController {
         FBSDKProfile.loadCurrentProfile(completion: { (profile, error) -> Void in
             self.myDefaults.set(profile?.name, forKey: "Profilename")
             self.myDefaults.set(profile?.imageURL(for: .normal, size: CGSize(width: 60.0, height: 60.0)), forKey: "imageUrl")
+            
+            let imageURL = profile?.imageURL(for: .normal, size: CGSize(width: 120.0, height: 120.0))
+            do { let data = try Data.init(contentsOf: imageURL!)
+                if let image = UIImage.init(data: data) {
+                    FacebookViewController.userImage = image
+                    FacebookViewController.userName = (profile?.name)!
+                }
+            } catch let error as NSError {
+                print("error loading image data \(error.localizedDescription)")
+                
+            }
+           
         } )
     }
     
@@ -406,7 +427,6 @@ class FacebookViewController: UIViewController {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<FbkPostObj> = FbkPostObj.fetchRequest()
-
         
         do {
         let fetchedPosts = try managedContext.fetch(fetchRequest)
@@ -493,4 +513,6 @@ class FacebookViewController: UIViewController {
     */
 
 }
+
+
 

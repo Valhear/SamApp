@@ -30,7 +30,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwj-Bu-2eb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2311" y="-67"/>
+            <point key="canvasLocation" x="-2311" y="168"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="77N-lv-Q3w">
@@ -52,7 +52,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKw-5w-zr4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1177" y="-407"/>
+            <point key="canvasLocation" x="1183" y="-535"/>
         </scene>
         <!--Sam-->
         <scene sceneID="T5D-Zs-iGU">
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97I-45-Kme" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="330" y="-584"/>
+            <point key="canvasLocation" x="329" y="-536"/>
         </scene>
         <!--SAM-->
         <scene sceneID="tne-QT-ifu">
@@ -613,7 +613,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2076" y="-407"/>
+            <point key="canvasLocation" x="1999" y="-535"/>
         </scene>
         <!--List Of Items Table View Controller-->
         <scene sceneID="KUq-2B-aJx">
@@ -628,7 +628,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N9M-ox-xKE" id="sdk-Jb-jIL">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -636,7 +636,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kZ9-Qz-KoG" id="XQW-3Q-mqC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T78-ca-6M6">
@@ -704,7 +704,7 @@ bio</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pbl-R9-9cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3076" y="-407"/>
+            <point key="canvasLocation" x="2863" y="-535"/>
         </scene>
         <!--Floating View Controller-->
         <scene sceneID="duK-PE-I9K">
@@ -820,7 +820,7 @@ bio</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X92-x9-fgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2311" y="-1210"/>
+            <point key="canvasLocation" x="-2311" y="-661"/>
         </scene>
         <!--Twitter-->
         <scene sceneID="ZsA-R2-6St">
@@ -917,7 +917,7 @@ bio</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asx-u7-RQH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-463" y="-456"/>
+            <point key="canvasLocation" x="-465" y="-535"/>
         </scene>
         <!--Slide Menu Table View Controller-->
         <scene sceneID="BkX-0E-Oo3">
@@ -1011,10 +1011,13 @@ bio</string>
                             <outlet property="delegate" destination="orc-hL-lVa" id="PpB-yr-pOq"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="ZGB-xn-bqe" kind="show" identifier="logoutFb" id="Ck2-JS-34X"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tx4-Gf-N8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1532" y="-1210"/>
+            <point key="canvasLocation" x="1182" y="219"/>
         </scene>
         <!--Facebook-->
         <scene sceneID="Bmm-et-b6h">
@@ -1101,7 +1104,7 @@ bio</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3RX-QN-rjL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-327.19999999999999" y="365.66716641679164"/>
+            <point key="canvasLocation" x="-321" y="976"/>
         </scene>
         <!--Facebook-->
         <scene sceneID="DGS-Sb-CT7">
@@ -1120,7 +1123,7 @@ bio</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f8i-E4-KVG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1281" y="366"/>
+            <point key="canvasLocation" x="-1118" y="976"/>
         </scene>
         <!--SAM-->
         <scene sceneID="uz1-5x-dxN">
@@ -1662,7 +1665,7 @@ bio</string>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2113" y="489"/>
+            <point key="canvasLocation" x="2106" y="975"/>
         </scene>
         <!--copy-->
         <scene sceneID="Xij-oo-CSF">
@@ -2147,7 +2150,7 @@ bio</string>
                 <tapGestureRecognizer id="IYC-eL-9vL"/>
                 <tapGestureRecognizer id="T9T-z2-OBx"/>
             </objects>
-            <point key="canvasLocation" x="4004" y="-457"/>
+            <point key="canvasLocation" x="3617" y="-495"/>
         </scene>
         <!--Twitter-->
         <scene sceneID="bJ9-uk-zJH">
@@ -2171,7 +2174,7 @@ bio</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fcu-Xz-bfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1252" y="448"/>
+            <point key="canvasLocation" x="1234" y="977"/>
         </scene>
         <!--Sam-->
         <scene sceneID="eeX-eO-b1l">
@@ -2194,7 +2197,7 @@ bio</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgE-Ja-EPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="441" y="365"/>
+            <point key="canvasLocation" x="484" y="976"/>
         </scene>
         <!--List Of Fbk Posts Table View Controller-->
         <scene sceneID="ZA6-jC-5nR">
@@ -2209,7 +2212,7 @@ bio</string>
                                 <rect key="frame" x="0.0" y="28" width="375" height="490"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SdU-48-b7Q" id="Pid-e0-Rac">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="489.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="489"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="exp-k9-Qu0">
@@ -2304,7 +2307,7 @@ bio</string>
                                 <rect key="frame" x="0.0" y="518" width="375" height="58"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YIo-TH-ew0" id="dMz-F6-ojb">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vV0-E8-fOQ">
@@ -2349,7 +2352,7 @@ bio</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qiO-6P-P3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3037.5999999999999" y="424.58770614692656"/>
+            <point key="canvasLocation" x="2967" y="974"/>
         </scene>
     </scenes>
     <resources>
@@ -2367,5 +2370,6 @@ bio</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ba1-yp-0fy"/>
+        <segue reference="Ck2-JS-34X"/>
     </inferredMetricsTieBreakers>
 </document>

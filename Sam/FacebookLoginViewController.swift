@@ -65,7 +65,6 @@ class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         loginButton.readPermissions = ["public_profile", "user_friends", "read_custom_friendlists", "user_posts"]
         self.view.addSubview(loginButton)
 
-
         // Do any additional setup after loading the view.
     }
     

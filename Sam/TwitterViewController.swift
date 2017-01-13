@@ -13,7 +13,8 @@ import CoreData
 
 class TwitterViewController: UIViewController {
     
-    
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+
     var titleForList = String()
     static var userImage = UIImage()
     static var userName = String()
@@ -92,6 +93,10 @@ class TwitterViewController: UIViewController {
     
     var postsTweetsTotal = Int()
     
+    override func viewDidAppear(_ animated: Bool) {
+        appDelegate.selectedTab = tabBarController?.selectedIndex
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,10 +136,11 @@ class TwitterViewController: UIViewController {
 
         
         if revealViewController() != nil {
+
         menuSlideOut.target = self.revealViewController()
             menuSlideOut.action = #selector(SWRevealViewController.revealToggle(_:))
        }
-    //    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
         fetchInitialDataFromCoreData()
         updateButton(updateButton)
