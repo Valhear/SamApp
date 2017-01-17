@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SDWebImage
 
 class ListOfFbkPostsTableViewController: UITableViewController {
 
@@ -232,6 +233,9 @@ class ListOfFbkPostsTableViewController: UITableViewController {
         
     }
  
+    
+
+    
     func loadPostsWithImages() {
         let limit = min(10, listOfPosts.count)
         let slice = Array(listOfPosts[0..<limit])
@@ -261,13 +265,14 @@ class ListOfFbkPostsTableViewController: UITableViewController {
                 
             }
             
-            
+       
             if let img = item.imageLink {
                 if let imageURL = URL.init(string: img) {
                     print("link URL Imaage\(imageURL)")
                     do { let data = try Data.init(contentsOf: imageURL)
                         if let image = UIImage.init(data: data) {
                           post.image = image
+
                             
                         }
                     } catch let error as NSError {

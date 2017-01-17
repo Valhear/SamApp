@@ -16,9 +16,7 @@ Social API Manager, connects to Twitter and Facebook showing relevant informatio
 - Cache management for images
 - Check block to the main thread from FB tab
 - Change Colors (tabs and navigation bar)
-- Load profile images
-- App not saving FB session 
-- Finish hamburger menu
+
 
 ## v3.0 
 - Create FB new post

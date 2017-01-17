@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B7EC850DAAB3059CD349286 /* Pods_SamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3934E24D6C7A39B218551AD6 /* Pods_SamTests.framework */; };
+		A1253B7AC603F8439B819649 /* Pods_Sam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187908B9AAD22584A132788A /* Pods_Sam.framework */; };
+		C8081051AD5B1A68DBE2ADD1 /* Pods_SamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34C691A9E29FC9CA2FFFE027 /* Pods_SamUITests.framework */; };
 		CD06FF261DF780F500CD110A /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF221DF780F500CD110A /* Bolts.framework */; };
 		CD06FF271DF780F500CD110A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF231DF780F500CD110A /* FBSDKCoreKit.framework */; };
 		CD06FF281DF780F500CD110A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD06FF241DF780F500CD110A /* FBSDKLoginKit.framework */; };
@@ -69,6 +72,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01451A969EBCA4C5A9148B02 /* Pods-Sam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sam/Pods-Sam.debug.xcconfig"; sourceTree = "<group>"; };
+		09C630842B8E9298C2577644 /* Pods-SamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamUITests/Pods-SamUITests.release.xcconfig"; sourceTree = "<group>"; };
+		187908B9AAD22584A132788A /* Pods_Sam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34C691A9E29FC9CA2FFFE027 /* Pods_SamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3934E24D6C7A39B218551AD6 /* Pods_SamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC1A1BCBBB02D6DC0DB4313B /* Pods-Sam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sam.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sam/Pods-Sam.release.xcconfig"; sourceTree = "<group>"; };
 		CD06FF221DF780F500CD110A /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		CD06FF231DF780F500CD110A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		CD06FF241DF780F500CD110A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -120,6 +129,9 @@
 		CDF04B721DFB0D8100BA4D46 /* FacebookLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginViewController.swift; sourceTree = "<group>"; };
 		CDF04B741DFB3FB800BA4D46 /* FacebookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookViewController.swift; sourceTree = "<group>"; };
 		CDF1BD4C1E02F0BC005B3B18 /* FbkPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FbkPost.swift; sourceTree = "<group>"; };
+		CE8EEA80D6C57B00CF51A52C /* Pods-SamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamTests/Pods-SamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D981130E4E364E9B99B4068C /* Pods-SamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SamUITests/Pods-SamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FB57C54FAECF9E297CF7C0BF /* Pods-SamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SamTests/Pods-SamTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +146,7 @@
 				CDEDE82D1DED574F000B2ADF /* TwitterKit.framework in Frameworks */,
 				CD06FF261DF780F500CD110A /* Bolts.framework in Frameworks */,
 				CD06FF291DF780F500CD110A /* FBSDKMessengerShareKit.framework in Frameworks */,
+				A1253B7AC603F8439B819649 /* Pods_Sam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +154,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7EC850DAAB3059CD349286 /* Pods_SamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8081051AD5B1A68DBE2ADD1 /* Pods_SamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +191,7 @@
 				CDEDE83A1DED58BB000B2ADF /* ListOfItemsTableViewController.swift */,
 				CDEDE83B1DED58BB000B2ADF /* HeaderTableViewCell.swift */,
 				CDEDE83C1DED58BB000B2ADF /* ListTableViewCell.swift */,
+				CDEDE84D1DED58E2000B2ADF /* TWTRUsr.swift */,
 			);
 			name = Twitter;
 			sourceTree = "<group>";
@@ -220,6 +236,8 @@
 				CDEDE8291DED574F000B2ADF /* TwitterKit.framework */,
 				CDEDE82A1DED574F000B2ADF /* TwitterKitResources.bundle */,
 				CDEDE82B1DED574F000B2ADF /* TwitterCore.framework */,
+				F03E8B326F03473DED901267 /* Pods */,
+				FE6CF81FC85E0F1A59945721 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -249,7 +267,6 @@
 				CDEDE84A1DED58E2000B2ADF /* Assets.xcassets */,
 				CDEDE84B1DED58E2000B2ADF /* LaunchScreen.storyboard */,
 				CDEDE84C1DED58E2000B2ADF /* brainForTweets.swift */,
-				CDEDE84D1DED58E2000B2ADF /* TWTRUsr.swift */,
 				CDEDE84E1DED58E2000B2ADF /* AnimatedTransitioning.swift */,
 				CDEDE84F1DED58E2000B2ADF /* TransitioningDelegate.swift */,
 				CDEDE8501DED58E2000B2ADF /* PresentationController.swift */,
@@ -275,6 +292,29 @@
 			path = SamUITests;
 			sourceTree = "<group>";
 		};
+		F03E8B326F03473DED901267 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01451A969EBCA4C5A9148B02 /* Pods-Sam.debug.xcconfig */,
+				BC1A1BCBBB02D6DC0DB4313B /* Pods-Sam.release.xcconfig */,
+				CE8EEA80D6C57B00CF51A52C /* Pods-SamTests.debug.xcconfig */,
+				FB57C54FAECF9E297CF7C0BF /* Pods-SamTests.release.xcconfig */,
+				D981130E4E364E9B99B4068C /* Pods-SamUITests.debug.xcconfig */,
+				09C630842B8E9298C2577644 /* Pods-SamUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE6CF81FC85E0F1A59945721 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				187908B9AAD22584A132788A /* Pods_Sam.framework */,
+				3934E24D6C7A39B218551AD6 /* Pods_SamTests.framework */,
+				34C691A9E29FC9CA2FFFE027 /* Pods_SamUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -282,10 +322,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEDE81E1DED5706000B2ADF /* Build configuration list for PBXNativeTarget "Sam" */;
 			buildPhases = (
+				E68F3699905D9BEF0D87F727 /* [CP] Check Pods Manifest.lock */,
 				CDEDE7EF1DED5705000B2ADF /* Sources */,
 				CDEDE7F01DED5705000B2ADF /* Frameworks */,
 				CDEDE7F11DED5705000B2ADF /* Resources */,
 				CDEDE8271DED5733000B2ADF /* ShellScript */,
+				6BAD827A7922E4E7A060CBFA /* [CP] Embed Pods Frameworks */,
+				5C5455B1D20B6F34887CEB32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -300,9 +343,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEDE8211DED5706000B2ADF /* Build configuration list for PBXNativeTarget "SamTests" */;
 			buildPhases = (
+				62E7A1A22EEEE5DA7A9A1A4B /* [CP] Check Pods Manifest.lock */,
 				CDEDE8061DED5706000B2ADF /* Sources */,
 				CDEDE8071DED5706000B2ADF /* Frameworks */,
 				CDEDE8081DED5706000B2ADF /* Resources */,
+				D2694868DD9A82165257106D /* [CP] Embed Pods Frameworks */,
+				4C52992AC12974A91871CEF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -318,9 +364,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEDE8241DED5706000B2ADF /* Build configuration list for PBXNativeTarget "SamUITests" */;
 			buildPhases = (
+				636431E35B20C4AC5446C0BB /* [CP] Check Pods Manifest.lock */,
 				CDEDE8111DED5706000B2ADF /* Sources */,
 				CDEDE8121DED5706000B2ADF /* Frameworks */,
 				CDEDE8131DED5706000B2ADF /* Resources */,
+				D33885B6CC1278B35E6F34FC /* [CP] Embed Pods Frameworks */,
+				8F8B73438CCCB16D5F994571 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -416,6 +465,96 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4C52992AC12974A91871CEF4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SamTests/Pods-SamTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C5455B1D20B6F34887CEB32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sam/Pods-Sam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62E7A1A22EEEE5DA7A9A1A4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		636431E35B20C4AC5446C0BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6BAD827A7922E4E7A060CBFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sam/Pods-Sam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F8B73438CCCB16D5F994571 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SamUITests/Pods-SamUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CDEDE8271DED5733000B2ADF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,6 +567,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run e131b12620469460de1b63482f49562dabde0d9f e364c495064f217d9df7590d0f919185a3502663da7b942a6589f3cfc8233f81\n";
+		};
+		D2694868DD9A82165257106D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SamTests/Pods-SamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D33885B6CC1278B35E6F34FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SamUITests/Pods-SamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E68F3699905D9BEF0D87F727 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -595,6 +779,7 @@
 		};
 		CDEDE81F1DED5706000B2ADF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01451A969EBCA4C5A9148B02 /* Pods-Sam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -621,6 +806,7 @@
 		};
 		CDEDE8201DED5706000B2ADF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC1A1BCBBB02D6DC0DB4313B /* Pods-Sam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -646,6 +832,7 @@
 		};
 		CDEDE8221DED5706000B2ADF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE8EEA80D6C57B00CF51A52C /* Pods-SamTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -661,6 +848,7 @@
 		};
 		CDEDE8231DED5706000B2ADF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB57C54FAECF9E297CF7C0BF /* Pods-SamTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -676,6 +864,7 @@
 		};
 		CDEDE8251DED5706000B2ADF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D981130E4E364E9B99B4068C /* Pods-SamUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CN4W3YSZKE;
@@ -690,6 +879,7 @@
 		};
 		CDEDE8261DED5706000B2ADF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09C630842B8E9298C2577644 /* Pods-SamUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = CN4W3YSZKE;

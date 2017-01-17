@@ -113,9 +113,7 @@ class SlideMenuTableViewController: UITableViewController, UITabBarDelegate {
             
         default: break
             
-            
         }
-       
     }
     
     func twLogout() {
@@ -124,8 +122,6 @@ class SlideMenuTableViewController: UITableViewController, UITabBarDelegate {
         controller?.transitioningDelegate = exampleTransitionDelegate
         controller?.modalPresentationStyle = .custom
         present(controller!, animated: true, completion: nil)
-        
-        
 
     }
     
