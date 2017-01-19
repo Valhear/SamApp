@@ -33,11 +33,16 @@ class ListOfFbkPostsTableViewController: UITableViewController {
         }
     }
     
+    
+    
+    
     func finishedDownloading() {
         DispatchQueue.main.async { Void in
             self.activityIN.stopAnimating()
             self.activityIN.isHidden = true
-        } }
+        }
+
+    }
     
     var pathNextString = String()
     
@@ -206,6 +211,7 @@ class ListOfFbkPostsTableViewController: UITableViewController {
 
             if post.from == myName {
                 cell?.profileImage?.image = myUserImage
+                
             } else {
                 cell?.profileImage?.image = post.usrImage
             }
@@ -216,15 +222,36 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             
             cell?.createdLabel?.text = "\(dateFormatter.string(from: (post.created as Date?) ?? Date() ))"
             cell?.message?.text = post.message
-            if (post.image == nil) {
-                cell?.link?.removeFromSuperview()
-
-                let rLabel = cell?.reactionsLabel
-                let mLabel = cell?.message
-                let views = ["rLabel": rLabel, "mLabel": mLabel]
-                cell?.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[mLabel]-[rLabel]", options: [], metrics: nil, views: views))
+            if (post.imageLink == nil) {
+                
+                print("post.imageLink == nil")
+//                cell?.link?.removeFromSuperview()
+//
+//                let rLabel = cell?.reactionsLabel
+//                let mLabel = cell?.message
+//                let views = ["rLabel": rLabel, "mLabel": mLabel]
+//                cell?.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[mLabel]-[rLabel]", options: [], metrics: nil, views: views))
             } else {
-                cell?.link?.image = post.image
+              //  cell?.link?.image = post.image
+                if (post.imageLink != nil) {
+                let url = URL.init(string: post.imageLink!)
+                    print("URLURLURL \(url)")
+                    
+                    
+                    let myBlock: SDWebImageCompletionBlock! = {(image, error, cacheType, imageURL) -> Void in
+                        
+                        print("Image with url \(imageURL!.absoluteString) is loaded")
+                        
+                    }
+                    
+                cell?.link?.sd_setImage(with: url, placeholderImage: UIImage(named: "no_image-128"), options: SDWebImageOptions.progressiveDownload, completed: myBlock)
+                    
+                    
+              
+                
+                
+                
+                }
             }
              cell?.reactionsCount?.text = "\(post.reactions ?? 0)"
             
@@ -237,8 +264,11 @@ class ListOfFbkPostsTableViewController: UITableViewController {
 
     
     func loadPostsWithImages() {
-        let limit = min(10, listOfPosts.count)
-        let slice = Array(listOfPosts[0..<limit])
+
+        DispatchQueue.global().async { Void in
+
+        let limit = min(10, self.listOfPosts.count)
+        let slice = Array(self.listOfPosts[0..<limit])
         var list = [FbkPost]()
         for item in slice {
             let post = FbkPost()
@@ -250,8 +280,8 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             post.message = item.message
             post.usrImageLink = item.profileImage
             
-            if let img = post.usrImageLink {
-                if let imageURL = URL.init(string: img) {
+            if let userImg = post.usrImageLink {
+                if let imageURL = URL.init(string: userImg) {
                     
                     do { let data = try Data.init(contentsOf: imageURL)
                         if let image = UIImage.init(data: data) {
@@ -265,7 +295,7 @@ class ListOfFbkPostsTableViewController: UITableViewController {
                 
             }
             
-       
+            post.imageLink = item.imageLink
             if let img = item.imageLink {
                 if let imageURL = URL.init(string: img) {
                     print("link URL Imaage\(imageURL)")
@@ -283,17 +313,17 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             list.append(post)
         }
         self.listOfPostsToList.append(contentsOf: list)
-
-        if listOfPosts.count > limit {
-            let remainingPosts = Array(listOfPosts[limit..<listOfPosts.count])
-            listOfPosts = remainingPosts
-        } else if limit == listOfPosts.count {
-                listOfPosts = []
+           
+        if self.listOfPosts.count > limit {
+            let remainingPosts = Array(self.listOfPosts[limit..<self.listOfPosts.count])
+            self.listOfPosts = remainingPosts
+        } else if limit == self.listOfPosts.count {
+                self.listOfPosts = []
             }
         
         
     }
-  
+    }
 
 
 }
