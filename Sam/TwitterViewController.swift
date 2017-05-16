@@ -364,6 +364,7 @@ class TwitterViewController: UIViewController {
                 if data != nil { do {
                     let json = try JSONSerialization.jsonObject(with: data!, options: []) as! NSArray
                     
+                    
                     if json.count > 1 {
                         batchCount = json.count
                     }

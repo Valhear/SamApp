@@ -20,8 +20,8 @@ class ListOfFbkPostsTableViewController: UITableViewController {
     //initial batch of items, from listOfPosts
     var listOfPostsToList = [FbkPost]() {
         didSet {
-            self.tableView.reloadData()
-            finishedDownloading()
+//            self.tableView.reloadData()
+//            finishedDownloading()
         }
     }
     var titleForList = String()
@@ -222,36 +222,28 @@ class ListOfFbkPostsTableViewController: UITableViewController {
             
             cell?.createdLabel?.text = "\(dateFormatter.string(from: (post.created as Date?) ?? Date() ))"
             cell?.message?.text = post.message
+         
             if (post.imageLink == nil) {
+//                            cell?.link?.removeFromSuperview()
+//                            
+//                            let rLabel = cell?.reactionsLabel
+//                            let mLabel = cell?.message
+//                            let views = ["rLabel": rLabel, "mLabel": mLabel]
+//                            cell?.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[mLabel]-[rLabel]", options: [], metrics: nil, views: views))
                 
-                print("post.imageLink == nil")
-//                cell?.link?.removeFromSuperview()
-//
-//                let rLabel = cell?.reactionsLabel
-//                let mLabel = cell?.message
-//                let views = ["rLabel": rLabel, "mLabel": mLabel]
-//                cell?.contentView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[mLabel]-[rLabel]", options: [], metrics: nil, views: views))
-            } else {
-              //  cell?.link?.image = post.image
-                if (post.imageLink != nil) {
-                let url = URL.init(string: post.imageLink!)
-                    print("URLURLURL \(url)")
-                    
-                    
-                    let myBlock: SDWebImageCompletionBlock! = {(image, error, cacheType, imageURL) -> Void in
+                         } else {
+                if let img = post.imageLink {
+                    if let imageURL = URL.init(string: img) {
                         
-                        print("Image with url \(imageURL!.absoluteString) is loaded")
-                        
-                    }
+                let myBlock: SDWebImageCompletionBlock! = {(image, error, cacheType, imageURL) -> Void in
                     
-                cell?.link?.sd_setImage(with: url, placeholderImage: UIImage(named: "no_image-128"), options: SDWebImageOptions.progressiveDownload, completed: myBlock)
-                    
-                    
-              
-                
-                
-                
+                    print("Image with url \(imageURL!.absoluteString) is loaded")
                 }
+                
+                cell?.link?.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "no_image-128"), options: SDWebImageOptions.progressiveDownload, completed: myBlock)
+                
+                    }}
+                
             }
              cell?.reactionsCount?.text = "\(post.reactions ?? 0)"
             
@@ -264,8 +256,6 @@ class ListOfFbkPostsTableViewController: UITableViewController {
 
     
     func loadPostsWithImages() {
-
-        DispatchQueue.global().async { Void in
 
         let limit = min(10, self.listOfPosts.count)
         let slice = Array(self.listOfPosts[0..<limit])
@@ -289,40 +279,47 @@ class ListOfFbkPostsTableViewController: UITableViewController {
                         }
                     } catch let error as NSError {
                         print("error loading image data \(error.localizedDescription)")
-                        
                     }
                 }
-                
             }
             
+            
+            
+            
+            
             post.imageLink = item.imageLink
-            if let img = item.imageLink {
-                if let imageURL = URL.init(string: img) {
-                    print("link URL Imaage\(imageURL)")
-                    do { let data = try Data.init(contentsOf: imageURL)
-                        if let image = UIImage.init(data: data) {
-                          post.image = image
-
-                            
-                        }
-                    } catch let error as NSError {
-                        print("error loading image data \(error.localizedDescription)")
-                    }
-                }
-            }
+       //     if let img = item.imageLink {
+     //           if let imageURL = URL.init(string: img) {
+   //                 print("link URL Imaage\(imageURL)")
+                    
+                    
+//                    do { let data = try Data.init(contentsOf: imageURL)
+//                        if let image = UIImage.init(data: data) {
+//                          post.image = image
+//
+//                            
+//                        }
+//                    } catch let error as NSError {
+//                        print("error loading image data \(error.localizedDescription)")
+//                    }
+             //   }
+  //          }
             list.append(post)
         }
         self.listOfPostsToList.append(contentsOf: list)
-           
+        DispatchQueue.main.async { Void in
+
+        self.tableView.reloadData()
+        self.finishedDownloading()
+        }
+        
         if self.listOfPosts.count > limit {
             let remainingPosts = Array(self.listOfPosts[limit..<self.listOfPosts.count])
             self.listOfPosts = remainingPosts
         } else if limit == self.listOfPosts.count {
                 self.listOfPosts = []
             }
-        
-        
-    }
+    
     }
 
 
