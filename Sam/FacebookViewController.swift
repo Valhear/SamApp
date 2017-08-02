@@ -275,6 +275,7 @@ class FacebookViewController: UIViewController {
         reqFriends()
         getFeed()
         if myDefaults.integer(forKey: "totalFriends") == nil {
+            
             self.myDefaults.set(0, forKey: "totalFriends")
         }
         friends.text = "\(myDefaults.integer(forKey: "totalFriends"))"

@@ -22,3 +22,5 @@ Social API Manager, connects to Twitter and Facebook showing relevant informatio
 - Create FB new post
 - Instagram
 - Graphics
+
+
