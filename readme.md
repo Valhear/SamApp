@@ -24,4 +24,3 @@ Social API Manager, connects to Twitter and Facebook showing relevant informatio
 - Graphics
 
 
-![](giphy.gif)
